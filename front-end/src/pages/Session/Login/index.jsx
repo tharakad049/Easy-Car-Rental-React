@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {styleSheet} from "./style";
 import {withStyles} from "@material-ui/core";
-import Typography from "@mui/material/Typography";
+import Typography from '@mui/material/Typography';
 
 class Login extends Component {
     constructor(props) {
