@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+/*import React, {Component} from "react";
 import {styleSheet} from "./style";
 import {withStyles} from "@material-ui/core";
 import Typography from '@mui/material/Typography';
@@ -26,4 +26,50 @@ class Login extends Component {
     }
 }
 
-export default withStyles(styleSheet)(Login)
+export default withStyles(styleSheet)(Login)*/
+
+
+
+import React, {Component} from "react";
+import withStyles from "@material-ui/core/styles/withStyles";
+import {styleSheet} from "./style";
+
+class Login extends Component{
+
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        const {classes} = this.props;
+        return(
+            <div className={classes.login_form}>
+                    <h2 title="Login" className={classes.headerTitle}></h2>
+
+                <div>
+                    <FormInput description="Username" placeholder="Enter your username" type="text" />
+                    <FormInput description="Password" placeholder="Enter your password" type="password"/>
+                    <FormButton title="Log in"/>
+                </div>
+
+            </div>
+
+        )
+    }
+}
+
+
+const FormButton = props => (
+    <div id="button" class="row">
+        <button>{props.title}</button>
+    </div>
+);
+
+const FormInput = props => (
+    <div class="row">
+        <label>{props.description}</label>
+        <input type={props.type} placeholder={props.placeholder}/>
+    </div>
+);
+
+
+export default withStyles (styleSheet) (Login)
