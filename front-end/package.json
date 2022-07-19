@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@mui/material": "^5.9.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "reactstrap": "^9.1.2"
   }
 }

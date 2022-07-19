@@ -165,7 +165,7 @@ class HomePage extends Component {
 export default withStyles(styleSheet)(HomePage)*/
 
 
-import React, {Component} from "react";
+/*import React, {Component} from "react";
 import {withStyles} from "@mui/material";
 import {styleSheet} from "./style";
 
@@ -178,21 +178,158 @@ class HomePage extends Component {
         const {classes} = this.props;
         return (
             <section className={classes.auto_header_top_area}>
-
-                <div className={classes.row_controller}>
-                    <div>
-                        <div>
-                            <h1>
-                               <a>
-
-                               </a>
-                            </h1>
+                <header className={classes.header}>
+                    <div className={classes.topbar}>
+                        <div className={classes.container}>
+                            <div className={classes.row}>
+                                <div className={classes.header_top_left}>
+                                    <div id="_desktop_logo">
+                                        <div className="desktop-logo">
+                                            <h1>1</h1>
+                                            <h1>2</h1>
+                                            <h1>3</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </header>
             </section>
 
         );
     }
 }
-export default withStyles (styleSheet)(HomePage)
+export default withStyles (styleSheet)(HomePage)*/
+
+/*import React, {Component} from "react";
+import {withStyles} from "@mui/material";
+import {styleSheet} from "../Home/style";
+
+class HomePage extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const {classes} = this.props;
+        return (
+            <section className={classes.auto_header_top_area}>
+                <header className={classes.header}>
+                    <div className={classes.topbar}>
+                        <div className={classes.container}>
+                            <div className={classes.row}>
+                                <div className={classes.header_top_left}>
+                                    <div id="_desktop_logo">
+                                        <div className="desktop-logo">
+                                            <h1>1</h1>
+                                            <h1>2</h1>
+                                            <h1>3</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </section>
+
+        );
+    }
+}
+export default withStyles (styleSheet)(HomePage)*/
+
+
+import React, {Component} from "react";
+import {Container} from "reactstrap";
+import "./style.css";
+import Row from "react-bootstrap/Row";
+import Link from "@material-ui/core/Link";
+import Col from "react-bootstrap/Col";
+
+class HomePage extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <header className="header">
+                <div className="header__top">
+                    <Container>
+                        <Row>
+                            <Col lg="6" md="6" sm="6">
+                                <div className="header__top__left">
+                                    <span>Need Help?</span>
+                                    <span className="header__top__help">
+                                    <i class="ri-phone-fill"></i> +9477-8580393, <span>071-6092570</span>
+                                 </span>
+                                </div>
+                            </Col>
+                            <Col lg="6" md="6" sm="6">
+                                <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+                                    <Link to="#" className=" d-flex align-items-center gap-1">
+                                        <i class="ri-login-circle-line"></i> Login
+                                    </Link>
+                                    <Link to="#" className=" d-flex align-items-center gap-1">
+                                        <i class="ri-user-line"></i> Register
+                                    </Link>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+                <div className="header__middle">
+                    <Container>
+                        <Row>
+                            <Col lg="4" md="3" sm="4">
+                                <div className="logo">
+                                    <h1>
+                                        <Link to="/home" className=" d-flex align-items-center gap-2">
+                                            <i class="ri-car-line"></i>
+                                            <span>
+                                                Eacy Car Rental <br/> Service
+                                        </span>
+                                        </Link>
+                                    </h1>
+                                </div>
+                            </Col>
+                            <Col lg="3" md="3" sm="4">
+                                <div className="header__location d-flex align-items-center gap-2">
+                        <span>
+                          <i class="ri-earth-line"></i>
+                        </span>
+                                    <div className="header__location-content">
+                                        <h4>Sri Lanka</h4>
+                                        <h6>New Town, Katharagama</h6>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col lg="3" md="3" sm="4">
+                                <div className="header__location d-flex align-items-center gap-2">
+                        <span>
+                          <i class="ri-time-line"></i>
+                        </span>
+                                    <div className="header__location-content">
+                                        <h4>Sunday to Saturday</h4>
+                                        <h6>9am - 7pm</h6>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col lg="2" md="3" sm="0" className=" d-flex align-items-center justify-content-end ">
+                                <button className="header__btn btn ">
+                                    <Link to="/contact">
+                                        <i class="ri-phone-line"></i> Request a call
+                                    </Link>
+                                </button>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+            </header>
+        );
+    }
+}
+
+export default (HomePage)
+
