@@ -246,7 +246,31 @@ import "./style.css";
 import Row from "react-bootstrap/Row";
 import Link from "@material-ui/core/Link";
 import Col from "react-bootstrap/Col";
+import NavLink from "react-bootstrap/NavLink";
 
+const navLinks = [
+    {
+        path: "/home",
+        display: "Home",
+    },
+    {
+        path: "/customer",
+        display: "Customer",
+    },
+    {
+        path: "/cars",
+        display: "Cars",
+    },
+
+    {
+        path: "/service",
+        display: "Serviceog",
+    },
+    {
+        path: "/contact",
+        display: "Contact",
+    },
+];
 
 class HomePage extends Component {
     constructor(props) {
@@ -331,6 +355,22 @@ class HomePage extends Component {
                 <div className="main__navbar">
                     <Container>
                         <div className="navigation__wrapper d-flex align-items-center justify-content-between">
+
+                                <div className="menu">
+                                    {navLinks.map((item, index) => (
+                                        <NavLink
+                                            to={item.path}
+                                            className={(navClass) =>
+                                                navClass.isActive ? "nav__active nav__item" : "nav__item"
+                                            }
+                                            key={index}
+                                        >
+                                            {item.display}
+                                        </NavLink>
+                                    ))}
+                                </div>
+
+
 
                             <div className="nav__right">
                                 <div className="search__box">
