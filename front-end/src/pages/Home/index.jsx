@@ -1,252 +1,12 @@
-/*
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/core/MenuItem';
-
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FolderIcon from "@mui/material/MenuItem";
-import RestoreIcon from '@material-ui/core/MenuItem';
-import FavoriteIcon from '@material-ui/core/MenuItem';
-import LocationOnIcon from '@mui/material/MenuItem';
-
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
-import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import StarBorderIcon from '@material-ui/core/ImageListItemBar';
-import itemData from '@material-ui/core/Menu';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(4),
-    },
-    title: {
-        flexGrow: 1,
-    },
-    root1: {
-        width: 500,
-        //backgroundColor : "red",
-    },
-    root3: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-    },
-    imageList: {
-        width: 500,
-        height: 450,
-        // Promote the list into its own layer in Chrome. This cost memory, but helps keep FPS high.
-        transform: 'translateZ(0)',
-    },
-    titleBar: {
-        background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    },
-    icon: {
-        color: 'white',
-    },
-}));
-
-function ButtonAppBar() {
-    const classes = useStyles();
-    const [value, setValue] = React.useState('home');
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-    return (
-        <div className={classes.root}>
-            <AppBar position="absolute">
-                <Toolbar>
-
-                    <Typography variant="h6" className={classes.title}>
-                        Easy Care Rental
-                    </Typography>
-
-                    <BottomNavigation value={value} onChange={handleChange} className={classes.root1}>
-                        <BottomNavigationAction label="Home" value="home" core={<RestoreIcon />} />
-                        <BottomNavigationAction label="Home" value="home" core={<FavoriteIcon />} />
-                        <BottomNavigationAction label="Home" value="home" icon={<LocationOnIcon />} />
-                        <BottomNavigationAction label="Home" value="home" icon={<FolderIcon />} />
-                    </BottomNavigation>
-
-                    <IconButton edge="start" className={classes.menuButton} color="green" aria-label="menu">
-                        <MenuIcon/>
-                    </IconButton>
-
-                    <Button variant="contained">REGISTER</Button>
-                    <Button variant="contained" color="secondary">LOGIN</Button>
-                </Toolbar>
-            </AppBar>
-                <div className={classes.root3}>
-                    <ImageList rowHeight={200} gap={1} className={classes.imageList}>
-                        {itemData.map((item) => (
-                            <ImageListItem key={item.img} cols={item.featured ? 2 : 1} rows={item.featured ? 2 : 1}>
-                                <img src={item.img} alt={item.title} />
-                                <ImageListItemBar
-                                    title={item.title}
-                                    position="top"
-                                    actionIcon={
-                                        <IconButton aria-label={`star ${item.title}`} className={classes.icon}>
-                                            <StarBorderIcon />
-                                        </IconButton>
-                                    }
-                                    actionPosition="left"
-                                    className={classes.titleBar}
-                                />
-                            </ImageListItem>
-                        ))}
-                    </ImageList>
-                </div>
-
-        </div>
-    );
-}
-
-
-export default (ButtonAppBar)*/
-
-
-/*
 import React, {Component} from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {styleSheet} from "./style";
-
-class HomePage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {classes} = this.props;
-        return (
-            <section className={classes.auto_header_top_area}>
-                <div className={classes.container}>
-                    <div className={classes.container1}>
-                        <div className={classes.row}>
-                            <div className={classes.col_md_6}>
-                                <div className={classes.header_top_left}>
-                                    <p>Need Help?: <i className={classes.fa_fa_phone}></i> Call: 077-8580393</p>
-                                </div>
-                            </div>
-                            <div className={classes.col_md_6}>
-                                <div className={classes.header_top_right}>
-                                    <a>
-                                        <i className={classes.fa_fa_key}></i>
-                                        login
-                                    </a>
-                                    <a>
-                                        <i className={classes.fa_fa_user}></i>
-                                        register
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-        );
-    }
-}
-
-export default withStyles(styleSheet)(HomePage)*/
-
-
-/*import React, {Component} from "react";
-import {withStyles} from "@mui/material";
-import {styleSheet} from "./style";
-
-class HomePage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {classes} = this.props;
-        return (
-            <section className={classes.auto_header_top_area}>
-                <header className={classes.header}>
-                    <div className={classes.topbar}>
-                        <div className={classes.container}>
-                            <div className={classes.row}>
-                                <div className={classes.header_top_left}>
-                                    <div id="_desktop_logo">
-                                        <div className="desktop-logo">
-                                            <h1>1</h1>
-                                            <h1>2</h1>
-                                            <h1>3</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            </section>
-
-        );
-    }
-}
-export default withStyles (styleSheet)(HomePage)*/
-
-/*import React, {Component} from "react";
-import {withStyles} from "@mui/material";
-import {styleSheet} from "../Home/style";
-
-class HomePage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {classes} = this.props;
-        return (
-            <section className={classes.auto_header_top_area}>
-                <header className={classes.header}>
-                    <div className={classes.topbar}>
-                        <div className={classes.container}>
-                            <div className={classes.row}>
-                                <div className={classes.header_top_left}>
-                                    <div id="_desktop_logo">
-                                        <div className="desktop-logo">
-                                            <h1>1</h1>
-                                            <h1>2</h1>
-                                            <h1>3</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            </section>
-
-        );
-    }
-}
-export default withStyles (styleSheet)(HomePage)*/
-
-
-import React, {Component} from "react";
-import {Container} from "reactstrap";
+import {Container, Form, FormGroup} from "reactstrap";
 import "./style.css";
 import Row from "react-bootstrap/Row";
 import Link from "@material-ui/core/Link";
 import Col from "react-bootstrap/Col";
 import NavLink from "react-bootstrap/NavLink";
+import Slider from "react-slick";
+import "../../../src/pages/Ui/slider.css";
 
 const navLinks = [
     {
@@ -264,7 +24,7 @@ const navLinks = [
 
     {
         path: "/service",
-        display: "Serviceog",
+        display: "Service",
     },
     {
         path: "/contact",
@@ -272,10 +32,23 @@ const navLinks = [
     },
 ];
 
+const settings = {
+    fade: true,
+    speed: 2000,
+    autoplaySpeed: 3000,
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    pauseOnHover: false,
+};
+
+
 class HomePage extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
             <header className="header">
@@ -356,20 +129,19 @@ class HomePage extends Component {
                     <Container>
                         <div className="navigation__wrapper d-flex align-items-center justify-content-between">
 
-                                <div className="menu">
-                                    {navLinks.map((item, index) => (
-                                        <NavLink
-                                            to={item.path}
-                                            className={(navClass) =>
-                                                navClass.isActive ? "nav__active nav__item" : "nav__item"
-                                            }
-                                            key={index}
-                                        >
-                                            {item.display}
-                                        </NavLink>
-                                    ))}
-                                </div>
-
+                            <div className="menu">
+                                {navLinks.map((item, index) => (
+                                    <NavLink
+                                        to={item.path}
+                                        className={(navClass) =>
+                                            navClass.isActive ? "nav__active nav__item" : "nav__item"
+                                        }
+                                        key={index}
+                                    >
+                                        {item.display}
+                                    </NavLink>
+                                ))}
+                            </div>
 
 
                             <div className="nav__right">
@@ -383,10 +155,104 @@ class HomePage extends Component {
                         </div>
                     </Container>
                 </div>
+
+
+                <div>
+                    <Slider {...settings} className="hero__slider">
+                        <div className="slider__item slider__item-01 mt0">
+                            <Container>
+                                <div className="slider__content ">
+                                    <h4 className="text-light mb-3">For Rent $70 Per Day</h4>
+                                    <h1 className="text-light mb-4">Reserve Now and Get 50% Off</h1>
+
+                                    <button className="btn reserve__btn mt-4">
+                                        <Link to="">Reserve Now</Link>
+                                    </button>
+                                </div>
+                            </Container>
+                        </div>
+
+{/*                        <div className="slider__item slider__item-02">
+                            <Container>
+                                <div className="slider__content ">
+                                    <h4 className="text-light mb-3">For Rent $70 Per Day</h4>
+                                    <h1 className="text-light mb-4">Reserve Now and Get 50% Off</h1>
+
+                                    <button className="btn reserve__btn mt-4">
+                                        <Link to="/cars">Reserve Now</Link>
+                                    </button>
+                                </div>
+                            </Container>
+                        </div>
+
+                        <div className="slider__item slider__item-03 mt0">
+                            <Container>
+                                <div className="slider__content ">
+                                    <h4 className="text-light mb-3">For Rent $70 Per Day</h4>
+                                    <h1 className="text-light mb-4">Reserve Now and Get 50% Off</h1>
+
+                                    <button className="btn reserve__btn mt-4">
+                                        <Link to="/cars">Reserve Now</Link>
+                                    </button>
+                                </div>
+                            </Container>
+                        </div>*/}
+                    </Slider>
+                </div>
+
+                <div className="hero__form">
+                    <Container>
+                        <Row className="form__row">
+                            <Col lg="4" md="4">
+                                <div className="find__cars-left">
+                                    <h2>Find your best car here</h2>
+                                </div>
+                            </Col>
+                            <Col lg="8" md="8" sm="12">
+
+                                <Form className="form">
+                                    <div className=" d-flex align-items-center justify-content-between flex-wrap">
+                                        <FormGroup className="form__group">
+                                            <input type="text" placeholder="From address" required/>
+                                        </FormGroup>
+
+                                        <FormGroup className="form__group">
+                                            <input type="text" placeholder="To address" required/>
+                                        </FormGroup>
+
+                                        <FormGroup className="form__group">
+                                            <input type="date" placeholder="Journey date" required/>
+                                        </FormGroup>
+
+                                        <FormGroup className="form__group">
+                                            <input
+                                                className="journey__time"
+                                                type="time"
+                                                placeholder="Journey time"
+                                                required
+                                            />
+                                        </FormGroup>
+                                        <FormGroup className="select__group">
+                                            <select>
+                                                <option value="ac">AC Car</option>
+                                                <option value="non-ac">Non AC Car</option>
+                                            </select>
+                                        </FormGroup>
+
+                                        <FormGroup className="form__group">
+                                            <button className="btn find__car-btn">Find Car</button>
+                                        </FormGroup>
+                                    </div>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+
+
             </header>
         );
     }
-};
-
+}
 export default (HomePage)
 
