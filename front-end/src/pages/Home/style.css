@@ -94,12 +94,45 @@
 }
 
 .header__btn a:hover {
-    color: #fff;
+    color: #ff0000;
 }
+
 [class^="ri-"], [class*=" ri-"] {
     font-family: 'remixicon' !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.main__navbar {
+    padding: 15px 0px;
+    background: #060878;
+}
+
+.search__box {
+    border: 1px solid #7c8a972f;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    background: rgba(52, 88, 88, 0.91);
+}
+
+.search__box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.search__box input::placeholder {
+    font-size: 0.8rem;
+}
+.search__box span i {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+
 

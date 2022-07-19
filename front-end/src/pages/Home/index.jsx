@@ -247,11 +247,11 @@ import Row from "react-bootstrap/Row";
 import Link from "@material-ui/core/Link";
 import Col from "react-bootstrap/Col";
 
+
 class HomePage extends Component {
     constructor(props) {
         super(props);
     }
-
     render() {
         return (
             <header className="header">
@@ -326,10 +326,27 @@ class HomePage extends Component {
                         </Row>
                     </Container>
                 </div>
+
+
+                <div className="main__navbar">
+                    <Container>
+                        <div className="navigation__wrapper d-flex align-items-center justify-content-between">
+
+                            <div className="nav__right">
+                                <div className="search__box">
+                                    <input type="text" placeholder="Search"/>
+                                    <span>
+                                          <i className="ri-search-line"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </Container>
+                </div>
             </header>
         );
     }
-}
+};
 
 export default (HomePage)
 

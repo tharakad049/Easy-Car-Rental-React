@@ -1,12 +1,8 @@
 import React from "react";
-import Login from "../pages/Session/Login";
-import HomePage from "../pages/Home/index";
+import Layout from "../components/Layouts/Layout";
 
 function App() {
-  return (
-      <HomePage/>
-      //<Login/>
-  );
+  return <Layout/>
 }
 
 export default App;
