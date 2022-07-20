@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@mui/material": "^5.9.0",
+    "axios": "^0.27.2",
     "postcss-merge-longhand": "^5.1.6",
     "react-router-dom": "^6.3.0",
     "reactstrap": "^9.1.2",

@@ -123,13 +123,13 @@
 }
 
 .nav__item {
-    color: #fff;
+    color: #fc0000;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .nav__item:hover {
-    color: #f9a826;
+    color: #000000;
 }
 .search__box {
     border: 1px solid #7c8a972f;
