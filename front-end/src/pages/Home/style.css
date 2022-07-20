@@ -106,7 +106,7 @@
 
 .main__navbar {
     padding: 15px 0px;
-    background: #863232;
+    background: #002d72;
 }
 .mobile__menu i {
     color: #fff;
@@ -132,12 +132,12 @@
     color: #000000;
 }
 .search__box {
-    border: 1px solid #7c8a972f;
+    border: 1px solid rgb(248, 248, 248);
     padding: 7px 12px;
     display: flex;
     align-items: center;
     border-radius: 50px;
-    background: rgba(52, 88, 88, 0.91);
+    background: rgba(175, 189, 189, 0.91);
 }
 
 .search__box input {
@@ -203,4 +203,10 @@
     }
 }
 
-
+.nav-links {
+    display: block;
+    padding: .5rem 1rem;
+    color: #33ff00;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}

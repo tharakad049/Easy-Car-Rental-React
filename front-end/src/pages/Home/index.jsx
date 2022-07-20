@@ -4,7 +4,6 @@ import "./style.css";
 import Row from "react-bootstrap/Row";
 import Link from "@material-ui/core/Link";
 import Col from "react-bootstrap/Col";
-import NavLink from "react-bootstrap/NavLink";
 import Slider from "react-slick";
 import "../../../src/pages/Ui/slider.css";
 
@@ -123,26 +122,17 @@ class HomePage extends Component {
                         </Row>
                     </Container>
                 </div>
-
-
                 <div className="main__navbar">
                     <Container>
                         <div className="navigation__wrapper d-flex align-items-center justify-content-between">
 
                             <div className="menu">
-                                {navLinks.map((item, index) => (
-                                    <NavLink
-                                        to={item.path}
-                                        className={(navClass) =>
-                                            navClass.isActive ? "nav__active nav__item" : "nav__item"
-                                        }
-                                        key={index}
-                                    >
-                                        {item.display}
-                                    </NavLink>
-                                ))}
+                                <a to="/home" role="button" className="nav-links" tabIndex="0" href="#">Home</a>
+                                <a to="/customer" role="button" className="nav-links" tabIndex="0" href="#">Customer</a>
+                                <a to="/cars" role="button" className="nav-links" tabIndex="0" href="#">Cars</a>
+                                <a to="/service" role="button" className="nav-links" tabIndex="0" href="#">Service</a>
+                                <a to="/contact" role="button" className="nav-links" tabIndex="0" href="#">Contact</a>
                             </div>
-
 
                             <div className="nav__right">
                                 <div className="search__box">
@@ -171,32 +161,6 @@ class HomePage extends Component {
                                 </div>
                             </Container>
                         </div>
-
-{/*                        <div className="slider__item slider__item-02">
-                            <Container>
-                                <div className="slider__content ">
-                                    <h4 className="text-light mb-3">For Rent $70 Per Day</h4>
-                                    <h1 className="text-light mb-4">Reserve Now and Get 50% Off</h1>
-
-                                    <button className="btn reserve__btn mt-4">
-                                        <Link to="/cars">Reserve Now</Link>
-                                    </button>
-                                </div>
-                            </Container>
-                        </div>
-
-                        <div className="slider__item slider__item-03 mt0">
-                            <Container>
-                                <div className="slider__content ">
-                                    <h4 className="text-light mb-3">For Rent $70 Per Day</h4>
-                                    <h1 className="text-light mb-4">Reserve Now and Get 50% Off</h1>
-
-                                    <button className="btn reserve__btn mt-4">
-                                        <Link to="/cars">Reserve Now</Link>
-                                    </button>
-                                </div>
-                            </Container>
-                        </div>*/}
                     </Slider>
                 </div>
 
@@ -248,8 +212,6 @@ class HomePage extends Component {
                         </Row>
                     </Container>
                 </div>
-
-
             </header>
         );
     }
