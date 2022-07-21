@@ -7,8 +7,8 @@ import AdminNavBar from "../../components/admin/NavBar";
 const Layout = () => {
   return (
     <Fragment>
-      {/*<HomePage />*/}{/*<HomePage />*/}
-{/*     <Login/>*/} <AdminNavBar/>
+      {/*<HomePage />*/}   <HomePage />
+{/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}
     </Fragment>
   );

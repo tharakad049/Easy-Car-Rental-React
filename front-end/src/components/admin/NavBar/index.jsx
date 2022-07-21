@@ -19,13 +19,13 @@ class AdminNavBar extends Component {
             <div className={classes.navBar_container}>
                 <div className={classes.logo_container}></div>
                 <div className={classes.navBarButton_container}>
-                    <Button style={{color: 'blue', borderColor: 'blue', borderRadius: '10px'}} variant="outlined"
+                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
                             color="danger" startIcon={<TbHome/>}>Home</Button>
-                    <Button style={{color: 'blue', borderColor: 'blue', borderRadius: '10px'}} variant="outlined"
+                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
                             color="danger" startIcon={<VscRequestChanges/>}>Rental Request Manage</Button>
-                    <Button style={{color: 'blue', borderColor: 'blue', borderRadius: '10px'}} variant="outlined"
+                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
                             color="danger" startIcon={<AiFillCar/>}>Car Manage</Button>
-                    <Button style={{color: 'blue', borderColor: 'blue', borderRadius: '10px'}} variant="outlined"
+                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
                             color="danger" startIcon={<FaUserEdit/>}>Drivers Manage</Button>
                     <div style={{width: '10px'}}></div>
                     <MenuListComposition/>
