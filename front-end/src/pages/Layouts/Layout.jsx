@@ -5,8 +5,8 @@ import Login from "../Session/Login";
 const Layout = () => {
   return (
     <Fragment>
-      <HomePage />
-{/*     <Login/>*/}
+      {/*<HomePage />*/}
+{/*     <Login/>*/} <Login/>
 {/*   <Register/>*/}
     </Fragment>
   );
