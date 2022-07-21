@@ -34,7 +34,7 @@ class Login extends Component {
                         <div className="login">Or login with</div>
                         <div className="links">
                             <div className="facebook">
-                                <i className="fab fa-facebook-f"><span>Facebook</span></i>
+                                <i className="fa-facebook-f"><span>Facebook</span></i>
                             </div>
                             <div className="instagram">
                                 <i className="fab fa-instagram"><span>Instagram</span></i>
