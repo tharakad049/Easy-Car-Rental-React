@@ -33,6 +33,14 @@ const quickLinks = [
         path: "/contact",
         display: "Contact",
     },
+    {
+        path: "#",
+        display: "HotLines",
+    },
+    {
+        path: "#",
+        display: "Services",
+    },
 ];
 
 
@@ -287,10 +295,14 @@ class HomePage extends Component {
                                         </Link>
                                     </h1>
                                 </div>
-                                <p className="footer__logo-content">Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Consequuntur, distinctio, itaque reiciendis ab
-                                    cupiditate harum ex quam veniam, omnis expedita animi quibusdam
-                                    obcaecati mollitia? Delectus et ad illo recusandae temporibus?</p>
+                                <p className="footer__logo-content">This project is designed
+                                    so as to be used by Car Rental Company specializing in renting
+                                    cars to customers. It is an online system through which customers
+                                    can view available cars, register, view profile and book car.
+                                    The advancement in Information Technology and internet
+                                    penetration has greatly enhanced various business processes
+                                    and communication between companies (services provider) and
+                                    their customers of which car rental industry is not left out.</p>
 
                             </Col>
 
@@ -313,6 +325,8 @@ class HomePage extends Component {
                                     <p className="office__info">Phone:- +9477-8580393 , +9471-6092570</p>
                                     <p className="office__info">Email:- dilanrental13@gmail.com</p>
                                     <p className="office__info">Opening:- 9am - 7pm</p>
+                                    <p className="office__info">Branches :- Mathara / Galle / Tango</p>
+                                    <p className="office__info">Visit & Booking :- Totally fee</p>
                                 </div>
                             </Col>
 
@@ -327,6 +341,10 @@ class HomePage extends Component {
                                         </span>
                                     </div>
                                 </div>
+                                <a href="#" className="login100-social-item bg1"><i className="ri-facebook-fill"></i></a>
+                                <a href="#" className="login100-social-item bg1"><i className="ri-whatsapp-line"></i></a>
+                                <a href="#" className="login100-social-item bg1"><i className="ri-instagram-fill"></i></a>
+                                <a href="#" className="login100-social-item bg1"><i className="ri-twitter-fill"></i></a>
                             </Col>
 
                             <Col lg="12">
