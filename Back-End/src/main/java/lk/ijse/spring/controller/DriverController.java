@@ -40,7 +40,7 @@ public class DriverController {
         return new ResponseUtil(200, "Driver ID_CARD image added success..", null);
     }
 
-    @GetMapping(path = "getDriverImage",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getDriverIdImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil  getDriverIdImage(@RequestParam String name){
         String pathDirectory = "E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\IdCardImage";
         Path path = Paths.get(pathDirectory + File.separator + name);
@@ -59,7 +59,7 @@ public class DriverController {
         return new ResponseUtil(200, "Driver License image added success..", null);
     }
 
-    @GetMapping(path = "getDriverImage",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getDriverLicenseImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil  getDriverLicenseImage(@RequestParam String name){
         String pathDirectory = "E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\LicenseImage";
         Path path = Paths.get(pathDirectory + File.separator + name);
@@ -74,29 +74,29 @@ public class DriverController {
 
 
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    //@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriver(@PathVariable String id) {
         return new ResponseUtil(200, "Ok.", driverService.searchDriver(id));
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    //@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriver(@RequestBody DriverDTO dto) {
         driverService.updateDriver(dto);
         return new ResponseUtil(200, "Successfully Updated.", null);
     }
 
-    @DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    //@DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteDriver(@RequestParam String id) {
         driverService.deleteDriver(id);
         return new ResponseUtil(200, "Successfully Deleted.", null);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    //@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllDrivers() {
         return new ResponseUtil(200, "Ok", driverService.getAllDrivers());
     }
 
-    @GetMapping(params = {"ids"})
+    //@GetMapping(params = {"ids"})
     public ResponseUtil generateDriverIds(@RequestParam String ids) {
         return new ResponseUtil(200, "Ok", driverService.generateDriverId());
     }

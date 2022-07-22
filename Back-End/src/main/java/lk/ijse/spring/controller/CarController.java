@@ -51,7 +51,7 @@ public class CarController {
     @PostMapping(path = "addCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile , @RequestParam("carId") String carId){
 
-        String pathDirectory = " E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\CarImage";
+        String pathDirectory = " E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\CarImage";
 
         String [] carImageView={"Front","Back","Side","Interior"};
         for (int i = 0; i < multipartFile.length; i++) {
