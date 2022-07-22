@@ -42,7 +42,7 @@ export const styleSheet = {
     },
     formTextFieldContainer: {
         height: '25%',
-        /*   backgroundColor : '#9e62ce',*/
+        backgroundColor : '#c1c1c1',
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
@@ -50,34 +50,17 @@ export const styleSheet = {
         justifyContent: 'space-around'
 
     },
-    formDividerTextContainer: {
-        height: '5%',
-        /*  backgroundColor : '#9e62ce',*/
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly'
-    },
-    formTextField2Container: {
-        marginTop: '10px',
-        marginBottom: '10px',
-        /*   backgroundColor : '#9e62ce',*/
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly'
 
-    },
     formDividerText2Container: {
-        height: '5%',
-        /*  backgroundColor : '#9e62ce',*/
+        height: '10%',
+       // backgroundColor : '#aee08b',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
     },
     imageContainer: {
-        marginTop: '10px',
+        marginTop: '20px',
         height: '28%',
         backgroundColor: '#1fafaf',
         display: 'flex',

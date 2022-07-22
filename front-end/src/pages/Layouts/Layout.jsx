@@ -6,11 +6,12 @@ import AdminNavBar from "../../components/admin/NavBar";
 import ManageCar from "../Admin/ManageCar/ManageCar";
 import CustomerNavBar from "../../components/Customer/NavBar";
 import RentalRequest from "../Admin/RentalRequest/RentalRequest";
+import ManageDriver from "../Admin/ManageDriver/ManageDriver";
 
 const Layout = () => {
   return (
     <Fragment>
-      {/*<HomePage />*/}   <RentalRequest/>
+      {/*<HomePage />*/}   <ManageDriver/>
 {/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}
     </Fragment>
