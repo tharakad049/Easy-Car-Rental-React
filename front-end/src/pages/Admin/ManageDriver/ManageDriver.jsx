@@ -3,9 +3,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {styleSheet} from "./ManageDriverStyle";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import AdminNavBar from "../../../components/admin/NavBar/index";
 import Divider from "@material-ui/core/Divider";
+import Input from "@material-ui/core/Input";
 
 class ManageDriver extends Component {
     constructor(props) {
@@ -41,36 +41,14 @@ class ManageDriver extends Component {
                         </div>
                         <Divider/>
                         <div className={classes.formTextFieldContainer}>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Driver ID"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Email"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Contact Number"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Id Card Number"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Driving License Number"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Address"
-                                variant="outlined"/>
+
+                            <Input placeholder="Driver Id" type="text" />
+                            <Input placeholder="Email" type="text" />
+                            <Input placeholder="Contact Number" type="text" />
+                            <Input placeholder="Id Card Number" type="text" />
+                            <Input placeholder="Driving License Number" type="text" />
+                            <Input placeholder="Address" type="text" />
+
                         </div>
                         
                         <Divider/>

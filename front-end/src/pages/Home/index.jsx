@@ -331,10 +331,8 @@ class HomePage extends Component {
 
                             <Col lg="12">
                                 <div className="footer__bottom">
-                                    <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
-                                        <i className="ri-copyright-line"></i>Copyright {year}, Developed by
-                                        Dilan Tharaka . All rights reserved.
-                                    </p>
+                                    <p className="section__description d-flex align-items-center  color white justify-content-center gap-1 pt-4">
+                                        <i className="ri-copyright-line"></i>Copyright {year}, Developed by Dilan Tharaka . All rights reserved.                                    </p>
                                 </div>
                             </Col>
                         </Row>

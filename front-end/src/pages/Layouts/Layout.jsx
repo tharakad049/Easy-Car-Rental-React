@@ -11,7 +11,7 @@ import ManageDriver from "../Admin/ManageDriver/ManageDriver";
 const Layout = () => {
   return (
     <Fragment>
-      {/*<HomePage />*/}   <ManageDriver/>
+      {/*<HomePage />*/}   <HomePage/>
 {/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}
     </Fragment>

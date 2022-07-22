@@ -11,23 +11,6 @@
     background-size: cover;
 }
 
-.slider__item-02 {
-    background: linear-gradient(rgb(141, 149, 193, 0.72), rgba(141, 149, 193, 0.72));
-    background: url("../../assets/images/slider-images/3.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-.slider__item-03 {
-    background: linear-gradient(rgb(141, 149, 193, 0.72), rgba(141, 149, 193, 0.72));
-    background: url("../../assets/images/slider-images/1.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .hero__slider {
     overflow: hidden;
 }
@@ -195,7 +178,7 @@
 }
 
 .find__cars-left {
-    background: linear-gradient(rgba(249, 168, 38, 0.7), rgba(249, 168, 38, 0.7)),
+    background: linear-gradient(rgba(148, 243, 208, 0.7), rgba(165, 238, 161, 0.7)),
     url("../../assets/images/slider-images/1.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -262,7 +245,7 @@
 }
 
 .find__car-btn {
-    background: #000d6b !important;
+    background: #bf0b76 !important;
     color: #fff !important;
     padding: 8px 15px;
     width: 100%;
