@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+/*import React, { Fragment } from "react";
 import HomePage from "../../pages/Home";
 
 
@@ -10,4 +10,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default Layout;*/
