@@ -24,17 +24,17 @@ class ManageCar extends Component {
             interiorView:null,
 
                 carDetails : {
-                    vehicleId : '',
-                    vehicleType : '',
-                    numofP : '',
-                    transmissionType : '',
-                    fuelType :'',
-                    registerNum : '',
-                    color : '',
-                    pricesForDaily : '',
-                    pricesForMonthly : '',
-                    freeMileage : '',
-                    priceForExtraKm : '',
+                    carId : "",
+                    carType : "",
+                    carPassenger : "",
+                    carTransmissionType :"",
+                    carFuelType :"",
+                    carRegisterNum : "",
+                    carColor : "",
+                    pricesForDaily : "",
+                    pricesForMonthly :"",
+                    carFreeMileage : "",
+                    priceForExtraKm : "",
                 }
             }
         }
@@ -61,13 +61,14 @@ class ManageCar extends Component {
                         </div>
                         <Divider/>
                         <div className={classes.formTextFieldContainer}>
-                            <TextField size={"small"} id="outlined-required" label="Car ID" variant="outlined"/>
-                            <TextField size={"small"} id="outlined-required" label="Type" variant="outlined"/>
-                            <TextField size={"small"} id="outlined-required" label="Num of Passengers" variant="outlined"/>
-                            <Autocomplete id="combo-box-demo" size={"small"} options={[{title: 'Auto'}, {title: "Manual"}]} getOptionLabel={(option) => option.title} style={{width: 180}} renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined"/>}/>
-                            <Autocomplete id="combo-box-demo" size={"small"} options={[{title: 'Auto'}, {title: "Manual"}]} getOptionLabel={(option) => option.title} style={{width: 136}} renderInput={(params) => <TextField {...params} label="Fuel type." variant="outlined"/>}/>
-                            <TextField size={"small"} id="outlined-required" label="Registration Number"  style={{width: 200}} variant="outlined"/>
-                            <TextField size={"small"} id="outlined-required" label="Color"  variant="outlined" style={{width: 200}}/>
+
+                            <TextField onChange={(e) =>{this.state.carDetails.carId=e.target.value;}} size={"small"} id="outlined-required" label="Car ID" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.vehicleType=e.target.value;}} size={"small"} id="outlined-required" label="Type" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.Passenger=e.target.value;}} size={"small"} id="outlined-required" label="Num of Passengers" variant="outlined"/>
+                            <Autocomplete id="combo-box-demo" onChange={(event, value) => this.state.carDetails.fuelType =  value.title} size={"small"} options={[{title: 'Auto'}, {title: "Manual"}]} getOptionLabel={(option) => option.title} style={{width: 180}} renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined"/>}/>
+                            <Autocomplete id="combo-box-demo" onChange={(event, value) => this.state.carDetails.fuelType =  value.title} size={"small"} options={[{title: 'Diesel'}, {title: "Petrol"}]} getOptionLabel={(option) => option.title} style={{width: 136}} renderInput={(params) => <TextField {...params} label="Fuel type." variant="outlined"/>}/>
+                            <TextField onChange={(e) =>{this.state.carDetails.registerNum=e.target.value;}} size={"small"} id="outlined-required" label="Registration Number"  style={{width: 200}} variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.color=e.target.value;}} size={"small"} id="outlined-required" label="Color"  variant="outlined" style={{width: 200}}/>
 
                         </div>
                         <Divider/>
@@ -78,10 +79,10 @@ class ManageCar extends Component {
                         </div>
                         <Divider/>
                         <div className={classes.formTextField2Container}>
-                            <TextField style={{width: '17%'}} size={"small"} id="outlined-required" label="Daily" variant="outlined"/>
-                            <TextField style={{width: '17%'}} size={"small"} id="outlined-required" label="Monthly" variant="outlined"/>
-                            <TextField size={"small"} id="outlined-required" label="RS/=" variant="outlined"/>
-                            <TextField size={"small"} id="outlined-required" label="KM" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.pricesForDaily=e.target.value;}} style={{width: '17%'}} size={"small"} id="outlined-required" label="Daily" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.pricesForMonthly=e.target.value;}} style={{width: '17%'}} size={"small"} id="outlined-required" label="Monthly" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.freeMileage=e.target.value;}} size={"small"} id="outlined-required" label="RS/=" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.priceForExtraKm=e.target.value;}} size={"small"} id="outlined-required" label="KM" variant="outlined"/>
                         </div>
                         <Divider/>
                         <div className={classes.formDividerText2Container}>
@@ -221,21 +222,21 @@ class ManageCar extends Component {
                                 onClick={async () => {
 
                                     var carDetails = {
-                                        vehicleId : this.state.carDetails.vehicleId,
-                                        brand  : this.state.carDetails.vehicleType,
-                                        numOfPassenger : this.state.carDetails.numofP,
-                                        transmissionType : this.state.carDetails.transmissionType,
-                                        fuelType : this.state.carDetails.fuelType,
+
+                                        carId : this.state.carDetails.carId,
+                                        brand  : this.state.carDetails.carType,
+                                        numOfPassenger : this.state.carDetails.carPassenger,
+                                        transmissionType : this.state.carDetails.carTransmissionType,
+                                        fuelType : this.state.carDetails.carFuelType,
                                         priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
                                         priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
-                                        freeMileageForPriceAndDuration : this.state.carDetails.freeMileage,
+                                        freeMileageForPriceAndDuration : this.state.carDetails.carFreeMileage,
                                         priceOfExtraKm : this.state.carDetails.priceForExtraKm,
-                                        registerNumber : this.state.carDetails.registerNum,
-                                        color : this.state.carDetails.color,
+                                        registerNumber : this.state.carDetails.carRegisterNum,
+                                        color : this.state.carDetails.carColor,
                                         state : 'Parking'
                                     }
                                     console.log(this.state.carDetails.type);
-
                                     axios({
                                         url: 'easy/v1/car/addCar',
                                         method: 'post',
@@ -250,7 +251,6 @@ class ManageCar extends Component {
                                             console.log(error);
                                             alert("Car  add fail..")
                                         });
-/*
                                     var bodyFormData = new FormData();
 
                                     bodyFormData.append('param' , this.state.frontImage);
@@ -272,7 +272,7 @@ class ManageCar extends Component {
                                         .catch(function (error) {
                                             console.log(error);
                                             alert("Car image add fail..")
-                                        });*/
+                                        });
                                 }}>
                             Upload Images
                         </Button>

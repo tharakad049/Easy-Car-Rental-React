@@ -40,25 +40,14 @@ public class CarController {
     @Autowired
     SearchFileUtil searchFileUtil;
 
-/*
-    @Autowired
-    FileUploadUtil fileUploadUtil;
-*/
-
-    @PostMapping(path = "test")
-    @CrossOrigin
-    public String testMethod(@RequestParam("carId") String carId, @RequestParam("carName") String carName){
-        System.out.println("ok requested");
-        return "Hello Test is ok request recevid";
-    }
-
-
+   /* @Autowired
+    FileUploadUtil fileUploadUtil;*/
 
 
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "addCar",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCar(@ModelAttribute CarDTO car){
+    public ResponseUtil saveCar(@RequestBody CarDTO car){
         adminService.saveCar(car);
         return new ResponseUtil(200, "Saved", null);
     }

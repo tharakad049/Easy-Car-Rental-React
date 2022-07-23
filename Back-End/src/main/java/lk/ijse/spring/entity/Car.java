@@ -19,9 +19,9 @@ import java.util.Set;
 @Entity
 public class Car {
     @Id
-    private String vehicleId;
+    private String carId;
     private String brand;
-    private String NumOfPassenger;
+    private String numOfPassenger;
     private String transmissionType;
     private String fuelType;
     private PricesForTheRentDurations priceOfRentDuration;
