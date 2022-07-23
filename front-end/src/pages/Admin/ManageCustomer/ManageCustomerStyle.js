@@ -59,18 +59,8 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
-    formTextField2Container: {
-        marginTop: '10px',
-        marginBottom: '10px',
-        /*   backgroundColor : '#9e62ce',*/
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly'
-
-    },
     formDividerText2Container: {
-        height: '5%',
+        height: '10%',
         /*  backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexDirection: 'row',
@@ -78,8 +68,8 @@ export const styleSheet = {
         justifyContent: 'space-around'
     },
     imageContainer: {
-        marginTop: '10px',
-        height: '28%',
+        marginTop: '20px',
+        height: '30%',
         backgroundColor: '#1fafaf',
         display: 'flex',
         flexDirection: 'row',

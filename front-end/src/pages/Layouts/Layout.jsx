@@ -7,6 +7,7 @@ import ManageCar from "../Admin/ManageCar/ManageCar";
 import CustomerNavBar from "../../components/Customer/NavBar";
 import RentalRequest from "../Admin/RentalRequest/RentalRequest";
 import ManageDriver from "../Admin/ManageDriver/ManageDriver";
+import ManageCustomer from "../Admin/ManageCustomer/ManageCustomer";
 
 const Layout = () => {
   return (

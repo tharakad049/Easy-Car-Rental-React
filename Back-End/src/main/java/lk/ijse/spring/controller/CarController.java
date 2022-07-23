@@ -40,6 +40,22 @@ public class CarController {
     @Autowired
     SearchFileUtil searchFileUtil;
 
+/*
+    @Autowired
+    FileUploadUtil fileUploadUtil;
+*/
+
+    @PostMapping(path = "test")
+    @CrossOrigin
+    public String testMethod(@RequestParam("carId") String carId, @RequestParam("carName") String carName){
+        System.out.println("ok requested");
+        return "Hello Test is ok request recevid";
+    }
+
+
+
+
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@ModelAttribute CarDTO car){
@@ -51,7 +67,7 @@ public class CarController {
     @PostMapping(path = "addCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile , @RequestParam("carId") String carId){
 
-        String pathDirectory = " E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\CarImage";
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\CarImage\\";
 
         String [] carImageView={"Front","Back","Side","Interior"};
         for (int i = 0; i < multipartFile.length; i++) {
@@ -60,6 +76,7 @@ public class CarController {
             if (split[1].equals("jpeg") || split[1].equals("png")){
                 String imageName=carId+carImageView[i]+".jpeg";
                 Files.copy(multipartFile[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+                //fileUploadUtil.saveFile(pathDirectory+imageName , multipartFile[i]);
 
             }else {
                 return new ResponseUtil(404,"please..  must be Car images type  jpeg or png",null);

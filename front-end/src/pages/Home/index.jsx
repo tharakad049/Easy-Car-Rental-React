@@ -8,7 +8,6 @@ import Slider from "react-slick";
 import "../../../src/pages/Ui/slider.css";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 
-
 const quickLinks = [
     {
         path: "/about",
@@ -43,31 +42,6 @@ const quickLinks = [
     },
 ];
 
-
-const navLinks = [
-    {
-        path: "/home",
-        display: "Home",
-    },
-    {
-        path: "/customer",
-        display: "Customer",
-    },
-    {
-        path: "/cars",
-        display: "Cars",
-    },
-
-    {
-        path: "/service",
-        display: "Service",
-    },
-    {
-        path: "/contact",
-        display: "Contact",
-    },
-];
-
 const settings = {
     fade: true,
     speed: 2000,
@@ -84,6 +58,7 @@ class HomePage extends Component {
 
     constructor(props) {
         super(props);
+
     }
 
     render() {
@@ -172,16 +147,11 @@ class HomePage extends Component {
                         <div className="navigation__wrapper d-flex align-items-center justify-content-between">
 
                             <div className="menu">
-                                <a to="/home" role="button" className="nav-links" tabIndex="0" href="#"><i
-                                    className="ri-home-line"></i>Home </a>
-                                <a to="/customer" role="button" className="nav-links" tabIndex="0" href="#"><i
-                                    className="ri-customer-service-line"></i>Customer</a>
-                                <a to="/cars" role="button" className="nav-links" tabIndex="0" href="#"><i
-                                    className="ri-car-line"></i>Cars</a>
-                                <a to="/service" role="button" className="nav-links" tabIndex="0" href="#"><i
-                                    className="ri-service-line"></i>Service</a>
-                                <a to="/contact" role="button" className="nav-links" tabIndex="0" href="#"><i
-                                    className="ri-contacts-line"></i>Contact</a>
+                                <a to="/home" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-home-line"></i>Home </a>
+                                <a to="/customer" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-customer-service-line"></i>Customer</a>
+                                <a to="/cars" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-car-line"></i>Cars</a>
+                                <a to="/service" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-service-line"></i>Service</a>
+                                <a to="/contact" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-contacts-line"></i>Contact</a>
                             </div>
 
                             <div className="nav__right">
@@ -219,7 +189,7 @@ class HomePage extends Component {
                 </div>
 
 
-{/*
+                {/*
                 //------------------------------------------------------------------------------------------------------------------------------------
 */}
 
@@ -276,8 +246,13 @@ class HomePage extends Component {
                 </div>
 
 
-{/*
-                //-----------------------------------------------------------------------------------------------------------------------------------------
+                {/*
+ //-----------------------------------------------------------------------------------------------------------------------------------------
+*/}
+
+
+                {/*
+//-------------------------------------------------------------------------------------------------------------------------
 */}
 
 

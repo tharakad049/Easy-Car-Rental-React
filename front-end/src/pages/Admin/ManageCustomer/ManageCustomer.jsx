@@ -2,12 +2,12 @@ import React, {Component} from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {styleSheet} from "./ManageCustomerStyle";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import AdminNavBar from "../../../components/admin/NavBar/index";
 import Divider from "@material-ui/core/Divider";
+import Input from "@material-ui/core/Input";
+import FormGroup from "@material-ui/core/FormGroup";
 
-class ManageContainer extends Component {
+class ManageCustomer extends Component {
     constructor(props) {
         super(props);
 
@@ -20,11 +20,6 @@ class ManageContainer extends Component {
     }
 
     render() {
-
-        const type = [
-            {title: 'Auto'},
-            {title: "Manual"}];
-
         const {classes} = this.props;
         return (
             <div className={classes.mainContainer}>
@@ -33,103 +28,34 @@ class ManageContainer extends Component {
                 <div className={classes.form_Container}>
                     <div className={classes.form_backGround}>
                         <div className={classes.form_textFieldForm}>
-                            <h4 style={{color: 'white'}}>MANAGE CARS</h4>
+                            <h4 style={{color: 'white'}}>MANAGE CUSTOMER</h4>
                         </div>
                         <Divider/>
                         <div className={classes.formDividerText2Container}>
-                            <h5 style={{color: 'black'}}>Car Details</h5>
+                            <h5 style={{color: 'black'}}>Customer Details</h5>
                         </div>
                         <Divider/>
                         <div className={classes.formTextFieldContainer}>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Car ID"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Type"
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Num of Passengers"
-                                variant="outlined"/>
-                            <Autocomplete
-                                id="combo-box-demo"
-                                size={"small"}
-                                options={[{title: 'Auto'}, {title: "Manual"}]}
-                                getOptionLabel={(option) => option.title}
-                                style={{width: 180}}
-                                renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined"/>}/>
-                            <Autocomplete
-                                id="combo-box-demo"
-                                size={"small"}
-                                options={[{title: 'Auto'}, {title: "Manual"}]}
-                                getOptionLabel={(option) => option.title}
-                                style={{width: 136}}
-                                renderInput={(params) => <TextField {...params} label="Fuel type." variant="outlined"/>}/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Registration Number"
-                                defaultValue="Hello World"
-                                style={{width: 200}}
-                                variant="outlined"/>
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Color"
-                                defaultValue="Hello World"
-                                variant="outlined"
-                                style={{width: 200}}/>
+                            <Input placeholder="Customer Id" type="text" />
+                            <Input placeholder="Email" type="text" />
 
-                        </div>
-                        <Divider/>
-                        <div className={classes.formDividerTextContainer}>
-                            <h5 style={{color: 'black'}}>Prices for the rent durations</h5>
-                            <h5 style={{color: 'black'}}>Free mileage for the price and duration</h5>
-                            <h5 style={{color: 'black'}}>Price for extra KM</h5>
-                        </div>
-                        <Divider/>
-                        <div className={classes.formTextField2Container}>
+                            <FormGroup className="form__group">
+                                <input type="date" placeholder="Register date" required/>
+                            </FormGroup>
 
-                            <TextField
-                                style={{width: '17%'}}
-                                size={"small"}
-                                id="outlined-required"
-                                label="Type"
-                                variant="outlined"
-                            />
-                            <TextField
-                                style={{width: '17%'}}
-                                size={"small"}
-                                id="outlined-required"
-                                label="Type"
-                                variant="outlined"
-                            />
+                            <Input placeholder="Customer Name" type="text" />
+                            <Input placeholder="Address" type="text" />
+                            <Input placeholder="Contact Number" type="text" />
+                            <Input placeholder="Identity CArd Number" type="text" />
+                            <Input placeholder="Driving License Number" type="text" />
 
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Type"
-                                variant="outlined"
-                            />
-
-                            <TextField
-                                size={"small"}
-                                id="outlined-required"
-                                label="Type"
-                                variant="outlined"
-                            />
                         </div>
                         <Divider/>
                         <div className={classes.formDividerText2Container}>
-                            <h5 style={{color: 'black'}}>Front View</h5>
-                            <h5 style={{color: 'black'}}>Back View</h5>
-                            <h5 style={{color: 'black'}}>Side View</h5>
-                            <h5 style={{color: 'black'}}>Interior</h5>
+                            <h5 style={{color: 'black'}}>ID Front View</h5>
+                            <h5 style={{color: 'black'}}>License Front View</h5>
+                            <h5 style={{color: 'black'}}>ID Back View</h5>
+                            <h5 style={{color: 'black'}}>License Back View</h5>
                         </div>
                         <Divider/>
 
@@ -261,4 +187,4 @@ class ManageContainer extends Component {
     }
 }
 
-export default withStyles(styleSheet)(ManageContainer)
+export default withStyles(styleSheet)(ManageCustomer)
