@@ -98,6 +98,15 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'space-around'
     },
+    search_container : {
+        display : 'flex',
+        width : '20%',
+        height : '50%',
+        flexDirection : 'column',
+        borderRadius: '10px',
+        boxShadow : '2px 2px 5px 1px',
+    },
+
     MuiImageListItemBar_root: {
         display: "flex",
         position: "absolute",

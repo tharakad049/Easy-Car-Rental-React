@@ -57,7 +57,7 @@ public class CarController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "addCar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@ModelAttribute CarDTO car){
         adminService.saveCar(car);
         return new ResponseUtil(200, "Saved", null);

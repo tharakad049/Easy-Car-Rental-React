@@ -10,16 +10,18 @@ import lombok.ToString;
 @Data
 @ToString
 public class CarDTO {
-    private String carId;
-    private String registrationNumber;
+    private String vehicleId;
     private String brand;
-    private String type;
-    private String images;
-    private int numberOfPassengers;
+    private String image;
+    private String NumOfPassenger;
     private String transmissionType;
     private String fuelType;
-    private double pricesForTheRentDurations;
-    private int freeMileageForThePriceAndDuration;
-    private int priceForExtraKM;
+    private String priceOfRentDurationDaily;
+    private String priceOfRentDurationMonthly;
+    private String freeMileageForPriceAndDuration;
+    private String priceOfExtraKm;
+    private String registerNumber;
     private String color;
+    private String state;
+
 }

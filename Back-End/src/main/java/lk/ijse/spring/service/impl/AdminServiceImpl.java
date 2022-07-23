@@ -36,7 +36,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveCar(CarDTO dto) {
-        if (!carRepo.existsById(dto.getCarId())){
+        if (!carRepo.existsById(dto.getVehicleId())){
             carRepo.save(mapper.map(dto, Car.class));
         }else {
             throw new RuntimeException("Car Already Exist..!");
@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void updateCar(CarDTO dto) {
-        if (carRepo.existsById(dto.getCarId())){
+        if (carRepo.existsById(dto.getVehicleId())){
             carRepo.save(mapper.map(dto, Car.class));
         }else {
             throw new RuntimeException("No Such Car To Update..! Please Check the Id..!");

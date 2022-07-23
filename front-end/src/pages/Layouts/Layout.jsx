@@ -12,7 +12,7 @@ import ManageCustomer from "../Admin/ManageCustomer/ManageCustomer";
 const Layout = () => {
   return (
     <Fragment>
-      {/*<HomePage />*/}   <HomePage/>
+      {/*<HomePage />*/}   <ManageCar/>
 {/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}
     </Fragment>

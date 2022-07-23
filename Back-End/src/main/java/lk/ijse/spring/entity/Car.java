@@ -4,6 +4,7 @@ import lk.ijse.spring.embeded.PricesForTheRentDurations;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,22 +15,25 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 @Entity
 public class Car {
     @Id
-    private String carId;
-    private String registrationNumber;
+    private String vehicleId;
     private String brand;
-    private String type;
-    private String images;
-    private int numberOfPassengers;
+    private String NumOfPassenger;
     private String transmissionType;
     private String fuelType;
-    private PricesForTheRentDurations pricesForTheRentDurations;
-    private int freeMileageForThePriceAndDuration;
-    private int priceForExtraKM;
+    private PricesForTheRentDurations priceOfRentDuration;
+    private String freeMileageForPriceAndDuration;
+    private String priceOfExtraKm;
+    private String registerNumber;
     private String color;
+    private String state;
 
     @OneToMany(mappedBy = "car")
     private Set<DriverSchedule> driverSchedules = new HashSet<DriverSchedule>();
+
+
+
 }
