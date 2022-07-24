@@ -116,7 +116,7 @@ class ManageCustomer extends Component {
                                 }}/>
                                 <label htmlFor="contained-button-file01">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
@@ -134,7 +134,7 @@ class ManageCustomer extends Component {
                                 }}/>
                                 <label htmlFor="contained-button-file02">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
@@ -153,7 +153,7 @@ class ManageCustomer extends Component {
                             />
                                 <label htmlFor="contained-button-file03">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
 
@@ -173,15 +173,25 @@ class ManageCustomer extends Component {
                             />
                                 <label htmlFor="contained-button-file04">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
                         </div>
                     </div>
+                        <div className={classes.search_container}>
+                            <Button variant="contained" color="success" > Upload Customer Images </Button>
+                                <form className="search-area">
+                                    <input type="text" name="search" placeholder="Enter Id" title="Search Item"/>
+                                        <button className="btn-search" name="Enter Id" title="Search">Search </button>
+                                    </form>
 
+                            <Button variant="contained" color="success" > Update Customer </Button>
+                            <Button variant="contained" color="success" > Delete Customer </Button>
+                                </div>
+                         </div>
                 </div>
-            </div>
+
 
         );
     }

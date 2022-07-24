@@ -73,16 +73,16 @@ class ManageCar extends Component {
                         </div>
                         <Divider/>
                         <div className={classes.formDividerTextContainer}>
-                            <h5 style={{color: 'black'}}>Free mileage for the price and duration</h5>
                             <h5 style={{color: 'black'}}>Prices for the rent durations</h5>
+                            <h5 style={{color: 'black'}}>Free mileage for the price and duration</h5>
                             <h5 style={{color: 'black'}}>Price for extra KM</h5>
                         </div>
                         <Divider/>
                         <div className={classes.formTextField2Container}>
                             <TextField onChange={(e) =>{this.state.carDetails.pricesForDaily=e.target.value;}} style={{width: '17%'}} size={"small"} id="outlined-required" label="Daily" variant="outlined"/>
                             <TextField onChange={(e) =>{this.state.carDetails.pricesForMonthly=e.target.value;}} style={{width: '17%'}} size={"small"} id="outlined-required" label="Monthly" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.freeMileage=e.target.value;}} size={"small"} id="outlined-required" label="RS/=" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.priceForExtraKm=e.target.value;}} size={"small"} id="outlined-required" label="KM" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.freeMileage=e.target.value;}} size={"small"} id="outlined-required" label="KM" variant="outlined"/>
+                            <TextField onChange={(e) =>{this.state.carDetails.priceForExtraKm=e.target.value;}} size={"small"} id="outlined-required" label="RS/=" variant="outlined"/>
                         </div>
                         <Divider/>
                         <div className={classes.formDividerText2Container}>
@@ -151,7 +151,7 @@ class ManageCar extends Component {
                                 }}/>
                                 <label htmlFor="contained-button-file01">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
@@ -170,7 +170,7 @@ class ManageCar extends Component {
                                 }}/>
                                 <label htmlFor="contained-button-file02">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
@@ -190,7 +190,7 @@ class ManageCar extends Component {
                             />
                                 <label htmlFor="contained-button-file03">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
 
@@ -211,7 +211,7 @@ class ManageCar extends Component {
                             />
                                 <label htmlFor="contained-button-file04">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
@@ -276,6 +276,14 @@ class ManageCar extends Component {
                                 }}>
                             Upload Images
                         </Button>
+
+                        <form className="search-area">
+                            <input type="text" name="search" placeholder="Search Id" title="Search Item"/>
+                            <button className="btn-search" name="search-button" title="Search">Search</button>
+                        </form>
+                        <Button variant="contained" color="success" > Update Car </Button>
+                        <Button variant="contained" color="success" > Delete Car </Button>
+
                     </div>
                 </div>
             </div>

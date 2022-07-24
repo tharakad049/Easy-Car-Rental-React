@@ -1,11 +1,5 @@
 import React, {Component} from "react";
-import Button from "@material-ui/core/Button";
-import {TbHome} from "react-icons/tb";
-import {VscRequestChanges} from "react-icons/vsc";
-import {AiFillCar} from "react-icons/ai";
-import {FaUserEdit} from "react-icons/fa";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {styleSheet} from "./style";
+import "./style.css";
 
 class CustomerNavBar extends Component {
     constructor(props) {
@@ -15,21 +9,27 @@ class CustomerNavBar extends Component {
     render() {
         const {classes} = this.props
         return (
-            <div className={classes.navBar_container}>
-                <div className={classes.navBarButton_container}>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<TbHome/>}>Home</Button>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<VscRequestChanges/>}>Update User Information</Button>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<FaUserEdit/>}>Check Request Status</Button>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<AiFillCar/>}>Rent A Car</Button>
-                    <div style={{width: '10px'}}></div>
+            <nav className="navigationWrapper">
+                <div className="logoWrapper">
+                    <span className="stylish">EASY</span>
+                    <span className="logo">CAR RENTAL</span>
                 </div>
-            </div>
+                <ul className="navigation">
+                    <li className="parent"><a className="link" href="#">Home</a></li>
+                    <li className="parent"><a className="link" href="#">Update User Information</a></li>
+                    <li className="parent" id="clients"><a className="link" href="#"><i className="fas fa-minus"></i>Rent A Car <i className="fas fa-plus"></i></a></li>
+                    <li className="parent" id="services">
+                        <a className="link" href="#"><i className="fas fa-minus"></i> Check Request Status <i className="fas fa-plus"></i></a>
+                        <ul className="subnavigation">
+                            <li><a className="link" href="#">Rent Car</a>
+                            </li><li><a className="link" href="#">Special Services</a>
+                        </li></ul>
+                    </li>
+                    <li className="parent"><a className="link" href="#">Contact</a></li>
+                </ul>
+            </nav>
         );
     };
 }
 
-export default withStyles(styleSheet)(CustomerNavBar)
+export default CustomerNavBar

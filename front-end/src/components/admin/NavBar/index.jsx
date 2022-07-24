@@ -1,12 +1,5 @@
 import React, {Component} from "react";
-import Button from "@material-ui/core/Button";
-import {TbHome} from "react-icons/tb";
-import {VscRequestChanges} from "react-icons/vsc";
-import {AiFillCar} from "react-icons/ai";
-import {FaUserEdit} from "react-icons/fa";
-import MenuListComposition from "../ManuList";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {styleSheet} from "./style";
+import "./style.css";
 
 class AdminNavBar extends Component {
     constructor(props) {
@@ -14,24 +7,28 @@ class AdminNavBar extends Component {
     }
 
     render() {
-        const {classes} = this.props
         return (
-            <div className={classes.navBar_container}>
-                <div className={classes.navBarButton_container}>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<TbHome/>}>Home</Button>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<VscRequestChanges/>}>Rental Request Manage</Button>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<AiFillCar/>}>Car Manage</Button>
-                    <Button style={{color: 'black', borderColor: 'black', borderRadius: '10px'}} variant="outlined"
-                            color="danger" startIcon={<FaUserEdit/>}>Drivers Manage</Button>
-                    <div style={{width: '10px'}}></div>
-                    <MenuListComposition/>
+            <nav className="navigationWrapper">
+                <div className="logoWrapper">
+                    <span className="stylish">EASY</span>
+                    <span className="logo">CAR RENTAL</span>
                 </div>
-            </div>
+                <ul className="navigation">
+                    <li className="parent"><a className="link" href="#">Home</a></li>
+                    <li className="parent"><a className="link" href="#">Rental Request Manage</a></li>
+                    <li className="parent" id="clients"><a className="link" href="#"><i className="fas fa-minus"></i> Car Manage <i className="fas fa-plus"></i></a></li>
+                    <li className="parent" id="services">
+                        <a className="link" href="#"><i className="fas fa-minus"></i> Drivers Manage <i className="fas fa-plus"></i></a>
+                        <ul className="subnavigation">
+                            <li><a className="link" href="#">Rent Car</a>
+                            </li><li><a className="link" href="#">Special Services</a>
+                        </li></ul>
+                    </li>
+                    <li className="parent"><a className="link" href="#">Contact</a></li>
+                </ul>
+            </nav>
         );
-    };
+    }
 }
 
-export default withStyles(styleSheet)(AdminNavBar)
+export default AdminNavBar

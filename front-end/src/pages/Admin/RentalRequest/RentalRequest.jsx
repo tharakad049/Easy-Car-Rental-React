@@ -99,9 +99,6 @@ class RentalRequest extends Component {
                         <Divider/>
                         <div className={classes.formDividerText2Container}>
                             <h5 style={{color: 'black'}}>Front View</h5>
-                            <h5 style={{color: 'black'}}>Back View</h5>
-                            <h5 style={{color: 'black'}}>Side View</h5>
-                            <h5 style={{color: 'black'}}>Interior</h5>
                         </div>
                         <Divider/>
 
@@ -135,13 +132,20 @@ class RentalRequest extends Component {
                                 }}/>
                                 <label htmlFor="contained-button-file01">
                                     <Button variant="contained" color="primary" component="span">
-                                        Upload
+                                        Upload Image
                                     </Button>
                                 </label>
                             </div>
                         </div>
+                    </div>
+                    <div className={classes.search_container}>
+                        <Button variant="contained" color="success" > Upload Slip Images </Button>
+                        <form className="search-area">
+                            <input type="text" name="search" placeholder="Enter Id" title="Search Item"/>
+                            <button className="btn-search" name="Enter Id" title="Search">Search </button>
+                        </form>
 
-
+                        <Button variant="contained" color="success" > Update Details </Button>
                     </div>
                 </div>
             </div>

@@ -7,8 +7,8 @@ export const styleSheet = {
         backgroundColor: 'black'
     },
     state_Bar_container: {
-        height: '4%',
-        backgroundColor: '#318d0c'
+        height: '1%',
+        backgroundColor: '#000000'
     },
     form_Container: {
         display: 'flex',
@@ -17,7 +17,7 @@ export const styleSheet = {
         justifyContent: 'space-around',
         width: '100%',
         height: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#f6e3c8',
     },
     form_backGround: {
         marginLeft: '10px',
@@ -27,7 +27,8 @@ export const styleSheet = {
         backgroundColor: '#dededd',
         boxShadow: '5px 5px 10px 1.5px',
         borderRadius: '5px',
-        flexDirection: 'column'
+        flexDirection: 'column',
+
     },
     form_textFieldForm: {
         marginBottom: '10px',
@@ -35,14 +36,13 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '7%',
-        backgroundColor: '#9704a3',
+        backgroundColor: '#4b3333',
         borderTopLeftRadius: '5px',
         borderTopRightRadius: '5px',
 
     },
     formTextFieldContainer: {
         height: '25%',
-        /*   backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
@@ -52,7 +52,6 @@ export const styleSheet = {
     },
     formDividerTextContainer: {
         height: '5%',
-        /*  backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -61,7 +60,6 @@ export const styleSheet = {
     formTextField2Container: {
         marginTop: '10px',
         marginBottom: '10px',
-        /*   backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -70,7 +68,6 @@ export const styleSheet = {
     },
     formDividerText2Container: {
         height: '5%',
-        /*  backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -79,7 +76,7 @@ export const styleSheet = {
     imageContainer: {
         marginTop: '10px',
         height: '28%',
-        backgroundColor: '#1fafaf',
+        backgroundColor: '#212020',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -92,7 +89,6 @@ export const styleSheet = {
     },
     uploadButtonContainer: {
         height: '7%',
-        /* backgroundColor :'#57a0a0',*/
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -101,7 +97,7 @@ export const styleSheet = {
     search_container : {
         display : 'flex',
         width : '20%',
-        height : '50%',
+        height : '23%',
         flexDirection : 'column',
         borderRadius: '10px',
         boxShadow : '2px 2px 5px 1px',

@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
-import HomePage from "../../pages/Home";
-import Login from "../Session/Login";
-import Register from "../Session/Register/register";
 import AdminNavBar from "../../components/admin/NavBar";
+import HomePage from "../Home";
 import ManageCar from "../Admin/ManageCar/ManageCar";
+import Login from "../Session/Login";
 import CustomerNavBar from "../../components/Customer/NavBar";
-import RentalRequest from "../Admin/RentalRequest/RentalRequest";
-import ManageDriver from "../Admin/ManageDriver/ManageDriver";
 import ManageCustomer from "../Admin/ManageCustomer/ManageCustomer";
+import ManageDriver from "../Admin/ManageDriver/ManageDriver";
+import RentalRequest from "../Admin/RentalRequest/RentalRequest";
+
 
 const Layout = () => {
   return (
-    <Fragment>
+    <Fragment className="container-fluid">
       {/*<HomePage />*/}   <HomePage/>
 {/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}

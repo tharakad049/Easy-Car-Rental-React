@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap-grid.css"
 import Layout from "../pages/Layouts/Layout";
 
 function App() {

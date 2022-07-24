@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Link from "@material-ui/core/Link";
 import Col from "react-bootstrap/Col";
 import Slider from "react-slick";
-import "../../../src/pages/Ui/slider.css";
+import "./slider.css";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 const quickLinks = [
@@ -65,6 +65,7 @@ class HomePage extends Component {
         const date = new Date();
         const year = date.getFullYear();
         return (
+            <section>
             <header className="header">
                 <div className="header__top">
                     <Container>
@@ -73,23 +74,25 @@ class HomePage extends Component {
                                 <div className="header__top__left">
                                     <span>Need Help?</span>
                                     <span className="header__top__help">
-                                    <i class="ri-phone-fill"></i> +9477-8580393, <span>071-6092570</span>
+                                    <i className="ri-phone-fill"></i> +9477-8580393, <span>071-6092570</span>
                                  </span>
                                 </div>
                             </Col>
                             <Col lg="6" md="6" sm="6">
                                 <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
                                     <Link to="#" className=" d-flex align-items-center gap-1">
-                                        <i class="ri-login-circle-line"></i> Login
+                                        <i className="ri-login-circle-line"></i> Login
                                     </Link>
                                     <Link to="#" className=" d-flex align-items-center gap-1">
-                                        <i class="ri-user-line"></i> Register
+                                        <i className="ri-user-line"></i> Register
                                     </Link>
                                 </div>
                             </Col>
                         </Row>
                     </Container>
                 </div>
+            </header>
+
                 <div className="header__middle">
                     <Container>
                         <Row>
@@ -97,7 +100,7 @@ class HomePage extends Component {
                                 <div className="logo">
                                     <h1>
                                         <Link to="/home" className=" d-flex align-items-center gap-2">
-                                            <i class="ri-car-line"></i>
+                                            <i className="ri-car-line"></i>
                                             <span>
                                                 Eacy Car Rental <br/> Service
                                         </span>
@@ -108,7 +111,7 @@ class HomePage extends Component {
                             <Col lg="3" md="3" sm="4">
                                 <div className="header__location d-flex align-items-center gap-2">
                         <span>
-                          <i class="ri-earth-line"></i>
+                          <i className="ri-earth-line"></i>
                         </span>
                                     <div className="header__location-content">
                                         <h4>Sri Lanka</h4>
@@ -119,7 +122,7 @@ class HomePage extends Component {
                             <Col lg="3" md="3" sm="4">
                                 <div className="header__location d-flex align-items-center gap-2">
                         <span>
-                          <i class="ri-time-line"></i>
+                          <i className="ri-time-line"></i>
                         </span>
                                     <div className="header__location-content">
                                         <h4>Sunday to Saturday</h4>
@@ -130,7 +133,7 @@ class HomePage extends Component {
                             <Col lg="2" md="3" sm="0" className=" d-flex align-items-center justify-content-end ">
                                 <button className="header__btn btn ">
                                     <Link to="/contact">
-                                        <i class="ri-phone-line"></i> Request a call
+                                        <i className="ri-phone-line"></i> Request a call
                                     </Link>
                                 </button>
                             </Col>
@@ -165,6 +168,7 @@ class HomePage extends Component {
                         </div>
                     </Container>
                 </div>
+
 
                 {/*
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -331,9 +335,8 @@ class HomePage extends Component {
                         </Row>
                     </Container>
                 </footer>
+            </section>
 
-
-            </header>
         );
     }
 }

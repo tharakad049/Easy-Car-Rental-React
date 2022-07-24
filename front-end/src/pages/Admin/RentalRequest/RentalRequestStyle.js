@@ -104,4 +104,12 @@ export const styleSheet = {
         background: "rgba(255,0,0,0.5)",
         alignItems: "center",
     },
+    search_container : {
+        display : 'flex',
+        width : '20%',
+        height : '18%',
+        flexDirection : 'column',
+        borderRadius: '10px',
+        boxShadow : '2px 2px 5px 1px',
+    },
 }
