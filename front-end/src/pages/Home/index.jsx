@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Slider from "react-slick";
 import "./slider.css";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
+import aboutImg from  "../../assets/images/d1jpg.jpg";
 
 const quickLinks = [
     {
@@ -55,18 +56,17 @@ const settings = {
 
 
 class HomePage extends Component {
+    aboutClass;
 
     constructor(props) {
         super(props);
-
     }
 
     render() {
-
         const date = new Date();
         const year = date.getFullYear();
         return (
-            <section>
+            <body>
             <header className="header">
                 <div className="header__top">
                     <Container>
@@ -93,7 +93,6 @@ class HomePage extends Component {
                     </Container>
                 </div>
             </header>
-
                 <div className="header__middle">
                     <Container>
                         <Row>
@@ -255,11 +254,48 @@ class HomePage extends Component {
  //-----------------------------------------------------------------------------------------------------------------------------------------
 */}
 
+                <section
+                    className="about__section"
+                    style={
+                        this.aboutClass === "aboutPage"
+                            ? {marginTop: "0px"}
+                            : {marginTop: "280px"}
+                    }>
+                    <Container>
+                        <Row>
+                            <Col lg="6" md="6">
+                                <div className="about__section-content">
+                                    <h4 className="section__subtitle">About Us</h4>
+                                    <h2 className="section__title">Welcome to car rental service</h2>
+                                    <p className="section__description">
+                                        A big thank you to Eazy Car Rental service for the beyond satisfactory help with
+                                        my trip planning and airport drop and pick up! The moment I landed in BIA I was greeted with
+                                        smiles – Sri Lanka the nation that forever smiles. I visited Sri Lanka with my fiancé and we
+                                        were transported to the lively beach town of Unuwatuna, a slow but comfortable drive. The
+                                        Unuwatuna bay beach was breathtaking at sunset and makes you feel like you’re in Hawaii but it’s
+                                        a dozen times cheaper! Plenty of cafés, curios, hotels, lodgings and restaurants galore the
+                                        streets suitable for everyone and anyone. We decided to settle at the Lavendish Beach Resort, on
+                                        our first day we enjoyed a small but happening party by a cafe on the beach! Sri Lanka loves to
+                                        party!! We loved every part of our trip and it’s all thanks to Casons for organising everything
+                                        and total ease of mind!
+                                    </p>
+                                </div>
+                            </Col>
+                            <Col lg="6" md="6">
+                                <div className="about__images">
+                                    <img src={aboutImg} alt="" className="w-100"/>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+
 
                 {/*
 //-------------------------------------------------------------------------------------------------------------------------
 */}
 
+<hr/>
 
                 <footer className="footer">
                     <Container>
@@ -313,7 +349,7 @@ class HomePage extends Component {
                             <Col lg="3" md="4" sm="12">
                                 <div className="mb-4">
                                     <h5 className="footer__link-title">Your Votes</h5>
-                                    <p className="section__description">Subscribe our Page</p>
+                                    <p className="section__descriptions">Subscribe our Page</p>
                                     <div className="newsletter">
                                         <input type="email" placeholder="Email"/>
                                         <span>
@@ -336,7 +372,7 @@ class HomePage extends Component {
                         </Row>
                     </Container>
                 </footer>
-            </section>
+            </body>
 
         );
     }
