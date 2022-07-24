@@ -94,19 +94,45 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'space-around'
     },
-    search_container : {
-        display : 'flex',
-        width : '20%',
-        height : '23%',
-        flexDirection : 'column',
-        borderRadius: '10px',
-        boxShadow : '2px 2px 5px 1px',
-    },
 
     MuiImageListItemBar_root: {
         display: "flex",
         position: "absolute",
         background: "rgba(255,0,0,0.5)",
         alignItems: "center",
-    }
+    },
+    sideButton_container: {
+        display: 'flex',
+        width: '20%',
+        height: '40%',
+        flexDirection: 'column',
+        borderRadius: '10px',
+        boxShadow: '2px 2px 5px 1px',
+    },
+
+    search_container : {
+        marginTop : '20px',
+        height : '20%',
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    button_container : {
+        marginTop : '20px',
+        height : '25%',
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    clearButton_Container : {
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'center',
+
+    },
 }

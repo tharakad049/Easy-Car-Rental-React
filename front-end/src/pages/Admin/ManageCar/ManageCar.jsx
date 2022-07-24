@@ -7,6 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import AdminNavBar from "../../../components/admin/NavBar/index";
 import Divider from "@material-ui/core/Divider";
 import axios from "../../../axios";
+import CarService from "../../../service/CarService";
 
 class ManageCar extends Component {
     constructor(props) {
@@ -37,6 +38,48 @@ class ManageCar extends Component {
                     priceForExtraKm : "",
                 }
             }
+        }
+
+        addCarImage = async (carId) => {
+
+            var bodyFormData = new FormData();
+            bodyFormData.append('param' , this.state.frontImage);
+            bodyFormData.append('param' , this.state.backImage);
+            bodyFormData.append('param' , this.state.sideImage);
+            bodyFormData.append('param' , this.state.interiorImage);
+
+            let res = await CarService.addCarImage(bodyFormData,carId);
+            if (res.data.code===200){alert(res.data.message)}else {
+                alert(res.data.message);
+            }
+        }
+
+        addCar = async () =>{
+
+            var carDetails = {
+                carId : this.state.carDetails.carId,
+                brand  : this.state.carDetails.carType,
+                numOfPassenger : this.state.carDetails.carPassenger,
+                transmissionType : this.state.carDetails.carTransmissionType,
+                fuelType : this.state.carDetails.carFuelType,
+                priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
+                priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
+                freeMileageForPriceAndDuration : this.state.carDetails.carFreeMileage,
+                priceOfExtraKm : this.state.carDetails.priceForExtraKm,
+                registerNumber : this.state.carDetails.carRegisterNum,
+                color : this.state.carDetails.carColor,
+                state : 'Parking'
+            }
+            let res = await CarService.addCar(carDetails);
+            if (res.data.code==200){
+                alert(res.data.message);
+
+                this.addCarImage(carDetails.vehicleId);
+
+            }else {
+                alert(res.data.message);
+            }
+
         }
 
     render() {
@@ -217,72 +260,47 @@ class ManageCar extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className={classes.search_container}>
-                        <Button variant="contained" color="success"
-                                onClick={async () => {
 
-                                    var carDetails = {
+                    <div className={classes.sideButton_container}>
+                        <div className={classes.search_container}>
+                            <TextField
+                                label="Search Here"
+                                id="outlined-size-small"
+                                variant="outlined"
+                                size="small"
 
-                                        carId : this.state.carDetails.carId,
-                                        brand  : this.state.carDetails.carType,
-                                        numOfPassenger : this.state.carDetails.carPassenger,
-                                        transmissionType : this.state.carDetails.carTransmissionType,
-                                        fuelType : this.state.carDetails.carFuelType,
-                                        priceOfRentDurationDaily : this.state.carDetails.pricesForDaily ,
-                                        priceOfRentDurationMonthly : this.state.carDetails.pricesForMonthly,
-                                        freeMileageForPriceAndDuration : this.state.carDetails.carFreeMileage,
-                                        priceOfExtraKm : this.state.carDetails.priceForExtraKm,
-                                        registerNumber : this.state.carDetails.carRegisterNum,
-                                        color : this.state.carDetails.carColor,
-                                        state : 'Parking'
-                                    }
-                                    console.log(this.state.carDetails.type);
-                                    axios({
-                                        url: 'easy/v1/car/addCar',
-                                        method: 'post',
-                                        contentType : 'application/json',
-                                        data: carDetails,
-                                    })
-                                        .then(function (response) {
-                                            console.log(response);
-                                            alert("Car  added Complete");
-                                        })
-                                        .catch(function (error) {
-                                            console.log(error);
-                                            alert("Car  add fail..")
-                                        });
-                                    var bodyFormData = new FormData();
+                                style={{borderRadius : '20px',width: '70%'}}
+                            />
+                            <Button variant="outlined" style={{color : 'green'}}>
+                                Search
+                            </Button>
+                        </div>
 
-                                    bodyFormData.append('param' , this.state.frontImage);
-                                    bodyFormData.append('param' , this.state.backImage);
-                                    bodyFormData.append('param' , this.state.sideImage);
-                                    bodyFormData.append('param' , this.state.interiorImage);
+                        <Divider/>
 
-                                    axios({
-                                        method: 'post',
-                                        url: 'easy/v1/car/addCarImage?carId=C001',
-                                        headers: { "Content-Type": "multipart/form-data" },
-                                        data : bodyFormData
+                        <div className={classes.button_container}>
 
-                                    })
-                                        .then(function (response) {
-                                            console.log(response);
-                                            alert("Car Image added Complete");
-                                        })
-                                        .catch(function (error) {
-                                            console.log(error);
-                                            alert("Car image add fail..")
-                                        });
-                                }}>
-                            Upload Images
-                        </Button>
+                            <Button variant="outlined" style={{color : 'green' , width : '30%'}}>
+                                Save
+                            </Button>
 
-                        <form className="search-area">
-                            <input type="text" name="search" placeholder="Search Id" title="Search Item"/>
-                            <button className="btn-search" name="search-button" title="Search">Search</button>
-                        </form>
-                        <Button variant="contained" color="success" > Update Car </Button>
-                        <Button variant="contained" color="success" > Delete Car </Button>
+                            <Button variant="outlined" style={{color : 'blue', width : '30%'}}>
+                                Update
+                            </Button>
+
+                            <Button variant="outlined" style={{color : 'red' , width : '30%'}}>
+                                Delete
+                            </Button>
+
+
+                        </div>
+
+                        <div className={classes.clearButton_Container}>
+                            <Button variant="outlined" style={{color : 'back' , width : '95%'}}>
+                                Clear All
+                            </Button>
+
+                        </div>
 
                     </div>
                 </div>

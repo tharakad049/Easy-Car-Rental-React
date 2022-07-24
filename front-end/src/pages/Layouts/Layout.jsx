@@ -12,7 +12,7 @@ import RentalRequest from "../Admin/RentalRequest/RentalRequest";
 const Layout = () => {
   return (
     <Fragment className="container-fluid">
-      {/*<HomePage />*/}   <HomePage/>
+      {/*<HomePage />*/}   <ManageCar/>
 {/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}
     </Fragment>
