@@ -4,8 +4,8 @@
 }
 
 .slider__item-01 {
-    background: linear-gradient(rgb(141, 149, 193, 0.72), rgba(141, 149, 193, 0.72));
-    background: url("../../assets/images/Toyota-Allion.png");
+    background: linear-gradient(rgb(141, 149, 198), rgba(237, 238, 239, 0.72));
+    background: url("../../assets/images/d2.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -177,8 +177,8 @@
 }
 
 .find__cars-left {
-    background: linear-gradient(rgba(148, 243, 208, 0.7), rgba(165, 238, 161, 0.7));
-    background: url("../../assets/images/Toyota-Allion.png");
+    background: linear-gradient(rgba(148, 243, 208, 0.7), rgba(12, 255, 0, 0.7));
+    background: url("../../assets/images/d4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

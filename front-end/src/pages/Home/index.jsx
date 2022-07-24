@@ -62,6 +62,7 @@ class HomePage extends Component {
     }
 
     render() {
+
         const date = new Date();
         const year = date.getFullYear();
         return (

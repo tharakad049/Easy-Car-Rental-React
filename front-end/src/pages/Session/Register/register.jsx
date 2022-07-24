@@ -1,3 +1,4 @@
+/*
 import React, {Component} from "react";
 import "../../../pages/Session/Register/register.css";
 
@@ -32,4 +33,6 @@ class Register extends Component {
     };
 }
 
-export default (Register)
+export default (Register)*/
+
+
