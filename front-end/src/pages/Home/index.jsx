@@ -7,7 +7,8 @@ import Col from "react-bootstrap/Col";
 import Slider from "react-slick";
 import "./slider.css";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-import aboutImg from  "../../assets/images/mai.jpeg";
+import aboutImg from  "../../assets/images/d2.jpeg";
+import aboutImg1 from  "../../assets/images/7312319-volvo_xc60.jpg";
 import carData from "../../assets/CarData/carData";
 import CarItem from "./CarItem";
 
@@ -279,7 +280,10 @@ class HomePage extends Component {
                                         streets suitable for everyone and anyone. We decided to settle at the Lavendish Beach Resort, on
                                         our first day we enjoyed a small but happening party by a cafe on the beach! Sri Lanka loves to
                                         party!! We loved every part of our trip and it’s all thanks to Casons for organising everything
-                                        and total ease of mind!
+                                        and total ease of mind! . Welcome to Ontime Cabs & Tours, the number one cab service & rent a car company
+                                        in western province which offers a range of services including 24x7 taxi service in any part of the country,
+                                        rent a car service, airport transfers, wedding car service and cab service at an affordable
+                                        price with a wide variety of vehicle fleet
                                     </p>
                                 </div>
                             </Col>
@@ -311,6 +315,62 @@ class HomePage extends Component {
                             <CarItem item={item} key={item.id} />))}
                     </Row>
                 </Container>
+
+            <hr/>
+
+{/*
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/}
+
+
+            <section
+                className="about__section"
+                style={
+                    this.aboutClass === "aboutPage"
+                        ? {marginTop: "0px"}
+                        : {marginTop: "280px"}
+                }>
+                <Container>
+                    <Row>
+                        <Col lg="6" md="6">
+                            <div className="about__section-content">
+                                <h4 className="section__subtitle">Big Fleet Of Vehicles / Flexibility & Convenience / Well Experienced & Professional Drivers AND Lowest Rates In Your City</h4>
+                                <h2 className="section__title">Welcome service Acknowledgement</h2>
+                                <p className="section__description">
+                                    Understand your requirement and see if we have the suitable vehicle
+                                    for your need. Are you travelling alone? with family or friends? How
+                                    much bags are you carrying? As we have a wide range of vehicle to choose from,
+                                    you can get the kind of vehicle that is right for you. We highly believe that the
+                                    moment you enter the taxi, your life, literally is in the hands of the driver.
+                                    Because of that we screen our drivers for various aspects before recruiting
+                                    them in order to make sure that they know all the routes well, well-mannered
+                                    with customers and trained in etiquettes. We offer excellent services at an
+                                    affordable price without hidden charges. Compare other service providers prices
+                                    and get back to us as you definitely wouldn’t find anyone to match or
+                                    compete with our rates.Our 24x7 service is available when you need our service
+                                    late in the night or early morning. We also provide you a driver who knows the
+                                    area you are traveling, in case of a delay since the driver may know the shortest
+                                    route to your destination, it saves you a lot of your lost time.
+
+                                </p>
+                            </div>
+                        </Col>
+                        <Col lg="6" md="6">
+                            <div className="about__images">
+                                <img src={aboutImg1} alt="" className="w-100"/>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+
+            <hr/>
+
+            {/*
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/}
+
+
 
 
 {/*
