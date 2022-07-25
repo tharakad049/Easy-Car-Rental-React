@@ -7,7 +7,9 @@ import Col from "react-bootstrap/Col";
 import Slider from "react-slick";
 import "./slider.css";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-import aboutImg from  "../../assets/images/d1jpg.jpg";
+import aboutImg from  "../../assets/images/mai.jpeg";
+import carData from "../../assets/CarData/carData";
+import CarItem from "./CarItem";
 
 const quickLinks = [
     {
@@ -292,7 +294,27 @@ class HomePage extends Component {
 
 
                 {/*
-//-------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/}
+
+<hr/>
+
+
+                <Container>
+                    <Row>
+                        <Col lg="12" className="text-center mb-5">
+                            <h6 className="section__subtitle">Come with</h6>
+                            <h2 className="section__title">Hot Offers</h2>
+                        </Col>
+
+                        {carData.slice(0,9).map((item) => (
+                            <CarItem item={item} key={item.id} />))}
+                    </Row>
+                </Container>
+
+
+{/*
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */}
 
 <hr/>

@@ -74,7 +74,7 @@ class ManageCar extends Component {
             if (res.data.code==200){
                 alert(res.data.message);
 
-                this.addCarImage(carDetails.vehicleId);
+                this.addCarImage(carDetails.carId);
 
             }else {
                 alert(res.data.message);
