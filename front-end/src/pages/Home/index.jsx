@@ -280,10 +280,10 @@ class HomePage extends Component {
                                         streets suitable for everyone and anyone. We decided to settle at the Lavendish Beach Resort, on
                                         our first day we enjoyed a small but happening party by a cafe on the beach! Sri Lanka loves to
                                         party!! We loved every part of our trip and it’s all thanks to Casons for organising everything
-                                        and total ease of mind! . Welcome to Ontime Cabs & Tours, the number one cab service & rent a car company
+                                        and total ease of mind! . <b>Welcome to Ontime Cabs & Tours, the number one cab service & rent a car company
                                         in western province which offers a range of services including 24x7 taxi service in any part of the country,
                                         rent a car service, airport transfers, wedding car service and cab service at an affordable
-                                        price with a wide variety of vehicle fleet
+                                        price with a wide variety of vehicle fleet</b>
                                     </p>
                                 </div>
                             </Col>
@@ -336,7 +336,7 @@ class HomePage extends Component {
                             <div className="about__section-content">
                                 <h4 className="section__subtitle">Big Fleet Of Vehicles / Flexibility & Convenience / Well Experienced & Professional Drivers AND Lowest Rates In Your City</h4>
                                 <h2 className="section__title">Welcome service Acknowledgement</h2>
-                                <p className="section__description">
+                                <p className="section__description"><b>
                                     Understand your requirement and see if we have the suitable vehicle
                                     for your need. Are you travelling alone? with family or friends? How
                                     much bags are you carrying? As we have a wide range of vehicle to choose from,
@@ -350,7 +350,7 @@ class HomePage extends Component {
                                     compete with our rates.Our 24x7 service is available when you need our service
                                     late in the night or early morning. We also provide you a driver who knows the
                                     area you are traveling, in case of a delay since the driver may know the shortest
-                                    route to your destination, it saves you a lot of your lost time.
+                                    route to your destination, it saves you a lot of your lost time.</b>
 
                                 </p>
                             </div>

@@ -29,56 +29,13 @@ public class AdminServiceImpl implements AdminService {
     RentalRequestRepo rentalRequestRepo;
 
     @Autowired
-    CarRepo carRepo;
-
-    @Autowired
     ModelMapper mapper;
 
-    @Override
-    public void saveCar(CarDTO dto) {
-        if (!carRepo.existsById(dto.getCarId())){
-            carRepo.save(mapper.map(dto, Car.class));
-        }else {
-            throw new RuntimeException("Car Already Exist..!");
-        }
-    }
-
-    @Override
-    public void updateCar(CarDTO dto) {
-        if (carRepo.existsById(dto.getCarId())){
-            carRepo.save(mapper.map(dto, Car.class));
-        }else {
-            throw new RuntimeException("No Such Car To Update..! Please Check the Id..!");
-        }
-    }
-
-    @Override
-    public void deleteCar(String carId) {
-        if (carRepo.existsById(carId)){
-            carRepo.deleteById(carId);
-        }else {
-            throw new RuntimeException("Please check the Car Id.. No Such Car..!");
-        }
-    }
 
     @Override
     public List<RentalRequestDTO> rentalRequests() {
-        List<RentalRequest> all = rentalRequestRepo.findAll();
-        return (List<RentalRequestDTO>) mapper.map(all,RentalRequestDTO.class);
+        return null;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public void saveAdmin(AdminDTO adminDTO) {

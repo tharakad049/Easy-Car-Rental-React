@@ -17,7 +17,7 @@ export const styleSheet = {
         justifyContent: 'space-around',
         width: '100%',
         height: '100%',
-        backgroundColor: '#f6e3c8',
+        backgroundColor: '#e3dcdc',
     },
     form_backGround: {
         marginLeft: '10px',

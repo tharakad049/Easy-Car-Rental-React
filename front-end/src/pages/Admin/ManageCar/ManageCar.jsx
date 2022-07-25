@@ -8,6 +8,7 @@ import AdminNavBar from "../../../components/admin/NavBar/index";
 import Divider from "@material-ui/core/Divider";
 import axios from "../../../axios";
 import CarService from "../../../service/CarService";
+import ViewAllCarPopUpTable from "../../../components/admin/ViewAllCarTablePopup/carTablePopup";
 
 class ManageCar extends Component {
     constructor(props) {
@@ -69,6 +70,7 @@ class ManageCar extends Component {
                 registerNumber : this.state.carDetails.carRegisterNum,
                 color : this.state.carDetails.carColor,
                 state : 'Parking'
+
             }
             let res = await CarService.addCar(carDetails);
             if (res.data.code==200){
@@ -105,35 +107,44 @@ class ManageCar extends Component {
                         <Divider/>
                         <div className={classes.formTextFieldContainer}>
 
-                            <TextField onChange={(e) =>{this.state.carDetails.carId=e.target.value;}} size={"small"} id="outlined-required" label="Car ID" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.vehicleType=e.target.value;}} size={"small"} id="outlined-required" label="Type" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.Passenger=e.target.value;}} size={"small"} id="outlined-required" label="Num of Passengers" variant="outlined"/>
-                            <Autocomplete id="combo-box-demo" onChange={(event, value) => this.state.carDetails.fuelType =  value.title} size={"small"} options={[{title: 'Auto'}, {title: "Manual"}]} getOptionLabel={(option) => option.title} style={{width: 180}} renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined"/>}/>
-                            <Autocomplete id="combo-box-demo" onChange={(event, value) => this.state.carDetails.fuelType =  value.title} size={"small"} options={[{title: 'Diesel'}, {title: "Petrol"}]} getOptionLabel={(option) => option.title} style={{width: 136}} renderInput={(params) => <TextField {...params} label="Fuel type." variant="outlined"/>}/>
-                            <TextField onChange={(e) =>{this.state.carDetails.registerNum=e.target.value;}} size={"small"} id="outlined-required" label="Registration Number"  style={{width: 200}} variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.color=e.target.value;}} size={"small"} id="outlined-required" label="Color"  variant="outlined" style={{width: 200}}/>
+                            <TextField size={"small"} id="outlined-required" label="Car ID" variant="outlined" value={this.state.carDetails.carId} onChange={(e) => {this.setState({carDetails : {carId : e.target.value}})}}/>
+                            <TextField size={"small"} id="outlined-required" label="Brand" variant="outlined" value={this.state.carDetails.brand} onChange={(e) => {this.setState({carDetails : {brand : e.target.value}})}}/>
+                            <TextField size={"small"} id="outlined-required" label="Num of Passengers" variant="outlined" value={this.state.carDetails.numOfPassenger} onChange={(e) => {this.setState({carDetails : {numOfPassenger : e.target.value}})}}/>
+                            <Autocomplete id="combo-box-demo" size={"small"} options={[{title: 'Auto'}, {title: "Manual"}]} getOptionLabel={(option) => option.title} style={{width: 180}} renderInput={(params) => <TextField {...params} label="Transmission type." variant="outlined"/>} value={this.state.carDetails.transmissionType} onChange={(e) => {this.setState({carDetails : {transmissionType : e.target.value}})}}/>
+                            <Autocomplete id="combo-box-demo" size={"small"} options={[{title: 'Diesel'}, {title: "Petrol"}]} getOptionLabel={(option) => option.title} style={{width: 136}} renderInput={(params) => <TextField {...params} label="Fuel type." variant="outlined"/>} value={this.state.carDetails.fuelType} onChange={(e) => {this.setState({carDetails : {fuelType : e.target.value}})}}/>
+                            <TextField size={"small"} id="outlined-required" label="Registration Number"  style={{width: 200}} variant="outlined" value={this.state.carDetails.registerNumber} onChange={(e) => {this.setState({carDetails : {registerNumber : e.target.value}})}}/>
+                            <TextField size={"small"} id="outlined-required" label="Color"  variant="outlined" style={{width: 200}} value={this.state.carDetails.color} onChange={(e) => {this.setState({carDetails : {color : e.target.value}})}}/>
 
                         </div>
+
                         <Divider/>
+
                         <div className={classes.formDividerTextContainer}>
                             <h5 style={{color: 'black'}}>Prices for the rent durations</h5>
                             <h5 style={{color: 'black'}}>Free mileage for the price and duration</h5>
                             <h5 style={{color: 'black'}}>Price for extra KM</h5>
                         </div>
+
                         <Divider/>
+
                         <div className={classes.formTextField2Container}>
-                            <TextField onChange={(e) =>{this.state.carDetails.pricesForDaily=e.target.value;}} style={{width: '17%'}} size={"small"} id="outlined-required" label="Daily" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.pricesForMonthly=e.target.value;}} style={{width: '17%'}} size={"small"} id="outlined-required" label="Monthly" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.freeMileage=e.target.value;}} size={"small"} id="outlined-required" label="KM" variant="outlined"/>
-                            <TextField onChange={(e) =>{this.state.carDetails.priceForExtraKm=e.target.value;}} size={"small"} id="outlined-required" label="RS/=" variant="outlined"/>
+
+                            <TextField size={"small"} id="outlined-required" label="Daily" variant="outlined" value={this.state.carDetails.priceOfRentDurationDaily} onChange={(e) => {this.setState({carDetails : {priceOfRentDurationDaily : e.target.value}})}} style={{width: '17%'}} />
+                            <TextField style={{width: '17%'}} size={"small"} id="outlined-required" label="Monthly" variant="outlined" value={this.state.carDetails.priceOfRentDurationMonthly} onChange={(e) => {this.setState({carDetails : {priceOfRentDurationMonthly : e.target.value}})}}/>
+                            <TextField size={"small"} id="outlined-required" label="KM" variant="outlined"  value={this.state.carDetails.priceOfExtraKm} onChange={(e) => {this.setState({carDetails : {priceOfExtraKm : e.target.value}})}}/>
+                            <TextField size={"small"} id="outlined-required" label="RS/=" variant="outlined" value={this.state.carDetails.freeMileageForPriceAndDuration} onChange={(e) => {this.setState({carDetails : {freeMileageForPriceAndDuration : e.target.value}})}} />
+
                         </div>
+
                         <Divider/>
+
                         <div className={classes.formDividerText2Container}>
                             <h5 style={{color: 'black'}}>Front View</h5>
                             <h5 style={{color: 'black'}}>Back View</h5>
                             <h5 style={{color: 'black'}}>Side View</h5>
                             <h5 style={{color: 'black'}}>Interior</h5>
                         </div>
+
                         <Divider/>
 
                         <div className={classes.imageContainer}>
@@ -279,27 +290,14 @@ class ManageCar extends Component {
                         <Divider/>
 
                         <div className={classes.button_container}>
-
-                            <Button variant="outlined" style={{color : 'green' , width : '30%'}}>
-                                Save
-                            </Button>
-
-                            <Button variant="outlined" style={{color : 'blue', width : '30%'}}>
-                                Update
-                            </Button>
-
-                            <Button variant="outlined" style={{color : 'red' , width : '30%'}}>
-                                Delete
-                            </Button>
-
-
+                            <Button variant="outlined" style={{color : 'green' , width : '30%'}}>Save</Button>
+                            <Button variant="outlined" style={{color : 'blue', width : '30%'}}>Update</Button>
+                            <Button variant="outlined" style={{color : 'red' , width : '30%'}}>Delete</Button>
                         </div>
 
                         <div className={classes.clearButton_Container}>
-                            <Button variant="outlined" style={{color : 'back' , width : '95%'}}>
-                                Clear All
-                            </Button>
-
+                            <ViewAllCarPopUpTable/>
+                            <Button variant="outlined" style={{color : 'back' , width : '95%'}}>Clear All</Button>
                         </div>
 
                     </div>

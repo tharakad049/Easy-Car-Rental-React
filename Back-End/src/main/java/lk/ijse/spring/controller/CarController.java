@@ -48,7 +48,7 @@ public class CarController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "addCar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO car){
-        adminService.saveCar(car);
+        carService.saveCar(car);
         return new ResponseUtil(200, "Saved", null);
     }
 
@@ -88,7 +88,7 @@ public class CarController {
 
     @PutMapping(path = "updateCar" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCar(@RequestBody CarDTO car){
-        adminService.updateCar(car);
+        carService.updateCar(car);
         return new ResponseUtil(200, "Updated", null);
     }
 
@@ -107,7 +107,7 @@ public class CarController {
 
     @DeleteMapping(params = {"carId"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(@RequestParam String carId){
-        adminService.deleteCar(carId);
+        carService.deleteCar(carId);
         return new ResponseUtil(200, "Deleted", null);
     }
 
@@ -132,4 +132,9 @@ public class CarController {
         return new ResponseUtil(200,"car Delete success",allRentalRequest);
     }
 
+    @GetMapping(path ="getAllCars" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllCars(){
+        List<CarDTO> allCars = carService.getAllCars();
+        return new ResponseUtil(200,"Get All Cars",allCars);
+    }
 }
