@@ -37,10 +37,13 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "addCustomer",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCustomer(RegisterCustomerDTO registerCustomerDTO) {
+    public ResponseUtil saveCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO) {
         customerService.saveCustomer(registerCustomerDTO);
         return new ResponseUtil(200, "Customer Added Successfully", null);
     }
+
+
+
     @PutMapping(path = "updateCustomer" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCustomer(CustomerDTO customer) {
         customerService.updateCustomer(customer);

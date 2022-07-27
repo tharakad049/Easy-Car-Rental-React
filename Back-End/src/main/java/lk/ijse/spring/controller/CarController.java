@@ -52,6 +52,12 @@ public class CarController {
         return new ResponseUtil(200, "Car Added Successfully", null);
     }
 
+
+
+
+
+
+
     @SneakyThrows
     @PostMapping(path = "addCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile , @RequestParam("carId") String carId){
@@ -73,6 +79,19 @@ public class CarController {
         }
         return new ResponseUtil(200,"Car images added complete",null);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @GetMapping(path = "getCarImage" , produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<?> getCarImage(@RequestParam String carId, String view){
@@ -106,12 +125,17 @@ public class CarController {
     }
 
 
-    @DeleteMapping(params = {"carId"}, produces = MediaType.APPLICATION_JSON_VALUE)
+
+
+
+
+
+
+    @DeleteMapping(path = "delete car", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(@RequestParam String carId){
         carService.deleteCar(carId);
         return new ResponseUtil(200, "Deleted", null);
     }
-
     @SneakyThrows
     @DeleteMapping(path = "deleteCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCarAllImages(@RequestParam String carId){
@@ -124,6 +148,13 @@ public class CarController {
 
         return new ResponseUtil(200,"car Delete success",null);
     }
+
+
+
+
+
+
+
 
     @GetMapping(path = "viewRentalRequest", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil viewRentalRequest(){

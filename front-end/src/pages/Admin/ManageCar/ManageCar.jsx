@@ -145,11 +145,58 @@ class ManageCar extends Component {
         }
     }
 
+
+    deleteCar=async () =>{
+
+        let res =await CarService.deleteCar(this.state.carDetails.carId);
+        if (res.status==200){
+
+            let res =await CarService.deleteCarImages(this.state.carDetails.carId);
+            if (res.data.code==200){
+                alert("Car Deleted Success")
+                this.clearAllState()
+            }
+        }else {
+            alert("Car Delete Fail...")
+        }
+
+    }
+
+
     updateCarImage=async (data,carId,view) =>{
         let response =await CarService.updateCarImage(data,carId,view);
         if (response.status!=200){
             alert("Car Image Update Fail")
         }
+    }
+
+    clearAllState=() =>{
+        this.setState({
+            frontImage: null,
+            backImage : null,
+            sideImage : null,
+            interiorImage : null,
+
+            frontView : null,
+            backView : null,
+            sideView : null,
+            interiorView : null,
+
+            carDetails : {
+                carId : "",
+                carType : "",
+                carPassenger : "",
+                carTransmissionType :"",
+                carFuelType :"",
+                carRegisterNum : "",
+                carColor : "",
+                pricesForDaily : "",
+                pricesForMonthly :"",
+                carFreeMileage : "",
+                priceForExtraKm : "",
+            }
+
+        })
     }
 
     render() {
@@ -418,8 +465,12 @@ class ManageCar extends Component {
                                                     this.updateCar();
                                                  }}
                                                     >Update</Button>
-                            <Button variant="outlined" style={{color : 'red' , width : '30%'}}>Delete</Button>
-                        </div>
+                            <Button variant="outlined" style={{color : 'red' , width : '30%'}}
+                                                onClick={async () => {
+                                                    this.deleteCar();
+                                                }}
+                                                    >Delete</Button>
+                                                </div>
 
                         <div className={classes.clearButton_Container}>
                             <ViewAllCarPopUpTable data={{changeStateCarDetails:this.changeStateCarDetails.bind(this)}}/>

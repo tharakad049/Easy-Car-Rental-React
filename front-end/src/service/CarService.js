@@ -84,6 +84,32 @@ class CarService {
         })
         return await promise;
     }
+    deleteCar =async (carId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('easy/v1/car/delete car?carId='+carId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    deleteCarImages =async (carId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('easy/v1/car/deleteCarImage?carId='+carId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
 
 }
 export default new CarService();

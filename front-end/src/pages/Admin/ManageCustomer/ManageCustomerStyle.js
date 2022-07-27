@@ -36,14 +36,13 @@ export const styleSheet = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '7%',
-        backgroundColor: '#9704a3',
+        backgroundColor: '#4b3333',
         borderTopLeftRadius: '5px',
         borderTopRightRadius: '5px',
 
     },
     formTextFieldContainer: {
         height: '25%',
-        /*   backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
@@ -53,24 +52,31 @@ export const styleSheet = {
     },
     formDividerTextContainer: {
         height: '5%',
-        /*  backgroundColor : '#9e62ce',*/
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
+    formTextField2Container: {
+        marginTop: '10px',
+        marginBottom: '10px',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+
+    },
     formDividerText2Container: {
-        height: '10%',
-        /*  backgroundColor : '#9e62ce',*/
+        height: '5%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
     },
     imageContainer: {
-        marginTop: '20px',
-        height: '30%',
-        backgroundColor: '#1fafaf',
+        marginTop: '10px',
+        height: '28%',
+        backgroundColor: '#212020',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -83,25 +89,50 @@ export const styleSheet = {
     },
     uploadButtonContainer: {
         height: '7%',
-        /* backgroundColor :'#57a0a0',*/
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
     },
+
     MuiImageListItemBar_root: {
         display: "flex",
         position: "absolute",
         background: "rgba(255,0,0,0.5)",
         alignItems: "center",
     },
-    search_container : {
-        display : 'flex',
-        width : '20%',
-        height : '24%',
-        flexDirection : 'column',
+    sideButton_container: {
+        display: 'flex',
+        width: '20%',
+        height: '40%',
+        flexDirection: 'column',
         borderRadius: '10px',
-        boxShadow : '2px 2px 5px 1px',
+        boxShadow: '2px 2px 5px 1px',
     },
 
+    search_container : {
+        marginTop : '20px',
+        height : '20%',
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    button_container : {
+        marginTop : '20px',
+        height : '25%',
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    clearButton_Container : {
+        display : 'flex',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'center',
+
+    },
 }

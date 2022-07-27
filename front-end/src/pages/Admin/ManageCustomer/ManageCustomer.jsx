@@ -37,7 +37,7 @@ class ManageCustomer extends Component {
             }
         }
     }
-    changeStateCarDetails(custId,cstEmail,custRegDate,custName,custNic,custLicense,custAddress,custContact,frontImage,backImage){
+  /*  changeStateCarDetails(custId,cstEmail,custRegDate,custName,custNic,custLicense,custAddress,custContact,frontImage,backImage){
         this.setState({
             customerDetails : {
                 cusId: custId,
@@ -53,8 +53,8 @@ class ManageCustomer extends Component {
             backView : backImage,
 
         })
-    }
-    addCustomerImage = async (cusId) => {
+    }*/
+/*    addCustomerImage = async (cusId) => {
 
         var bodyFormData = new FormData();
         bodyFormData.append('param' , this.state.frontImage);
@@ -64,8 +64,8 @@ class ManageCustomer extends Component {
         if (res.data.code===200){alert(res.data.message)}else {
             alert(res.data.message);
         }
-    }
-
+    }*/
+/*
     addCustomer = async () =>{
 
         var customerDetails = {
@@ -88,8 +88,8 @@ class ManageCustomer extends Component {
         }else {
             alert(res.data.message);
         }
-    }
-    updateCustomer = async () =>{
+    }*/
+/*    updateCustomer = async () =>{
         var customerUpdateDetails = {
             customerId : this.state.customerDetails.cusId,
             customerEmail  : this.state.customerDetails.cusEmail,
@@ -120,14 +120,14 @@ class ManageCustomer extends Component {
         }else {
             alert("Customer update Fail..")
         }
-    }
+    }*/
 
-    updateCustomerImage=async (data,cusId,view) =>{
+/*    updateCustomerImage=async (data,cusId,view) =>{
         let response =await CustomerService.updateCustomerImage(data,cusId,view);
         if (response.status!=200){
             alert("Customer Image Update Fail")
         }
-    }
+    }*/
 
     render() {
         const {classes} = this.props;
@@ -148,7 +148,7 @@ class ManageCustomer extends Component {
 
                         <div className={classes.formTextFieldContainer}>
 
-                            <TextField size={"small"} id="outlined-required" label="Customer Id" variant="outlined" value={this.state.carDetails.customerId}
+                            {/*<TextField size={"small"} id="outlined-required" label="Customer Id" variant="outlined" value={this.state.carDetails.customerId}
                                        onChange={(e) => {let formData = this.state.customerDetails
                                            formData.cusId = e.target.value
                                            this.setState({ formData })
@@ -194,14 +194,19 @@ class ManageCustomer extends Component {
                                        onChange={(e) => {let formData = this.state.customerDetails
                                            formData.cusContact = e.target.value
                                            this.setState({ formData })
-                                       }}/>
+                                       }}/>*/}
+                            <Input placeholder="Customer Id" type="text" />
+                            <Input placeholder="Email" type="text" />
+                            <FormGroup className="form__group" size={"small"} id="outlined-required" label="Customer Register date" variant="outlined"
+                                       >
+                                <input type="date" placeholder="Customer Register date" required/>
+                            </FormGroup>
 
-
-                            {/*<Input placeholder="Customer Name" type="text" />*/}
-                            {/*<Input placeholder="Address" type="text" />*/}
-                            {/*<Input placeholder="Contact Number" type="text" />*/}
-                            {/*<Input placeholder="Identity CArd Number" type="text" />*/}
-                            {/*<Input placeholder="Driving License Number" type="text" />*/}
+                            <Input placeholder="Customer Name" type="text" />
+                            <Input placeholder="Address" type="text" />
+                            <Input placeholder="Contact Number" type="text" />
+                            <Input placeholder="Identity CArd Number" type="text" />
+                            <Input placeholder="Driving License Number" type="text" />
 
                         </div>
 
@@ -351,11 +356,11 @@ class ManageCustomer extends Component {
                             </Button>
                         </div>
                         <div className={classes.button_container}>
-                            <Button variant="outlined" style={{color : 'green' , width : '30%'}}
+           {/*                 <Button variant="outlined" style={{color : 'green' , width : '30%'}}
                                     onClick={async () => {
                                         this.addCustomer();
                                     }}
-                            >Save</Button>
+                            >Save</Button>*/}
                             <Button variant="outlined" style={{color : 'blue', width : '30%'}}
                                     onClick={async () => {
                                         this.updateCustomer();

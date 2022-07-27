@@ -1,4 +1,3 @@
-/*
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -48,7 +47,7 @@ const rows = [];
 
 function PopUpTable(props) {
     const loadCustomerDetails=async (cusId, cuaEmail, cusDate, cusName, cusNicNumber, cusLicenseNumber, cusAddress, cusContact) =>{
-        /!*        let frontImage;
+        /*        let frontImage;
                 let backImage;
                 let sideImage;
                 let interiorImage;
@@ -68,7 +67,7 @@ function PopUpTable(props) {
                 let res4 =   carService.getCarImage(carId,"Interior");
                 if (res1.status===200) {
                     interiorImage=URL.createObjectURL(res4.data)
-                }*!/
+                }*/
         props.data.changeStateCarDetails(cusId, cuaEmail, cusDate, cusName, cusNicNumber, cusLicenseNumber, cusAddress, cusContact);
 
     }
@@ -106,7 +105,7 @@ function PopUpTable(props) {
 
     return (
         <div>
-            {/!* <div>{props.data.unit}</div>*!/}
+            {/* <div>{props.data.unit}</div>*/}
 
             <Button variant="primary" onClick={() => {
                 getAllCars();
@@ -127,7 +126,7 @@ function PopUpTable(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/!*{/table/}*!/}
+                    {/*{/table/}*/}
                     <Paper className={classes.root}>
                         <TableContainer className={classes.container}>
                             < Table stickyHeader aria-label="sticky table">
@@ -190,4 +189,4 @@ function PopUpTable(props) {
     );
 }
 
-export default PopUpTable;*/
+export default PopUpTable;

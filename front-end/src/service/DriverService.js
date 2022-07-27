@@ -1,0 +1,207 @@
+import  axios from "../axios";
+
+class CarService {
+    addDriver = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/driver/saveDriver',data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    updateDriver = async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.put('easy/v1/driver/updateDriver',data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    deleteDriver =async (driverId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('easy/v1/driver/delete drive?carId='+driverId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    getAllDrivers = async () => {
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/driver/getAllDrivers')
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+
+    //---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    addDriverIdImage = async (data,driverId) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/driver/addDriverIdImage?driverId='+driverId,data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    addDriverLicenseImage = async (data,driverId) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/driver/addDriverLicenseImage?driverId='+driverId,data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+    //------------------------------------------------------------------------------------------------
+
+
+
+
+    updateDriverIdImage = async (image,driverId, view) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/driver/updateDriverIdImage?driverId='+driverId+'&view='+view,image)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    updateDriverLicenseImage = async (image,driverId, view) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/driver/updateDriverLicenseImage?driverId='+driverId+'&view='+view,image)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+
+
+    //------------------------------------------------------------------------------------------------
+
+
+
+
+    deleteDriverIdImage =async (driverId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('easy/v1/driver/deleteIdImage?driverId='+driverId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    deleteDriverLicenseImage =async (driverId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.delete('easy/v1/driver/deleteLicenseImage?driverId='+driverId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+    //---------------------------------------------------------------------------------------------------------
+
+
+
+
+    getDriverIdImage = async (driverId,view) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/driver/getDriverIdImage?driverId='+driverId+'&view='+view, {
+                responseType: 'blob',
+            })
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    getDriverLicenseImage = async (driverId,view) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/driver/getLicenseImage?driverId='+driverId+'&view='+view, {
+                responseType: 'blob',
+            })
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+    //---------------------------------------------------------------------------------------------------------
+
+
+
+}
+export default new CarService();

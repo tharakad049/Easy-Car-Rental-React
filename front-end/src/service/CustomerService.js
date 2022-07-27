@@ -1,3 +1,4 @@
+/*
 import  axios from "../axios";
 
 class CustomerService {
@@ -68,4 +69,4 @@ class CustomerService {
         return await promise;
     }
 }
-export default new CustomerService();
+export default new CustomerService();*/

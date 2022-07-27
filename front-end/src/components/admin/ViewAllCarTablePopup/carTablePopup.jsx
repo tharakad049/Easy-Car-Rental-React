@@ -55,19 +55,19 @@ function PopUpTable(props) {
         let sideImage;
         let interiorImage;
 
-        let res1 =  carService.getCarImage(carId,"Front");
+        let res1 = await carService.getCarImage(carId,"Front");
         if (res1.status===200) {
             frontImage=URL.createObjectURL(res1.data)
         }
-        let res2 =  carService.getCarImage(carId,"Back");
+        let res2 =  await carService.getCarImage(carId,"Back");
         if (res1.status===200) {
             backImage=URL.createObjectURL(res2.data)
         }
-        let res3 =  carService.getCarImage(carId,"Side");
+        let res3 = await carService.getCarImage(carId,"Side");
         if (res1.status===200) {
             sideImage=URL.createObjectURL(res3.data)
         }
-        let res4 =   carService.getCarImage(carId,"Interior");
+        let res4 =  await carService.getCarImage(carId,"Interior");
         if (res1.status===200) {
             interiorImage=URL.createObjectURL(res4.data)
         }
