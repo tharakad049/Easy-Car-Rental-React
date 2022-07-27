@@ -15,15 +15,15 @@ class ManageDriver extends Component {
         super(props);
 
         this.state = {
-            idFrontImage: null,
-            idBackImage: null,
-            licenseFrontImage: null,
-            licenseBackImage: null,
+            frontImage: null,
+            backImage: null,
+            sideImage: null,
+            interiorImage: null,
 
-            idFrontView:null,
-            idBackView:null,
-            licenseFrontView:null,
-            licenseBackView:null,
+            frontView:null,
+            backView:null,
+            sideView:null,
+            interiorView:null,
 
             driverDetails : {
                 driverId : "",
@@ -36,10 +36,10 @@ class ManageDriver extends Component {
         }
     }
 
-    changeStateCarDetails(driverId, driverEmail, driverContactNumber,driverNicNumber,driverLicenseNumber, driverAddress, idFrontImage,idBackImage,licenseFrontImage,licenseBackImage){
+    changeStateDriverDetails(Id, driverEmail, driverContactNumber,driverNicNumber, driverLicenseNumber, driverAddress, frontImage,backImage, sideImage,interiorImage){
         this.setState({
             carDetails : {
-                driverId : driverId,
+                driverId : Id,
                 driverEmail : driverEmail,
                 driverContactNumber : driverContactNumber,
                 driverNicNumber :driverNicNumber,
@@ -47,10 +47,10 @@ class ManageDriver extends Component {
                 driverAddress : driverAddress,
             },
 
-            idFrontView : idFrontImage,
-            idBackView : idBackImage,
-            licenseFrontView : licenseFrontImage,
-            licenseBackView : licenseBackImage,
+            frontView : frontImage,
+            backView : backImage,
+            sideView : sideImage,
+            interiorView : interiorImage,
 
         })
     }
@@ -60,8 +60,10 @@ class ManageDriver extends Component {
 
     addDriverIdImage = async (driverId) => {
         var bodyFormData = new FormData();
-        bodyFormData.append('param' , this.state.idFrontImage);
-        bodyFormData.append('param' , this.state.idBackImage)
+        bodyFormData.append('param' , this.state.frontImage);
+        bodyFormData.append('param' , this.state.backImage)
+        bodyFormData.append('param' , this.state.sideImage);
+        bodyFormData.append('param' , this.state.interiorImage);
 
         let res = await DriverService.addDriverIdImage(bodyFormData,driverId);
         if (res.data.code===200){alert(res.data.message)}else {
@@ -69,7 +71,7 @@ class ManageDriver extends Component {
         }
     }
 
-    addDriverLicenseImage = async (driverId) => {
+/*    addDriverLicenseImage = async (driverId) => {
         var bodyFormData = new FormData();
         bodyFormData.append('param' , this.state.licenseFrontImage);
         bodyFormData.append('param' , this.state.licenseBackImage)
@@ -78,7 +80,7 @@ class ManageDriver extends Component {
         if (res.data.code===200){alert(res.data.message)}else {
             alert(res.data.message);
         }
-    }
+    }*/
 
 
     //--------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +95,7 @@ class ManageDriver extends Component {
             nicNumberAndPhoto : this.state.driverDetails.driverNicNumber,
             drivingLicenseNumberAndPhoto : this.state.driverDetails.driverLicenseNumber,
             address : this.state.driverDetails.driverAddress ,
-            state : 'Added'
+            state : 'Pending'
         }
 
         let res = await DriverService.addDriver(driverDetails);
@@ -101,7 +103,9 @@ class ManageDriver extends Component {
             alert(res.data.message);
 
             this.addDriverIdImage(driverDetails.driverId);
+/*
             this.addDriverLicenseImage(driverDetails.driverId);
+*/
 
         }else {
             alert(res.data.message);
@@ -119,24 +123,24 @@ class ManageDriver extends Component {
             nicNumberAndPhoto : this.state.driverDetails.driverNicNumber,
             drivingLicenseNumberAndPhoto : this.state.driverDetails.driverLicenseNumber,
             address : this.state.driverDetails.driverAddress ,
-            state : 'Added'
+            state : 'Pending'
         }
 
         let res =await DriverService.updateDriver(driverUpdateDetails);
         if (res.status===200){
-            let idFront=this.state.idFrontImage;
-            let idBack=this.state.idBackImage;
-            let licenseFront=this.state.licenseFrontImage;
-            let licenseBack=this.state.licenseBackImage;
-            let list=[idFront,idBack, licenseFront,licenseBack]
-            let viewList=["IdFront","IdBack","LicenseFront","LicenseBack"]
+            let front=this.state.frontImage;
+            let back=this.state.backImage;
+            let side=this.state.sideImage;
+            let interior=this.state.interiorImage;
+            let list=[front,back, side,interior]
+            let viewList=["Front","Back","Side","Interior"]
 
             for (var i=0; i<list.length; i++){
                 if (list[i] != null){
                     let formData = new FormData();
-                    formData.append('driverIdImage','driverLicenseImage', list[i]);
+                    formData.append('idImage'/*,'driverLicenseImage'*/, list[i]);
                     await this.updateDriverIdImage(formData, driverUpdateDetails.driverId, viewList[i]);
-                    await this.updateDriverLicenseImage(formData, driverUpdateDetails.driverId, viewList[i]);
+                /*    await this.updateDriverLicenseImage(formData, driverUpdateDetails.driverId, viewList[i]);*/
                 }
             }
 
@@ -151,8 +155,8 @@ class ManageDriver extends Component {
         if (res.status==200){
 
             let res =await DriverService.deleteDriverIdImage(this.state.driverDetails.driverId);
-            let res1 =await DriverService.deleteDriverLicenseImage(this.state.driverDetails.driverId);
-            if ((res.data.code==200) || (res1.data.code==200) ){
+           // let res1 =await DriverService.deleteDriverLicenseImage(this.state.driverDetails.driverId);
+            if ((res.data.code==200) /*|| (res1.data.code==200)*/ ){
                 alert("CDriver Deleted Success")
                 this.clearAllState()
             }
@@ -163,37 +167,37 @@ class ManageDriver extends Component {
     }
 
     updateDriverIdImage=async (data,driverId,view) =>{
-        let response =await CarService.updateDriverIdImage(data,driverId,view);
+        let response =await DriverService.updateDriverIdImage(data,driverId,view);
         if (response.status!=200){
             alert("Driver Id Image Update Fail")
         }
     }
-    updateDriverLicenseImage=async (data,driverId,view) =>{
+/*    updateDriverLicenseImage=async (data,driverId,view) =>{
         let response =await CarService.updateDriverLicenseImage(data,driverId,view);
         if (response.status!=200){
             alert("Driver License Image Update Fail")
         }
-    }
+    }*/
 
     clearAllState=() =>{
         this.setState({
-                idFrontImage: null,
-                idBackImage: null,
-                licenseFrontImage: null,
-                licenseBackImage: null,
+            frontImage: null,
+            backImage: null,
+            sideImage: null,
+            interiorImage: null,
 
-                idFrontView:null,
-                idBackView:null,
-                licenseFrontView:null,
-                licenseBackView:null,
+            frontView:null,
+            backView:null,
+            sideView:null,
+            interiorView:null,
 
-                driverDetails : {
-                    driverId: "",
-                    driverEmail: "",
-                    driverContactNumber: "",
-                    driverNicNumber: "",
-                    driverLicenseNumber: "",
-                    driverAddress: "",
+            driverDetails : {
+                driverId : "",
+                driverEmail : "",
+                driverContactNumber : "",
+                driverNicNumber :"",
+                driverLicenseNumber :"",
+                driverAddress : "",
                 }
         })
     }
@@ -270,7 +274,7 @@ class ManageDriver extends Component {
                                      alignItems: 'center',
                                      justifyContent: 'center',
                                      height: '75%',
-                                     backgroundImage: "url(" + this.state.frontImage + ")",
+                                     backgroundImage: "url(" + this.state.frontView + ")",
                                      backgroundSize: 'cover'
                                  }}>
                             </div>
@@ -280,7 +284,7 @@ class ManageDriver extends Component {
                                      alignItems: 'center',
                                      justifyContent: 'center',
                                      height: '75%',
-                                     backgroundImage: "url(" + this.state.backImage + ")",
+                                     backgroundImage: "url(" + this.state.backView + ")",
                                      backgroundSize: 'cover'
                                  }}>
                             </div>
@@ -290,7 +294,7 @@ class ManageDriver extends Component {
                                      alignItems: 'center',
                                      justifyContent: 'center',
                                      height: '75%',
-                                     backgroundImage: "url(" + this.state.sideImage + ")",
+                                     backgroundImage: "url(" + this.state.sideView + ")",
                                      backgroundSize: 'cover'
                                  }}>
                             </div>
@@ -300,7 +304,7 @@ class ManageDriver extends Component {
                                      alignItems: 'center',
                                      justifyContent: 'center',
                                      height: '75%',
-                                     backgroundImage: "url(" + this.state.interiorImage + ")",
+                                     backgroundImage: "url(" + this.state.interiorView + ")",
                                      backgroundSize: 'cover'
                                  }}>
                             </div>
@@ -321,8 +325,8 @@ class ManageDriver extends Component {
                                 type="file"
                                 onChange={(e) => {
                                     this.setState({
-                                        idFrontImage: e.target.files[0],
-                                        idFrontView: URL.createObjectURL(e.target.files[0])
+                                        frontImage: e.target.files[0],
+                                        frontView: URL.createObjectURL(e.target.files[0])
                                     })
                                 }}/>
                                 <label htmlFor="contained-button-file01">
@@ -340,8 +344,8 @@ class ManageDriver extends Component {
                                 type="file"
                                 onChange={(e) => {
                                     this.setState({
-                                        idBackImage: e.target.files[0],
-                                        idBackView: URL.createObjectURL(e.target.files[0])
+                                        backImage: e.target.files[0],
+                                        backView: URL.createObjectURL(e.target.files[0])
                                     })
                                 }}/>
                                 <label htmlFor="contained-button-file02">
@@ -359,8 +363,8 @@ class ManageDriver extends Component {
                                 type="file"
                                 onChange={(e) => {
                                     this.setState({
-                                        licenseFrontImage: e.target.files[0],
-                                        licenseFrontView: URL.createObjectURL(e.target.files[0])
+                                        sideImage: e.target.files[0],
+                                        sideView: URL.createObjectURL(e.target.files[0])
                                     })
                                 }}
                             />
@@ -380,8 +384,8 @@ class ManageDriver extends Component {
                                 type="file"
                                 onChange={(e) => {
                                     this.setState({
-                                        licenseBackImage: e.target.files[0],
-                                        licenseBackView: URL.createObjectURL(e.target.files[0])
+                                        interiorImage: e.target.files[0],
+                                        interiorView: URL.createObjectURL(e.target.files[0])
                                     })
                                 }}
                             />
@@ -436,7 +440,7 @@ class ManageDriver extends Component {
                         </div>
 
                         <div className={classes.clearButton_Container}>
-                            <ViewAllDriverPopUpTable data={{changeStateCarDetails:this.changeStateCarDetails.bind(this)}}/>
+                            <ViewAllDriverPopUpTable data={{changeStateDriverDetails:this.changeStateDriverDetails.bind(this)}}/>
 
                             <Button variant="outlined" style={{color : 'back' , width : '95%'}}>Clear All</Button>
                         </div>

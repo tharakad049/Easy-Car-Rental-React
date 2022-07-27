@@ -1,6 +1,6 @@
 import  axios from "../axios";
 
-class CarService {
+class DriverService {
     addDriver = async (data) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/saveDriver',data)
@@ -29,7 +29,7 @@ class CarService {
     }
     deleteDriver =async (driverId) =>{
         const promise = new Promise((resolve, reject) => {
-            axios.delete('easy/v1/driver/delete drive?carId='+driverId)
+            axios.delete('easy/v1/driver/delete drive?driverId='+driverId)
 
                 .then((res) => {
                     return resolve(res)
@@ -76,7 +76,7 @@ class CarService {
         })
         return await promise;
     }
-    addDriverLicenseImage = async (data,driverId) => {
+/*    addDriverLicenseImage = async (data,driverId) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/addDriverLicenseImage?driverId='+driverId,data)
 
@@ -88,7 +88,7 @@ class CarService {
                 })
         })
         return await promise;
-    }
+    }*/
 
 
 
@@ -97,9 +97,9 @@ class CarService {
 
 
 
-    updateDriverIdImage = async (image,driverId, view) => {
+    updateDriverIdImage = async (idImage,driverId, view) => {
         const promise = new Promise((resolve, reject) => {
-            axios.post('easy/v1/driver/updateDriverIdImage?driverId='+driverId+'&view='+view,image)
+            axios.post('easy/v1/driver/updateDriverIdImage?driverId='+driverId+'&view='+view,idImage)
                 .then((res) => {
                     return resolve(res)
                 })
@@ -109,7 +109,7 @@ class CarService {
         })
         return await promise;
     }
-    updateDriverLicenseImage = async (image,driverId, view) => {
+/*    updateDriverLicenseImage = async (image,driverId, view) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/updateDriverLicenseImage?driverId='+driverId+'&view='+view,image)
                 .then((res) => {
@@ -120,7 +120,7 @@ class CarService {
                 })
         })
         return await promise;
-    }
+    }*/
 
 
 
@@ -145,7 +145,7 @@ class CarService {
         return await promise;
     }
 
-    deleteDriverLicenseImage =async (driverId) =>{
+/*    deleteDriverLicenseImage =async (driverId) =>{
         const promise = new Promise((resolve, reject) => {
             axios.delete('easy/v1/driver/deleteLicenseImage?driverId='+driverId)
 
@@ -157,7 +157,7 @@ class CarService {
                 })
         })
         return await promise;
-    }
+    }*/
 
 
     //---------------------------------------------------------------------------------------------------------
@@ -167,7 +167,7 @@ class CarService {
 
     getDriverIdImage = async (driverId,view) =>{
         const promise = new Promise((resolve, reject) => {
-            axios.get('easy/v1/driver/getDriverIdImage?driverId='+driverId+'&view='+view, {
+            axios.get('easy/v1/driver/getIdImage?driverId='+driverId+'&view='+view, {
                 responseType: 'blob',
             })
 
@@ -180,7 +180,7 @@ class CarService {
         })
         return await promise;
     }
-
+/*
     getDriverLicenseImage = async (driverId,view) =>{
         const promise = new Promise((resolve, reject) => {
             axios.get('easy/v1/driver/getLicenseImage?driverId='+driverId+'&view='+view, {
@@ -195,7 +195,7 @@ class CarService {
                 })
         })
         return await promise;
-    }
+    }*/
 
 
 
@@ -204,4 +204,4 @@ class CarService {
 
 
 }
-export default new CarService();
+export default new DriverService();

@@ -1,6 +1,8 @@
 package lk.ijse.spring.service.impl;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.DriverDTO;
+import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.entity.Driver;
 import lk.ijse.spring.repo.DriverRepo;
 import lk.ijse.spring.service.DriverService;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -60,12 +63,22 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public List<DriverDTO> getAllDrivers() {
-        List<Driver> all = driverRepo.findAll();
-        return mapper.map(all, new TypeToken<List<DriverDTO>>(){}.getType());
+        long count = driverRepo.count();
+        if (count != 0) {
+            List<Driver> all = driverRepo.findAll();
+            List<DriverDTO> allDrivers = new ArrayList<>();
+            for (Driver driver : all) {
+                allDrivers.add(mapper.map(driver, DriverDTO.class));
+            }
+
+            return allDrivers;
+        } else {
+            throw new RuntimeException("Driver Empty");
+        }
     }
 
     @Override
     public String generateDriverId() {
-        return driverRepo.generateDriverId();
+        return null;
     }
 }

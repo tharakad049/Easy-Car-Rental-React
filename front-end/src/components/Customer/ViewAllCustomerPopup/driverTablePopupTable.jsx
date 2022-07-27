@@ -45,29 +45,29 @@ const rows = [];
 
 function DriverPopUpTable(props) {
     const loadDriverDetails=async (driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address) =>{
-        let idFrontImage;
-        let idBackImage;
-        let licenseFrontImage;
-        let licenseBackImage;
+        let frontImage;
+        let backImage;
+        let sideImage;
+        let interiorImage;
 
-        let res1 = await driverService.getDriverIdImage(driverId,"IdFront");
+        let res1 = await driverService.getDriverIdImage(driverId,"Front");
         if (res1.status===200) {
-            idFrontImage=URL.createObjectURL(res1.data)
+            frontImage=URL.createObjectURL(res1.data)
         }
-        let res2 =  await driverService.getDriverIdImage(driverId,"IdBack");
+        let res2 =  await driverService.getDriverIdImage(driverId,"Back");
         if (res1.status===200) {
-            idBackImage=URL.createObjectURL(res2.data)
+            backImage=URL.createObjectURL(res2.data)
         }
-        let res3 = await driverService.getDriverLicenseImage(driverId,"LicenseFront");
+        let res3 = await driverService.getDriverIdImage(driverId,"Side");
         if (res1.status===200) {
-            licenseFrontImage=URL.createObjectURL(res3.data)
+            sideImage=URL.createObjectURL(res3.data)
         }
-        let res4 =  await driverService.getDriverLicenseImage(driverId,"LicenseBack");
+        let res4 =  await driverService.getDriverIdImage(driverId,"Interior");
         if (res1.status===200) {
-            licenseBackImage=URL.createObjectURL(res4.data)
+            interiorImage=URL.createObjectURL(res4.data)
         }
-        props.data.changeStateCarDetails( driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address,
-            idFrontImage, idBackImage, licenseFrontImage, licenseBackImage);
+        props.data.changeStateDriverDetails( driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address,
+            frontImage, backImage, sideImage, interiorImage);
 
     }
 
@@ -120,7 +120,7 @@ function DriverPopUpTable(props) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
-                        Car Details Table
+                        Driver Details Table
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
