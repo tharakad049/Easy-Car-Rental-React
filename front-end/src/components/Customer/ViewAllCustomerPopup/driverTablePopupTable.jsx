@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import carService from "../../../service/CarService";
+import driverService from "../../../service/DriverService";
 
 import {makeStyles} from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -17,22 +17,17 @@ import TablePagination from "@material-ui/core/TablePagination";
 
 
 const columns = [
-    {id: 'carId', label: "CarId", minWidth: 170},
-    {id: 'brand', label: "Brand", minWidth: 100},
-    {id: 'numOfp', label: 'Number Of Passenger', minWidth: 170, align: 'right'},
-    {id: 'TransType', label: "Transmission Type", minWidth: 170, align: 'right'},
-    {id: 'fuelType', label: 'Fuel Type', minWidth: 170, align: 'right'},
-    {id: 'regNum', label: 'Register Number', minWidth: 170, align: 'right'},
-    {id: 'color', label: 'Color', minWidth: 170, align: 'right'},
-    {id: 'priceDaily', label: 'Prices for the rent Daily', minWidth: 170, align: 'right'},
-    {id: 'priceMonthly', label: 'Prices for the rent monthly', minWidth: 170, align: 'right'},
-    {id: 'freeMileage', label: 'Free mileage', minWidth: 170, align: 'right'},
-    {id: 'pOfExtraKm', label: 'Price for extra KM', minWidth: 170, align: 'right'},
+    {id: 'driverId', label: "Id", minWidth: 170},
+    {id: 'driverEmail', label: "Email", minWidth: 100},
+    {id: 'contactNumber', label: 'Contact Number', minWidth: 170, align: 'right'},
+    {id: 'nicNumber', label: "Nic Number", minWidth: 170, align: 'right'},
+    {id: 'licenseNumber', label: 'License Number', minWidth: 170, align: 'right'},
+    {id: 'address', label: 'Address', minWidth: 170, align: 'right'},
 ];
 
-function createData(carId, brand, numOfp, TransType, fuelType, regNum, color, priceDaily, priceMonthly, freeMileage, pOfExtraKm) {
+function createData(driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address) {
     return {
-        carId, brand, numOfp, TransType, fuelType, regNum, color, priceDaily, priceMonthly, freeMileage, pOfExtraKm
+        driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address
     };
 }
 
@@ -48,46 +43,44 @@ const useStyles = makeStyles({
 const rows = [];
 
 
-function PopUpTable(props) {
-    const loadCarDetails=async (carId,brand, numOfp, TransType, fuelType, regNum, color,priceDaily,priceMonthly,freeMileage,pOfExtraKm) =>{
-        let frontImage;
-        let backImage;
-        let sideImage;
-        let interiorImage;
+function DriverPopUpTable(props) {
+    const loadDriverDetails=async (driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address) =>{
+        let idFrontImage;
+        let idBackImage;
+        let licenseFrontImage;
+        let licenseBackImage;
 
-        let res1 = await carService.getCarImage(carId,"Front");
+        let res1 = await driverService.getDriverIdImage(driverId,"IdFront");
         if (res1.status===200) {
-            frontImage=URL.createObjectURL(res1.data)
+            idFrontImage=URL.createObjectURL(res1.data)
         }
-        let res2 =  await carService.getCarImage(carId,"Back");
+        let res2 =  await driverService.getDriverIdImage(driverId,"IdBack");
         if (res1.status===200) {
-            backImage=URL.createObjectURL(res2.data)
+            idBackImage=URL.createObjectURL(res2.data)
         }
-        let res3 = await carService.getCarImage(carId,"Side");
+        let res3 = await driverService.getDriverLicenseImage(driverId,"LicenseFront");
         if (res1.status===200) {
-            sideImage=URL.createObjectURL(res3.data)
+            licenseFrontImage=URL.createObjectURL(res3.data)
         }
-        let res4 =  await carService.getCarImage(carId,"Interior");
+        let res4 =  await driverService.getDriverLicenseImage(driverId,"LicenseBack");
         if (res1.status===200) {
-            interiorImage=URL.createObjectURL(res4.data)
+            licenseBackImage=URL.createObjectURL(res4.data)
         }
-        props.data.changeStateCarDetails(carId, brand, numOfp, TransType,fuelType,regNum, color,
-            priceDaily, priceMonthly, freeMileage, pOfExtraKm, frontImage, backImage, sideImage, interiorImage);
+        props.data.changeStateCarDetails( driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address,
+            idFrontImage, idBackImage, licenseFrontImage, licenseBackImage);
 
     }
 
 
-    const getAllCars = async () => {
+    const getAllDrivers = async () => {
         rows.length=0;
-        let res = await carService.getAllCar();
+        let res = await driverService.getAllDrivers();
         if (res.data.code == 200) {
 
             var i = 0;
             for (let dataKey of res.data.data) {
-                rows[i] = createData(dataKey.carId, dataKey.brand, dataKey.numOfPassenger,
-                    dataKey.transmissionType, dataKey.fuelType, dataKey.registerNumber, dataKey.color,
-                    dataKey.priceOfRentDurationDaily,dataKey.priceOfRentDurationMonthly,
-                    dataKey.freeMileageForPriceAndDuration, dataKey.priceOfExtraKm)
+                rows[i] = createData(dataKey.driverId, dataKey.email, dataKey.contactNumber,
+                    dataKey.nicNumberAndPhoto, dataKey.drivingLicenseNumberAndPhoto, dataKey.address)
                 i++;
             }
             setShow(true);
@@ -113,10 +106,10 @@ function PopUpTable(props) {
             {/* <div>{props.data.unit}</div>*/}
 
             <Button variant="primary" onClick={() => {
-                getAllCars();
+                getAllDrivers();
 
             }}>
-                View All Cars
+                View All Drivers
             </Button>
             <Modal
                 size={"xl"}
@@ -157,7 +150,8 @@ function PopUpTable(props) {
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}
 
                                                       onClick={async () =>{
-                                                          await loadCarDetails(row.carId, row.brand, row.numOfp, row.TransType, row.fuelType, row.regNum, row.color, row.priceDaily, row.priceMonthly, row.freeMileage, row.pOfExtraKm)
+                                                          await loadDriverDetails(row.driverId, row.driverEmail, row.contactNumber, row.nicNumber,
+                                                          row.licenseNumber, row.address)
 
                                                           setShow(false)
                                                       }
@@ -194,4 +188,4 @@ function PopUpTable(props) {
     );
 }
 
-export default PopUpTable;
+export default DriverPopUpTable;

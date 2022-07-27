@@ -7,8 +7,8 @@ import AdminNavBar from "../../../components/admin/NavBar/index";
 import Divider from "@material-ui/core/Divider";
 import Input from "@material-ui/core/Input";
 import DriverService from "../../../service/DriverService";
-import ViewAllCarPopUpTable from "../../../components/admin/ViewAllCarTablePopup/carTablePopup";
 import CarService from "../../../service/CarService";
+import ViewAllDriverPopUpTable from "../../../components/Customer/ViewAllCustomerPopup/driverTablePopupTable";
 
 class ManageDriver extends Component {
     constructor(props) {
@@ -436,7 +436,7 @@ class ManageDriver extends Component {
                         </div>
 
                         <div className={classes.clearButton_Container}>
-                            <ViewAllCarPopUpTable data={{changeStateCarDetails:this.changeStateCarDetails.bind(this)}}/>
+                            <ViewAllDriverPopUpTable data={{changeStateCarDetails:this.changeStateCarDetails.bind(this)}}/>
 
                             <Button variant="outlined" style={{color : 'back' , width : '95%'}}>Clear All</Button>
                         </div>
