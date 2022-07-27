@@ -49,7 +49,7 @@ public class CarController {
     @PostMapping(path = "addCar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO car){
         carService.saveCar(car);
-        return new ResponseUtil(200, "Saved", null);
+        return new ResponseUtil(200, "Car Added Successfully", null);
     }
 
     @SneakyThrows
@@ -75,7 +75,8 @@ public class CarController {
     }
 
     @GetMapping(path = "getCarImage" , produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<?> getCarImage(@RequestBody ImageDTO imageDTO){
+    public ResponseEntity<?> getCarImage(@RequestParam String carId, String view){
+        ImageDTO imageDTO = new ImageDTO(carId, "car", view);
         Resource fileAsResource = fileDownloadUtil.getFileAsResource(imageDTO);
 
         if (fileAsResource==null){
@@ -93,10 +94,10 @@ public class CarController {
     }
 
     @SneakyThrows
-    @PutMapping(path = "updateCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "updateCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile , @RequestParam("carId") String carId ,@RequestParam("view") String view){
 
-        String pathDirectory = "E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\CarImage";
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\CarImage\\";
         if (searchFileUtil.searchFile(pathDirectory,carId+view+".jpeg")){
             Files.copy(multipartFile.getInputStream(),Paths.get(pathDirectory+File.separator+carId+view+".jpeg"),StandardCopyOption.REPLACE_EXISTING);
             return new ResponseUtil(200,"car Image Updated",null);
@@ -114,7 +115,7 @@ public class CarController {
     @SneakyThrows
     @DeleteMapping(path = "deleteCarImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCarAllImages(@RequestParam String carId){
-        String pathDirectory = "E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\CarImage";
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\CarImage\\";
         String [] carImageView={"Front","Back","Side","Interior"};
 
         for (int i=0; i<carImageView.length; i++){
@@ -123,8 +124,6 @@ public class CarController {
 
         return new ResponseUtil(200,"car Delete success",null);
     }
-
-
 
     @GetMapping(path = "viewRentalRequest", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil viewRentalRequest(){

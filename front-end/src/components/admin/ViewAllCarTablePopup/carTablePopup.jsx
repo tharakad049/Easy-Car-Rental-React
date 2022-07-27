@@ -48,18 +48,46 @@ const useStyles = makeStyles({
 const rows = [];
 
 
-export default function ViewAllCarPopUpTable(props) {
-    console.log()
+function PopUpTable(props) {
+    const loadCarDetails=async (carId,brand, numOfp, TransType, fuelType, regNum, color,priceDaily,priceMonthly,freeMileage,pOfExtraKm) =>{
+        let frontImage;
+        let backImage;
+        let sideImage;
+        let interiorImage;
+
+        let res1 =  carService.getCarImage(carId,"Front");
+        if (res1.status===200) {
+            frontImage=URL.createObjectURL(res1.data)
+        }
+        let res2 =  carService.getCarImage(carId,"Back");
+        if (res1.status===200) {
+            backImage=URL.createObjectURL(res2.data)
+        }
+        let res3 =  carService.getCarImage(carId,"Side");
+        if (res1.status===200) {
+            sideImage=URL.createObjectURL(res3.data)
+        }
+        let res4 =   carService.getCarImage(carId,"Interior");
+        if (res1.status===200) {
+            interiorImage=URL.createObjectURL(res4.data)
+        }
+        props.data.changeStateCarDetails(carId, brand, numOfp, TransType,fuelType,regNum, color,
+            priceDaily, priceMonthly, freeMileage, pOfExtraKm, frontImage, backImage, sideImage, interiorImage);
+
+    }
+
+
     const getAllCars = async () => {
+        rows.length=0;
         let res = await carService.getAllCar();
         if (res.data.code == 200) {
 
             var i = 0;
             for (let dataKey of res.data.data) {
                 rows[i] = createData(dataKey.carId, dataKey.brand, dataKey.numOfPassenger,
-                    dataKey.transmissionType, dataKey.fuelType, dataKey.priceOfRentDurationDaily,
-                    dataKey.priceOfRentDurationMonthly, dataKey.freeMileageForPriceAndDuration, dataKey.priceOfExtraKm,
-                    dataKey.registerNumber, dataKey.color)
+                    dataKey.transmissionType, dataKey.fuelType, dataKey.registerNumber, dataKey.color,
+                    dataKey.priceOfRentDurationDaily,dataKey.priceOfRentDurationMonthly,
+                    dataKey.freeMileageForPriceAndDuration, dataKey.priceOfExtraKm)
                 i++;
             }
             setShow(true);
@@ -86,6 +114,7 @@ export default function ViewAllCarPopUpTable(props) {
 
             <Button variant="primary" onClick={() => {
                 getAllCars();
+
             }}>
                 View All Cars
             </Button>
@@ -98,7 +127,7 @@ export default function ViewAllCarPopUpTable(props) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
-                        Custom Modal Styling
+                        Car Details Table
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -127,15 +156,12 @@ export default function ViewAllCarPopUpTable(props) {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}
 
-                                                      onClick={() => {
-
-                                                          props.data.changeStateCarDetails(row.carId, row.brand, row.numOfPassenger, row.TransType,
-                                                              row.fuelType, row.regNum, row.color, row.priceDaily, row.priceMonthly,
-                                                              row.freeMileage, row.pOfExtraKm);
+                                                      onClick={async () =>{
+                                                             await loadCarDetails(row.carId, row.brand, row.numOfp, row.TransType, row.fuelType, row.regNum, row.color, row.priceDaily, row.priceMonthly, row.freeMileage, row.pOfExtraKm)
 
                                                           setShow(false)
                                                       }
-                                                      }
+                                                 }
                                             >
                                                 {columns.map((column) => {
                                                     const value = row[column.id];
@@ -167,3 +193,5 @@ export default function ViewAllCarPopUpTable(props) {
         </div>
     );
 }
+
+export default PopUpTable;

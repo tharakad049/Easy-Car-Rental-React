@@ -6,6 +6,7 @@ import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.service.CustomerService;
 import lk.ijse.spring.util.ResponseUtil;
+import lk.ijse.spring.util.SearchFileUtil;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,39 +29,59 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    SearchFileUtil searchFileUtil;
+
+
+
+
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "addCustomer",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCustomer(RegisterCustomerDTO registerCustomerDTO) {
         customerService.saveCustomer(registerCustomerDTO);
-        return new ResponseUtil(200, "Save", null);
+        return new ResponseUtil(200, "Customer Added Successfully", null);
+    }
+    @PutMapping(path = "updateCustomer" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCustomer(CustomerDTO customer) {
+        customerService.updateCustomer(customer);
+        return new ResponseUtil(200, "Updated", null);
+    }
+    @DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteCustomer(String id) {
+        customerService.deleteCustomer(id);
+        return new ResponseUtil(200, "Deleted", null);
     }
 
-/*    @PostMapping(path = "addCustomerImage",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil addCustomerImage(@RequestParam ("file") MultipartFile multipartFile){
-        String pathDirectory = "E:\\Car Rental System\\CarRentalSystem\\src\\main\\resources\\static";
-        Files.copy(multipartFile.getInputStream(), Paths.get( pathDirectory+ File.separator+multipartFile.getOriginalFilename()) , StandardCopyOption.REPLACE_EXISTING);
-        return new ResponseUtil(200,"Driver image complete",null);
-    }*/
+
+
+
+    //-----------------------------------------------------------------------------------------------------------------
+
+
+
 
     @SneakyThrows
-    @PostMapping(path = "uploadIdImage")
-    public ResponseUtil uploadCustomerIDImage(@RequestParam("ID") MultipartFile multipartFiles, @RequestParam String cusId) {
+    @PostMapping(path = "uploadIdImage", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil uploadCustomerIDImage(@RequestParam("ID")  MultipartFile[] multipartFile, @RequestParam String cusId) {
 
         String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
-        String imageName = cusId + "ID_CARD" + ".jpeg";
-        Files.copy(multipartFiles.getInputStream(), Paths.get(pathDirectory + File.separator + imageName), StandardCopyOption.REPLACE_EXISTING);
 
+        String [] customerIdImageView={"Front","Back","Front","Back"};
+        for (int i = 0; i < multipartFile.length; i++) {
+            String[] split=multipartFile[i].getContentType().split("/");
+
+            if (split[1].equals("jpeg") || split[1].equals("png")){
+                String imageName=cusId+customerIdImageView[i]+".jpeg";
+                Files.copy(multipartFile[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+                //fileUploadUtil.saveFile(pathDirectory+imageName , multipartFile[i]);
+
+            }else {
+                return new ResponseUtil(404,"please..  must be Car images type  jpeg or png",null);
+            }
+        }
         return new ResponseUtil(200, "ID_CARD image added success..", null);
     }
 
-
-    @GetMapping(path = "getCustomerImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getCustomerIdImage(@RequestParam String name) {
-        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
-        Path path = Paths.get(pathDirectory + File.separator + name);
-        return new ResponseUtil(200, "Customer id image return complete", path);
-
-    }
 
     @SneakyThrows
     @PostMapping(path = "uploadLicenceImage")
@@ -73,6 +94,25 @@ public class CustomerController {
         return new ResponseUtil(200,"Licence_Card image added success..",null);
     }
 
+
+
+
+    //-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    @GetMapping(path = "getCustomerImage", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerIdImage(@RequestParam String name) {
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
+        Path path = Paths.get(pathDirectory + File.separator + name);
+        return new ResponseUtil(200, "Customer id image return complete", path);
+
+    }
+
+
+
     @GetMapping(path = "getCustomerLicenceImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getCustomerLicenceImage(@RequestParam String name) {
         String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\LicenseImage";
@@ -84,17 +124,36 @@ public class CustomerController {
 
 
 
-    @DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteCustomer(String id) {
-        customerService.deleteCustomer(id);
-        return new ResponseUtil(200, "Deleted", null);
+
+  //---------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+    @SneakyThrows
+    @PostMapping(path = "updateCustomerIdCardImage",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCustomerImage(@RequestParam(value = "customerImage") MultipartFile multipartFile , @RequestParam("cusId") String cusId ,@RequestParam("view") String view){
+
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
+        if (searchFileUtil.searchFile(pathDirectory,cusId+view+".jpeg")){
+            Files.copy(multipartFile.getInputStream(),Paths.get(pathDirectory+File.separator+cusId+view+".jpeg"),StandardCopyOption.REPLACE_EXISTING);
+            return new ResponseUtil(200,"car Image Updated",null);
+        }
+        return new ResponseUtil(200,"car Image Fail",null);
     }
 
-    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCustomer(CustomerDTO customer) {
-        customerService.updateCustomer(customer);
-        return new ResponseUtil(200, "Updated", null);
-    }
+
+
+
+
+
+    //--------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCustomer(String id) {
