@@ -9,12 +9,16 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import AlertDialog from "../../../components/Customer/AlertDilog";
 import TextField from '@material-ui/core/TextField';
 import Box from "@material-ui/core/Box";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 
 function RegisterCustomer(props) {
     const [show, setShow] = useState(false);
-    const [createAccHide,setCreateAccHide]=useState('block')
-    const [customerDetailsHide,setCustomerDetailsHide]=useState('none')
+    const [createAccDisplay,setCreateAccDisplay]=useState('block')
+    const [customerDetailsDisplay,setCustomerDetailsDisplay]=useState('none')
+    const [imageVerifyDisplay,setImageVerifyDisplay]=useState('none')
+    const [btn1Display,setBtn1Display]=useState('block')
+    const [btn2Display,setBtn2Display]=useState('none')
 
     const ValidationTextField = withStyles({
         root: {
@@ -41,8 +45,11 @@ function RegisterCustomer(props) {
     const handleShow = () => setShow(true);
 
     const hadleForm=() =>{
-        setCreateAccHide('block')
-        setCustomerDetailsHide('none')
+        setCreateAccDisplay('block')
+        setCustomerDetailsDisplay('none')
+        setImageVerifyDisplay('none')
+        setBtn2Display("none")
+        setBtn1Display('block')
     }
 
     const {classes} = props;
@@ -63,12 +70,12 @@ function RegisterCustomer(props) {
                 keyboard={false}
             >
                 <Modal.Header >
-                    <Modal.Title><b>Eacy Car Rental Syatem REGISTER Form</b></Modal.Title>
+                    <Modal.Title><b>Easy Car Rental System REGISTER Form</b></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
                     <div  className={classes.registerContainer}>
-                        <div style={{display : createAccHide}} className={classes.createUserAccountContainer}>
+                        <div style={{display : createAccDisplay}} className={classes.createUserAccountContainer}>
                             <div className={classes.userHeaderContainer}></div>
                             <div className={classes.textFieldContainer}>
                                 <div style={{ width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
@@ -114,8 +121,203 @@ function RegisterCustomer(props) {
 
                         </div>
 
-                        <div style={{display : customerDetailsHide}} className={classes.createUserAccountContainer}>Hello There</div>
+                        <div style={{display : customerDetailsDisplay}} className={classes.createUserAccountContainer}>
+                            <div className={classes.textFieldContainerCustomerDetails}>
 
+                                <div style={{ width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
+                                    <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                        Email
+                                    </Box>
+                                    <ValidationTextField
+                                        style={{width : '97.5%'}}
+                                        className={classes.margin}
+                                        placeholder={"Enter the Email"}
+                                        size={'small'}
+                                        variant="outlined"
+                                        id="validation-outlined-input"
+                                    />
+                                </div>
+
+                                <div style={{width : '100%' , height : '120px' , display : 'flex', flexDirection :'row' ,justifyContent : 'space-evenly'}}>
+                                    <div style={{width : '50%' , height : '100%' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-around' }}>
+                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                            Licence Or NIC Number
+                                        </Box>
+                                        <ValidationTextField
+                                            style={{width: '93%'}}
+                                            className={classes.margin}
+                                            placeholder={"Enter"}
+                                            size={'small'}
+                                            variant="outlined"
+                                            id="validation-outlined-input"
+                                        />
+                                    </div>
+                                    <div style={{width : '50%' , height : '100%' , display : 'flex', flexDirection :'column',justifyContent : 'space-around'}}>
+                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                            Licence Or NIC Number
+                                        </Box>
+                                        <Autocomplete
+                                            size={'small'}
+                                            id="combo-box-demo"
+                                            options={[{title: 'Driving Licence'}, {title: 'NIC Number'}]}
+                                            getOptionLabel={(option) => option.title}
+                                            style={{width: 200}}
+                                            renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
+                                            onChange={(event, value) => {
+                                                switch (value.title) {
+                                                    case "NIC Number" :
+                                                        let data1 = this.state.customerDerails.drivingLicence='';
+                                                        this.setState({data1, TextLabel: "NIC NUMBER",});break;
+
+                                                    case  "Driving Licence" :
+                                                        let data2 = this.state.customerDerails.nic='';
+                                                        this.setState({data2, TextLabel: "Driving Licence",});break;
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
+                                    <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                        RE ENTER PASSWORD
+                                    </Box>
+                                    <ValidationTextField
+                                        style={{width : '97.5%'}}
+                                        className={classes.margin}
+                                        placeholder={"Re Enter password"}
+                                        size={'small'}
+                                        variant="outlined"
+                                        id="validation-outlined-input"
+                                    />
+                                </div>
+                                <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
+                                    <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                        RE ENTER PASSWORD
+                                    </Box>
+                                    <ValidationTextField
+                                        style={{width : '97.5%'}}
+                                        className={classes.margin}
+                                        placeholder={"Re Enter password"}
+                                        size={'small'}
+                                        variant="outlined"
+                                        id="validation-outlined-input"
+                                    />
+                                </div>
+                                <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
+                                    <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                        RE ENTER PASSWORD
+                                    </Box>
+                                    <ValidationTextField
+                                        style={{width : '97.5%'}}
+                                        className={classes.margin}
+                                        placeholder={"Re Enter password"}
+                                        size={'small'}
+                                        variant="outlined"
+                                        id="validation-outlined-input"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{display : imageVerifyDisplay , }}  className={classes.createUserAccountContainer}>
+                            <div className={classes.textContainer}>
+                                <Box fontWeight="fontWeightMedium" m={1}>
+                                    Select Your Ornrebility
+                                </Box>
+                            </div>
+                            <div className={classes.comboBoxContainer}>
+                                <Autocomplete
+                                    size={"small"}
+                                    id="combo-box-demo"
+                                    options={[{title: 'Driving Licence'}, {title: 'NIC Number'}]}
+                                    getOptionLabel={(option) => option.title}
+                                    style={{width: 300}}
+                                    renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
+                                    onChange={(event, value) => {
+
+                                        switch (value.title) {
+                                            case "NIC Number" :
+                                                let data1 = this.state.customerDerails.nic='';
+                                                this.setState({
+                                                    data1,
+                                                    TextLabel: "NIC NUMBER",
+
+                                                });break;
+                                            case  "Driving Licence" :
+                                                let data2 = this.state.customerDerails.drivingLicence='';
+                                                this.setState({
+                                                    data2,
+                                                    TextLabel: "Driving Licence",
+                                                });break;
+                                        }
+                                        console.log(value.title)
+                                    }}
+                                />
+
+                            </div>
+                            <div  className={classes.ImageVerifyContainer}>
+                                <div className={classes.imageCover}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow : '5px 5px 10px 1.5px',
+                                        height: '85%',
+                                        width: '48%',
+                                        /*   backgroundImage: "url(" + this.state.IDFrontView + ")",*/
+                                        backgroundSize: 'cover'
+                                    }}>
+                                    </div>
+
+                                    <div  style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow : '5px 5px 10px 1.5px',
+                                        height: '85%',
+                                        width: '48%',
+                                        /*        backgroundImage: "url(" + this.state.IDBackView + ")",*/
+                                        backgroundSize: 'cover'
+                                    }}>
+                                    </div>
+
+                                </div>
+                                <div className={classes.browsButtonContainer}>
+                                    <input
+                                        style={{display: 'none'}}
+                                        accept="image/*"
+                                        className={classes.input}
+                                        id="contained-button-file02"
+                                        multiple
+                                        type="file"
+                                        />
+
+                                    <label htmlFor="contained-button-file02">
+                                        <ReactButton variant="contained" color="primary" component="span">
+                                            Upload Image
+                                        </ReactButton>
+                                    </label>
+
+
+                                    <input
+                                        style={{display: 'none'}}
+                                        accept="image/*"
+                                        className={classes.input}
+                                        id="contained-button-file02"
+                                        multiple
+                                        type="file"
+                                    />
+
+                                    <label htmlFor="contained-button-file02">
+                                        <ReactButton variant="contained" color="primary" component="span">
+                                            Upload Image
+                                        </ReactButton>
+                                    </label>
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </Modal.Body>
@@ -123,10 +325,20 @@ function RegisterCustomer(props) {
 
                     <AlertDialog data={{setStateRegisterForm : handleClose.bind(),setCreateAccHide : hadleForm.bind()}}/>
 
-                    <Button variant="primary"
+                    <Button style={{display : btn1Display}} variant="primary"
                             onClick={() =>{
-                                setCreateAccHide('none')
-                                setCustomerDetailsHide('block')
+                                setCreateAccDisplay('none')
+                                setCustomerDetailsDisplay('block')
+                                setBtn1Display('none')
+                                setBtn2Display('block')
+                            }}
+                    >Next Step</Button>
+                    <Button style={{display : btn2Display , color : 'green'}}  variant="primary"
+                            onClick={() =>{
+                                setCreateAccDisplay('none')
+                                setCustomerDetailsDisplay('none')
+                                setImageVerifyDisplay('block')
+
                             }}
                     >Next Step</Button>
                 </Modal.Footer>

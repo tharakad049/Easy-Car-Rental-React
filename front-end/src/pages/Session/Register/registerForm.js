@@ -2,7 +2,7 @@ export const styleSheet={
 
     registerContainer : {
         width : '100%',
-        height : '300px',
+        height : '350px',
     },
     createUserAccountContainer : {
         width: '100%',
@@ -33,5 +33,63 @@ export const styleSheet={
         width : '100%',
         height : '35%',
         backgroundColor : '#4a67e8'
+    },
+    textFieldContainerCustomerDetails: {
+        /*  marginLeft : '55px',*/
+        height : '100%',
+        width : '90%',
+        display : 'flex',
+        flexDirection : 'column',
+        /*  backgroundColor: 'green',*/
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    ImageVerifyContainer : {
+        height : '70%',
+        width : '100%',
+        display : 'flex',
+        flexDirection : 'column',
+        /*  backgroundColor: 'green',*/
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    textContainer : {
+        height : '15%',
+        width : '100%',
+        display : 'flex',
+        flexDirection : 'row',
+        backgroundColor: 'red',
+        alignItems : 'center',
+        justifyContent : 'center'
+    },
+
+    comboBoxContainer : {
+        marginTop : "10px",
+        height : '15%',
+        width : '100%',
+        display : 'flex',
+        alignItems :'center',
+        justifyContent : 'center',
+        backgroundColor : 'white'
+    },
+
+    imageCover : {
+        height : '70%',
+        width : '100%',
+        display : 'flex',
+        flexDirection : 'row',
+        /*   backgroundColor: 'green',*/
+        alignItems : 'center',
+        justifyContent : 'space-evenly'
+    },
+
+    browsButtonContainer : {
+        display : 'flex',
+        width : '100%',
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'space-around'
     }
 }
