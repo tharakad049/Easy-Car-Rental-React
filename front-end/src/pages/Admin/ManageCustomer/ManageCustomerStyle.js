@@ -67,7 +67,7 @@ export const styleSheet = {
 
     },
     formDividerText2Container: {
-        height: '5%',
+        height: '10%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -78,6 +78,7 @@ export const styleSheet = {
         height: '28%',
         backgroundColor: '#212020',
         display: 'flex',
+        borderRadius: '100px',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'

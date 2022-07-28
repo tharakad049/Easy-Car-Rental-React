@@ -13,6 +13,7 @@ class CustomerNavBar extends Component {
                 <div className="logoWrapper">
                     <span className="stylish">EASY</span>
                     <span className="logo">CAR RENTAL</span>
+                    <img />
                 </div>
                 <ul className="navigation">
                     <li className="parent"><a className="link" href="#">Home</a></li>

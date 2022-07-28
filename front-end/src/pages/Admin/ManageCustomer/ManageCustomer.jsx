@@ -8,8 +8,8 @@ import Input from "@material-ui/core/Input";
 import FormGroup from "@material-ui/core/FormGroup";
 import CustomerService from "../../../service/CustomerService";
 import TextField from "@material-ui/core/TextField";
-import ViewAllCarPopUpTable from "../../../components/admin/ViewAllCarTablePopup/carTablePopup";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import CustomerNavBar from "../../../components/Customer/NavBar";
 
 class ManageCustomer extends Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class ManageCustomer extends Component {
                 password : '',
             },
 
-            TextLabel: 'DRIVING LICENCE OR NIC NUMBER'
+            TextLabel: 'Driving license or nic number'
         }
     }
 
@@ -52,11 +52,10 @@ class ManageCustomer extends Component {
 
 
         let res = await CustomerService.registerCustomer(customerDetails);
-        if (res.data.code == 200) {
+        if (res.code != 'ERR_BAD_REQUEST') {
             alert(res.data.message);
-
         } else {
-            alert(res.data.message);
+            alert(res.response.data.message);
         }
     }
 
@@ -64,7 +63,7 @@ class ManageCustomer extends Component {
         const {classes} = this.props;
         return (
             <div className={classes.mainContainer}>
-                <AdminNavBar/>
+                <CustomerNavBar/>
                 <div className={classes.state_Bar_container}></div>
                 <div className={classes.form_Container}>
                     <div className={classes.form_backGround}>
@@ -79,42 +78,39 @@ class ManageCustomer extends Component {
 
                         <div className={classes.formTextFieldContainer}>
 
-                            <Input placeholder="Customer Id" type="text" value={this.state.customerDerails.id}
+                            <TextField  size={"small"} label="Customer ID" id="outlined-required" variant="outlined" value={this.state.customerDerails.id}
                                    onChange={(e) => {
                                        let data = this.state.customerDerails
                                        data.id = e.target.value
                                        this.setState({ data })
                                    }}/>
-                            <Input placeholder="Email" type="text" value={this.state.customerDerails.email}
+
+                            <TextField  size={"small"} label="Customer Email" id="outlined-required" variant="outlined" value={this.state.customerDerails.email}
                                    onChange={(e) => {
                                        let data = this.state.customerDerails
                                        data.email = e.target.value
                                        this.setState({ data })
                                    }}/>
 
-                            <Input placeholder="User Name" type="text"
-                                   value={this.state.customerDerails.userName}
+                            <TextField  size={"small"} label="Customer User Name" id="outlined-required" variant="outlined" value={this.state.customerDerails.userName}
                                    onChange={(e) => {
                                        let data = this.state.customerDerails
                                        data.userName = e.target.value
                                        this.setState({ data })
                                    }}/>
-                            <Input placeholder="Password" type="text"
-                                   value={this.state.customerDerails.password}
+                            <TextField  size={"small"} label="Customer Password" id="outlined-required" variant="outlined" value={this.state.customerDerails.password}
                                    onChange={(e) => {
                                        let data = this.state.customerDerails
                                        data.password = e.target.value
                                        this.setState({ data })
                                    }}/>
-                            <Input placeholder="Address" type="text"
-                                   value={this.state.customerDerails.address}
+                            <TextField  size={"small"} label="Customer Address" id="outlined-required" variant="outlined" value={this.state.customerDerails.address}
                                    onChange={(e) => {
                                        let data = this.state.customerDerails
                                        data.address = e.target.value
                                        this.setState({ data })
                                    }}/>
-                            <Input placeholder="Contact Number" type="text"
-                                   value={this.state.customerDerails.contactNum}
+                            <TextField  size={"small"} label="Customer Contact Number" id="outlined-required" variant="outlined" value={this.state.customerDerails.contactNum}
                                    onChange={(e) => {
                                        let data = this.state.customerDerails
                                        data.contactNum = e.target.value
@@ -122,6 +118,7 @@ class ManageCustomer extends Component {
                                    }}/>
 
                             <Autocomplete
+                                size={"small"}
                                 id="combo-box-demo"
                                 options={[{title: 'Driving Licence'}, {title: 'NIC Number'}]}
                                 getOptionLabel={(option) => option.title}
@@ -131,14 +128,14 @@ class ManageCustomer extends Component {
 
                                     switch (value.title) {
                                         case "NIC Number" :
-                                            let data1 = this.state.customerDerails.drivingLicence='';
+                                            let data1 = this.state.customerDerails.nic='';
                                             this.setState({
                                                 data1,
                                                 TextLabel: "NIC NUMBER",
 
                                             });break;
                                         case  "Driving Licence" :
-                                            let data2 = this.state.customerDerails.nic='';
+                                            let data2 = this.state.customerDerails.drivingLicence='';
                                             this.setState({
                                                 data2,
                                                 TextLabel: "Driving Licence",
@@ -147,8 +144,7 @@ class ManageCustomer extends Component {
                                     console.log(value.title)
                                 }}
                             />
-                            <TextField id="outlined-basic" label={this.state.TextLabel}
-                                       variant="outlined"
+                            <TextField size={"small"} id="outlined-required" variant="outlined"  label={this.state.TextLabel} variant="outlined"
                                        onChange={(e) => {
                                            switch (this.state.TextLabel) {
                                                case "NIC NUMBER" :

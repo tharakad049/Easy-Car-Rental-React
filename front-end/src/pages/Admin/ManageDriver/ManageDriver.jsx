@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Input from "@material-ui/core/Input";
 import DriverService from "../../../service/DriverService";
 import CarService from "../../../service/CarService";
-import ViewAllDriverPopUpTable from "../../../components/Customer/ViewAllCustomerPopup/driverTablePopupTable";
+import ViewAllDriverPopUpTable from "../../../components/Driver/ViewAllDriverPopup/driverTablePopupTable";
 
 class ManageDriver extends Component {
     constructor(props) {

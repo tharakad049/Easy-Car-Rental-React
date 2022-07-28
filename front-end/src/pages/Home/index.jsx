@@ -11,6 +11,7 @@ import aboutImg from  "../../assets/images/d2.jpeg";
 import aboutImg1 from  "../../assets/images/7312319-volvo_xc60.jpg";
 import carData from "../../assets/CarData/carData";
 import CarItem from "./CarItem";
+import RegisterCustomer from "../Session/Register/register";
 
 const quickLinks = [
     {
@@ -87,9 +88,12 @@ class HomePage extends Component {
                                     <Link to="#" className=" d-flex align-items-center gap-1">
                                         <i className="ri-login-circle-line"></i> Login
                                     </Link>
-                                    <Link to="#" className=" d-flex align-items-center gap-1">
+
+                                    <RegisterCustomer/>
+                      {/*              <Link to="#" className=" d-flex align-items-center gap-1">
                                         <i className="ri-user-line"></i> Register
-                                    </Link>
+
+                                    </Link>*/}
                                 </div>
                             </Col>
                         </Row>
@@ -182,7 +186,7 @@ class HomePage extends Component {
                         <div className="slider__item slider__item-01 mt0">
                             <Container>
                                 <div className="slider__content ">
-                                    <h2 className="text-light mb-3">SUPER DEAL NEED CAR?</h2>
+                                    <h3 className="text-light mb-3">SUPER DEAL NEED CAR?</h3>
                                     <h1 className="text-light mb-4">CAR FOR RENT NOW</h1>
                                     <h1 className="text-light mb-4">LOWEST ONE WAY CAR RENTAL </h1>
 

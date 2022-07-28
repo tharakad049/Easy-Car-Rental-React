@@ -40,6 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CarRepo carRepo;
 
+    @Transactional
     @Override
     public void saveCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO) {
         if (!customerRepo.existsById(registerCustomerDTO.getCusId())) {

@@ -7,12 +7,13 @@ import CustomerNavBar from "../../components/Customer/NavBar";
 import ManageCustomer from "../Admin/ManageCustomer/ManageCustomer";
 import ManageDriver from "../Admin/ManageDriver/ManageDriver";
 import RentalRequest from "../Admin/RentalRequest/RentalRequest";
+import RegisterCustomer from "../Session/Register/register";
 
 
 const Layout = () => {
   return (
     <Fragment className="container-fluid">
-      {/*<HomePage />*/}   <ManageCustomer/>
+      {/*<HomePage />*/}   <HomePage/>
 {/*     <Login/>*/}{/* <AdminNavBar/>*/}
 {/*   <Register/>*/}
     </Fragment>
