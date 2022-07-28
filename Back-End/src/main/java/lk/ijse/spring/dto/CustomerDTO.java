@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -12,12 +13,11 @@ import java.time.LocalDate;
 @Data
 @ToString
 public class CustomerDTO {
+    @Id
     private String cusId;
     private String email;
-    private LocalDate registeredDate;
-    private String customerName;
-    private String nicNumberAndPhoto;
-    private String drivingLicenseNumberAndPhoto;
+    private String nicNumber;
+    private String drivingLicenseNumber;
     private String address;
     private String contactNumber;
 }

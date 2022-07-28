@@ -70,3 +70,61 @@ class CustomerService {
     }
 }
 export default new CustomerService();*/
+import  axios from "../axios";
+
+class CustomerService {
+
+    registerCustomer= async (data) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/customer/addCustomer',data)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    uploadImageCustomerNIC= async (dataFile,cusID) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/customer/uploadIdImage?cusId'+cusID,dataFile)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    uploadImageCustomerDrivingLicence= async (dataFile,cusID) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/customer/uploadLicenceImage?cusId'+cusID,dataFile)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+
+
+
+
+
+
+
+}
+
+export default new CustomerService();

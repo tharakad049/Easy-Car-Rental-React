@@ -65,24 +65,14 @@ public class CustomerController {
 
     @SneakyThrows
     @PostMapping(path = "uploadIdImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadCustomerIDImage(@RequestParam("ID")  MultipartFile[] multipartFile, @RequestParam String cusId) {
+    public ResponseUtil uploadCustomerIDImage(@RequestParam("ID")  MultipartFile multipartFile, @RequestParam String cusId) {
 
         String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
 
-        String [] customerIdImageView={"Front","Back","Front","Back"};
-        for (int i = 0; i < multipartFile.length; i++) {
-            String[] split=multipartFile[i].getContentType().split("/");
+        String imageName=cusId+"ID_CARD"+".jpeg";
+        Files.copy(multipartFile.getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
 
-            if (split[1].equals("jpeg") || split[1].equals("png")){
-                String imageName=cusId+customerIdImageView[i]+".jpeg";
-                Files.copy(multipartFile[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
-                //fileUploadUtil.saveFile(pathDirectory+imageName , multipartFile[i]);
-
-            }else {
-                return new ResponseUtil(404,"please..  must be Car images type  jpeg or png",null);
-            }
-        }
-        return new ResponseUtil(200, "ID_CARD image added success..", null);
+        return new ResponseUtil(200,"ID_CARD image added success..",null);
     }
 
 

@@ -3,6 +3,7 @@ package lk.ijse.spring.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,14 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
+@ToString
 public class Customer {
     @Id
     private String cusId;
     private String email;
-    private LocalDate registeredDate;
-    private String customerName;
-    private String nicNumberAndPhoto;
-    private String drivingLicenseNumberAndPhoto;
+    private String nicNumber;
+    private String drivingLicenseNumber;
     private String address;
     private String contactNumber;
 
