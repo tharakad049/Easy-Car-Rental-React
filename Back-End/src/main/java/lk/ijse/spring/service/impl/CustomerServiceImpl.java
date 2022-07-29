@@ -40,6 +40,24 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CarRepo carRepo;
 
+    @Override
+    public void existUserCustomerAccount(String userName){
+
+        boolean b = customerUserAccountRepo.existsById(userName);
+        if (b==true){
+            throw new RuntimeException("User Account Already Exist");
+        }
+    }
+
+    @Override
+    public void existEmail(String email) {
+        String s = customerRepo.existsByEmail(email);
+        if (s!=null){
+            throw new RuntimeException("Email Already Exist");
+        }
+    }
+
+
     @Transactional
     @Override
     public void saveCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO) {

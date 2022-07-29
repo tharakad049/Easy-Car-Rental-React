@@ -32,8 +32,17 @@ public class CustomerController {
     @Autowired
     SearchFileUtil searchFileUtil;
 
+    @GetMapping(path = "ifExistEmail")
+    public ResponseUtil ifExistEmail(@RequestParam String email){
+        customerService.existEmail(email);
+        return new ResponseUtil(200,"Email Checked OK",null);
+    }
 
-
+    @GetMapping(path = "ifExistUserAccount")
+    public ResponseUtil ifExistUserAccount(@RequestParam String userName){
+        customerService.existUserCustomerAccount(userName);
+        return new ResponseUtil(200,"User Account Free",null);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "addCustomer",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,8 +50,6 @@ public class CustomerController {
         customerService.saveCustomer(registerCustomerDTO);
         return new ResponseUtil(200, "Customer Added Successfully", null);
     }
-
-
 
     @PutMapping(path = "updateCustomer" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCustomer(CustomerDTO customer) {

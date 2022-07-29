@@ -117,14 +117,32 @@ class CustomerService {
     }
 
 
+    ifExistCustomerUserAccount= async (userName) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/customer/ifExistUserAccount?userName='+userName)
 
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+    ifExistEmail= async (email) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/customer/ifExistEmail?email='+email)
 
-
-
-
-
-
-
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
 }
 
 export default new CustomerService();

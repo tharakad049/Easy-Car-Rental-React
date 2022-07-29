@@ -10,6 +10,7 @@ import AlertDialog from "../../../components/Customer/AlertDilog";
 import TextField from '@material-ui/core/TextField';
 import Box from "@material-ui/core/Box";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import customerService from "../../../service/CustomerService";
 
 
 function RegisterCustomer(props) {
@@ -19,7 +20,46 @@ function RegisterCustomer(props) {
     const [imageVerifyDisplay,setImageVerifyDisplay]=useState('none')
     const [btn1Display,setBtn1Display]=useState('block')
     const [btn2Display,setBtn2Display]=useState('none')
+    //const [btn3Display,setBtn3Display]=useState('none')
 
+    const [IDFrontImage,setIDFrontImage]=useState(null)
+    const [IDBackImage,setIDBackImage]=useState(null)
+    const [IDFrontView,setIDFrontView]=useState(null)
+    const [IDBackView,setIDBackView]=useState(null)
+
+    const [id,setId]=useState('')
+    const [email,setEmail]=useState('')
+    const [nic,setNic]=useState('')
+    const [drivingLicence,setDrivingLicence]=useState('')
+    const [address,setAddress]=useState('')
+    const [contactNum,setContactNum]=useState('')
+    const [userName,setUserName]=useState('')
+    const [password,setPassword]=useState('')
+
+    const [TextLabel,setTextLabel]=useState('LICENCE OR NIC NUMBER')
+
+    const [textFieldColor,setTextFieldColor]=useState('white')
+    const [textNICOrLicenceState,setTextNICOrLicenceState]=useState(true)
+    const [NICOrLicenceValue,setNICOrLicenceValue]=useState('')
+
+    const clearAllState=() =>{
+        setIDFrontImage(null)
+        setIDBackImage(null)
+        setIDFrontView(null)
+        setIDFrontView(null)
+        setIDBackView(null)
+        setId('')
+        setEmail('')
+        setNic('')
+        setDrivingLicence('')
+        setAddress('')
+        setContactNum('')
+        setUserName('')
+        setPassword('')
+        setTextLabel('LICENCE OR NIC NUMBER')
+        setTextNICOrLicenceState(true)
+
+    }
     const ValidationTextField = withStyles({
         root: {
             '& input:valid + fieldset': {
@@ -44,12 +84,14 @@ function RegisterCustomer(props) {
     }
     const handleShow = () => setShow(true);
 
-    const hadleForm=() =>{
+    const handleForm=() =>{
         setCreateAccDisplay('block')
         setCustomerDetailsDisplay('none')
         setImageVerifyDisplay('none')
         setBtn2Display("none")
+        //setBtn3Display("none")
         setBtn1Display('block')
+        clearAllState()
     }
 
     const {classes} = props;
@@ -82,7 +124,11 @@ function RegisterCustomer(props) {
                                     <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
                                         USER NAME
                                     </Box>
-                                    <ValidationTextField
+                                    <TextField
+                                        onChange={(e) => {
+                                            let data=e.target.value
+                                            setUserName(data)
+                                        }}
                                         className={classes.margin}
                                         placeholder={"Enter the UserName"}
                                         size={'small'}
@@ -95,7 +141,11 @@ function RegisterCustomer(props) {
                                     <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
                                         PASSWORD
                                     </Box>
-                                    <ValidationTextField
+                                    <TextField
+                                        onChange={(e) => {
+                                            let data=e.target.value
+                                            setPassword(data)
+                                        }}
                                         className={classes.margin}
                                         placeholder={"Enter the password"}
                                         size={'small'}
@@ -108,7 +158,15 @@ function RegisterCustomer(props) {
                                     <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
                                         RE ENTER PASSWORD
                                     </Box>
-                                    <ValidationTextField
+                                    <TextField
+                                        style={{
+                                            backgroundColor: textFieldColor ,
+                                        }}
+                                        onChange={(e) => {
+                                            if (e.target.value==password){
+                                                setTextFieldColor('green')
+                                            }
+                                        }}
                                         className={classes.margin}
                                         placeholder={"Re Enter password"}
                                         size={'small'}
@@ -121,6 +179,14 @@ function RegisterCustomer(props) {
 
                         </div>
 
+
+                        {/*
+//================================================================================================================
+*/}
+
+
+
+
                         <div style={{display : customerDetailsDisplay}} className={classes.createUserAccountContainer}>
                             <div className={classes.textFieldContainerCustomerDetails}>
 
@@ -128,7 +194,11 @@ function RegisterCustomer(props) {
                                     <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
                                         Email
                                     </Box>
-                                    <ValidationTextField
+                                    <TextField
+                                        onChange={(e) => {
+                                            let data=e.target.value
+                                            setEmail(data)
+                                        }}
                                         style={{width : '97.5%'}}
                                         className={classes.margin}
                                         placeholder={"Enter the Email"}
@@ -141,9 +211,23 @@ function RegisterCustomer(props) {
                                 <div style={{width : '100%' , height : '120px' , display : 'flex', flexDirection :'row' ,justifyContent : 'space-evenly'}}>
                                     <div style={{width : '50%' , height : '100%' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-around' }}>
                                         <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                            Licence Or NIC Number
+                                            {TextLabel}
                                         </Box>
-                                        <ValidationTextField
+                                        <TextField
+                                            value={NICOrLicenceValue}
+                                            disabled={textNICOrLicenceState}
+                                            onChange={(e) => {
+                                                let data=e.target.value
+                                                if (TextLabel=='ENTER NIC NUMBER'){
+                                                    setNICOrLicenceValue(data)
+                                                    setDrivingLicence('')
+                                                    setNic(data)
+                                                }else if(TextLabel=='ENTER Driving Licence'){
+                                                    setNICOrLicenceValue(data)
+                                                    setNic('')
+                                                    setDrivingLicence(data)
+                                                }
+                                            }}
                                             style={{width: '93%'}}
                                             className={classes.margin}
                                             placeholder={"Enter"}
@@ -166,12 +250,18 @@ function RegisterCustomer(props) {
                                             onChange={(event, value) => {
                                                 switch (value.title) {
                                                     case "NIC Number" :
-                                                        let data1 = this.state.customerDerails.drivingLicence='';
-                                                        this.setState({data1, TextLabel: "NIC NUMBER",});break;
+                                                        setNICOrLicenceValue('')
+                                                        setTextNICOrLicenceState(false)
+                                                        setDrivingLicence('');
+                                                        setTextLabel('ENTER NIC NUMBER');break;
 
                                                     case  "Driving Licence" :
-                                                        let data2 = this.state.customerDerails.nic='';
-                                                        this.setState({data2, TextLabel: "Driving Licence",});break;
+                                                        setNICOrLicenceValue('')
+                                                        setTextNICOrLicenceState(false)
+                                                        setNic('')
+                                                        setTextLabel('ENTER Driving Licence');break;
+
+                                                    default : setTextNICOrLicenceState(true)
                                                 }
                                             }}
                                         />
@@ -180,9 +270,14 @@ function RegisterCustomer(props) {
 
                                 <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
                                     <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                        RE ENTER PASSWORD
+                                        Customer Address
                                     </Box>
-                                    <ValidationTextField
+                                    <TextField
+                                        onChange={(e) => {
+                                            let data=e.target.value
+                                            setAddress(data)
+                                            console.log(data)
+                                        }}
                                         style={{width : '97.5%'}}
                                         className={classes.margin}
                                         placeholder={"Re Enter password"}
@@ -193,22 +288,14 @@ function RegisterCustomer(props) {
                                 </div>
                                 <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
                                     <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                        RE ENTER PASSWORD
+                                        Customer Contact Number
                                     </Box>
-                                    <ValidationTextField
-                                        style={{width : '97.5%'}}
-                                        className={classes.margin}
-                                        placeholder={"Re Enter password"}
-                                        size={'small'}
-                                        variant="outlined"
-                                        id="validation-outlined-input"
-                                    />
-                                </div>
-                                <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
-                                    <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                        RE ENTER PASSWORD
-                                    </Box>
-                                    <ValidationTextField
+                                    <TextField
+                                        onChange={(e) => {
+                                            let num=e.target.value
+                                            setContactNum(num)
+                                            console.log(num)
+                                        }}
                                         style={{width : '97.5%'}}
                                         className={classes.margin}
                                         placeholder={"Re Enter password"}
@@ -219,10 +306,17 @@ function RegisterCustomer(props) {
                                 </div>
                             </div>
                         </div>
+
+
+                        {/*
+//=========================================================================================================================================
+*/}
+
+
                         <div style={{display : imageVerifyDisplay , }}  className={classes.createUserAccountContainer}>
                             <div className={classes.textContainer}>
                                 <Box fontWeight="fontWeightMedium" m={1}>
-                                    Select Your Ornrebility
+                                    Select Your Onerability
                                 </Box>
                             </div>
                             <div className={classes.comboBoxContainer}>
@@ -233,7 +327,7 @@ function RegisterCustomer(props) {
                                     getOptionLabel={(option) => option.title}
                                     style={{width: 300}}
                                     renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
-                                    onChange={(event, value) => {
+                       /*             onChange={(event, value) => {
 
                                         switch (value.title) {
                                             case "NIC Number" :
@@ -251,7 +345,7 @@ function RegisterCustomer(props) {
                                                 });break;
                                         }
                                         console.log(value.title)
-                                    }}
+                                    }}*/
                                 />
 
                             </div>
@@ -301,7 +395,7 @@ function RegisterCustomer(props) {
 
                                     <input
                                         style={{display: 'none'}}
-                                        accept="image/*"
+                                        accept="image/!*"
                                         className={classes.input}
                                         id="contained-button-file02"
                                         multiple
@@ -313,8 +407,6 @@ function RegisterCustomer(props) {
                                             Upload Image
                                         </ReactButton>
                                     </label>
-
-
                                 </div>
                             </div>
                         </div>
@@ -323,24 +415,47 @@ function RegisterCustomer(props) {
                 </Modal.Body>
                 <Modal.Footer>
 
-                    <AlertDialog data={{setStateRegisterForm : handleClose.bind(),setCreateAccHide : hadleForm.bind()}}/>
+                    <AlertDialog data={{setStateRegisterForm : handleClose.bind(),setCreateAccHide : handleForm.bind()}}/>
 
                     <Button style={{display : btn1Display}} variant="primary"
-                            onClick={() =>{
-                                setCreateAccDisplay('none')
-                                setCustomerDetailsDisplay('block')
-                                setBtn1Display('none')
-                                setBtn2Display('block')
+                            onClick={async () =>{
+                                if (userName!=''){
+                                    let res = await customerService.ifExistCustomerUserAccount(userName);
+                                    if (res.code != 'ERR_BAD_REQUEST') {
+                                        alert(res.data.message);
+                                        setCreateAccDisplay('none')
+                                        setCustomerDetailsDisplay('block')
+                                        setBtn1Display('none')
+                                       // setBtn3Display('none')
+                                        setBtn2Display('block')
+                                    } else {
+                                        alert(res.response.data.message);
+
+                                    }
+                                }else {
+                                    alert("TextField is Empty")
+                            }
                             }}
                     >Next Step</Button>
-                    <Button style={{display : btn2Display , color : 'green'}}  variant="primary"
-                            onClick={() =>{
+                    <Button style={{display : btn2Display }}  variant="primary"
+                            onClick={async () =>{
+                                let res = await customerService.ifExistEmail(email);
+                                if (res.code != 'ERR_BAD_REQUEST') {
                                 setCreateAccDisplay('none')
                                 setCustomerDetailsDisplay('none')
                                 setImageVerifyDisplay('block')
-
+                                //setBtn2Display('none')
+                                //setBtn3Display('block')
+                                } else {
+                                    alert(res.response.data.message);
+                                }
                             }}
                     >Next Step</Button>
+        {/*             <Button style={{display : btn3Display}}  variant="primary"
+                            onClick={() =>{
+                                setBtn3Display('block')
+                            }}
+                    >Register</Button>*/}
                 </Modal.Footer>
             </Modal>
         </>

@@ -180,7 +180,7 @@ class ManageCustomer extends Component {
                                      alignItems: 'center',
                                      justifyContent: 'center',
                                      height: '75%',
-                                     backgroundImage: "url(" + this.state.IDFrontView + ")",
+                                    // backgroundImage: "url(" + this.state.IDFrontView + ")",
                                      backgroundSize: 'cover'
                                  }}>
                             </div>

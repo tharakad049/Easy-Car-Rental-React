@@ -17,4 +17,7 @@ public interface CustomerService {
     int countSavedCustomers();
     List<Car> viewAllCars();
     List<Car> rentalRequest(RentalRequestDTO rentalRequestDTO);
+
+    void existUserCustomerAccount(String userName);
+    void existEmail(String email);
 }
