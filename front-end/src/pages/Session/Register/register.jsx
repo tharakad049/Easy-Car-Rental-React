@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
 import ReactButton from "@material-ui/core/Button";
 import Modal from 'react-bootstrap/Modal';
@@ -13,8 +13,6 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import customerService from "../../../service/CustomerService";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import CustomerService from "../../../service/CustomerService";
-
 
 class RegisterCustomer extends Component{
     constructor(props) {
@@ -69,7 +67,7 @@ class RegisterCustomer extends Component{
         }
 
 
-        let res = await CustomerService.registerCustomer(customerDetails);
+        let res = await customerService.registerCustomer(customerDetails);
 
         if (res.code != 'ERR_BAD_REQUEST') {
             alert(res.data.message);
@@ -80,14 +78,14 @@ class RegisterCustomer extends Component{
                     let licenceImages = new FormData();
                     licenceImages.append('Licence',this.state.FrontImage)
                     licenceImages.append('Licence',this.state.BackImage)
-                    let res = await CustomerService.uploadImageCustomerDrivingLicence(licenceImages, this.state.id);
+                    let res = await customerService.uploadImageCustomerDrivingLicence(licenceImages, this.state.id);
                     if (res.code !='ERR_BAD_REQUEST'){alert(res.data.message)};break;
 
                 case "Upload front Image & back Image NIC":
                     let nicImage = new FormData();
                     nicImage.append('ID',this.state.FrontImage)
                     nicImage.append('ID',this.state.BackImage)
-                    let response = await CustomerService.uploadImageCustomerNIC(nicImage, this.state.id);
+                    let response = await customerService.uploadImageCustomerNIC(nicImage, this.state.id);
                     if (response.code !='ERR_BAD_REQUEST'){
                         alert(response.data.message);
                     };break;
@@ -153,7 +151,7 @@ class RegisterCustomer extends Component{
                     startIcon={<RiAddCircleFill/>}
                     style={{color: '#889988', TbPower: {color: '#898'}, flexShrink: 1}}
                     onClick={async () => {
-                        let res = await CustomerService.getLastCustId();
+                        let res = await customerService.getLastCustId();
                         if (res.code != 'ERR_BAD_REQUEST') {
                             let newId = res.data.data;
                             alert(newId)
@@ -341,15 +339,11 @@ class RegisterCustomer extends Component{
                                                 disabled={this.state.textNICOrLicenceState}
                                                 onChange={(e) => {
                                                     let data = e.target.value
-
-
                                                     switch (this.state.TextLabel) {
-
                                                         case "ENTER NIC NUMBER" :
                                                             let data1 = e.target.value
                                                             this.setState({nic: data1, NICOrLicenceValue: data});
                                                             break;
-
                                                         case  "ENTER Driving Licence" :
                                                             let data2 = e.target.value
                                                             this.setState({
@@ -501,11 +495,11 @@ class RegisterCustomer extends Component{
                                                                             variant="outlined"/>}
                                         onChange={(event, value) => {
                                             switch (value.title) {
-                                                case "NIC Number" :
+                                                case "NIC Photo" :
                                                     this.setState({cmbState: "Upload front Image & back Image NIC"});
                                                     break;
 
-                                                case  "Driving Licence" :
+                                                case  "Driving Licence Photo" :
                                                     this.setState({cmbState: "Upload front Image & back Image Driving Licence"});
                                                     break;
 
