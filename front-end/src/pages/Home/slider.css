@@ -106,6 +106,22 @@
     margin-bottom: 200px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .hero__form {
     position: relative;
     bottom: 80px;
@@ -175,7 +191,6 @@
         bottom: -250px;
     }
 }
-
 .find__cars-left {
     background: linear-gradient(rgba(130, 196, 192, 0.7), rgba(164, 255, 156, 0.7)),
     url("../../assets/images/d2.jpg");

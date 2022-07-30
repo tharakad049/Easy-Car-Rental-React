@@ -5,6 +5,7 @@ import lk.ijse.spring.dto.RegisterCustomerDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.service.CustomerService;
+import lk.ijse.spring.util.FileDownloadUtil;
 import lk.ijse.spring.util.ResponseUtil;
 import lk.ijse.spring.util.SearchFileUtil;
 import lombok.SneakyThrows;
@@ -31,6 +32,17 @@ public class CustomerController {
 
     @Autowired
     SearchFileUtil searchFileUtil;
+
+
+    @GetMapping(path = "generateCusId")
+    public ResponseUtil getNewCusId(){
+        String newId = customerService.getNewId();
+        return new ResponseUtil(200,"new Customer Id Received",newId);
+    }
+
+
+
+
 
     @GetMapping(path = "ifExistEmail")
     public ResponseUtil ifExistEmail(@RequestParam String email){
@@ -72,28 +84,38 @@ public class CustomerController {
 
     @SneakyThrows
     @PostMapping(path = "uploadIdImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadCustomerIDImage(@RequestParam("ID")  MultipartFile multipartFile, @RequestParam String cusId) {
+    public ResponseUtil uploadCustomerIDImage(@RequestParam("ID")  MultipartFile[] multipartFile, @RequestParam String cusId) {
 
         String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
-
-        String imageName=cusId+"ID_CARD"+".jpeg";
-        Files.copy(multipartFile.getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
-
+        String [] view={"Front","Back"};
+        for (int i=0; i<view.length; i++){
+            String imageName=cusId+"ID_CARD"+view[i]+".jpeg";
+            if(!searchFileUtil.searchFile(pathDirectory, imageName)){
+                Files.copy(multipartFile[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+            }else {
+                return new ResponseUtil(400,"ID_CARD image Duplicate..",null);
+            }
+        }
         return new ResponseUtil(200,"ID_CARD image added success..",null);
     }
 
-
     @SneakyThrows
     @PostMapping(path = "uploadLicenceImage")
-    public ResponseUtil uploadCustomerLicenceImage(@RequestParam("Licence")MultipartFile multipartFiles, @RequestParam String cusId){
+    public ResponseUtil uploadCustomerLicenceImage(@RequestParam("Licence")MultipartFile[] multipartFiles, @RequestParam String cusId){
 
         String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\LicenseImage";
-        String imageName=cusId+"Licence_CARD"+".jpeg";
-        Files.copy(multipartFiles.getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+        String [] view={"Front","Back"};
 
-        return new ResponseUtil(200,"Licence_Card image added success..",null);
+        for (int i=0; i<view.length; i++){
+            String imageName=cusId+"Licence_CARD"+view[i]+".jpeg";
+            if(!searchFileUtil.searchFile(pathDirectory, imageName)){
+                Files.copy(multipartFiles[i].getInputStream(), Paths.get(pathDirectory+ File.separator+imageName), StandardCopyOption.REPLACE_EXISTING);
+            }else {
+                return new ResponseUtil(400,"License_Card image Duplicate..",null);
+            }
+        }
+        return new ResponseUtil(200,"License_Card image added success..",null);
     }
-
 
 
 
@@ -169,10 +191,10 @@ public class CustomerController {
         return new ResponseUtil(200, "Ök", customerService.countSavedCustomers());
     }
 
-    @GetMapping(params = {"test"})
+  /*  @GetMapping(params = {"test"})
     public ResponseUtil generateCustomersId(@RequestParam String test) {
         return new ResponseUtil(200, "Ok", customerService.generateCustomerId());
-    }
+    }*/
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil ViewAllCar(){

@@ -12,6 +12,7 @@ import aboutImg1 from  "../../assets/images/7312319-volvo_xc60.jpg";
 import carData from "../../assets/CarData/carData";
 import CarItem from "./CarItem";
 import RegisterCustomer from "../Session/Register/register";
+import AdminNavBar from "../../components/admin/NavBar";
 
 const quickLinks = [
     {
@@ -458,6 +459,13 @@ class HomePage extends Component {
                         </Row>
                     </Container>
                 </footer>
+
+
+            {/*
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/}
+
+
             </body>
 
         );

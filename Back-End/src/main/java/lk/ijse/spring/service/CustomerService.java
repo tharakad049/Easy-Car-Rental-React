@@ -13,11 +13,12 @@ public interface CustomerService {
     void updateCustomer(CustomerDTO dto);
     CustomerDTO searchCustomer(String cusId);
     List<CustomerDTO> getAllCustomers();
-    String generateCustomerId();
     int countSavedCustomers();
     List<Car> viewAllCars();
     List<Car> rentalRequest(RentalRequestDTO rentalRequestDTO);
 
     void existUserCustomerAccount(String userName);
     void existEmail(String email);
+
+    String getNewId();
 }

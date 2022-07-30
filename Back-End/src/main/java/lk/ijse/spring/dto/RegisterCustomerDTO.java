@@ -12,10 +12,10 @@ import lombok.ToString;
 public class RegisterCustomerDTO {
     private String cusId;
     private String email;
-    private String nicNumberAndPhoto;
-    private String drivingLicenseNumberAndPhoto;
+    private String nicNumber;
+    private String drivingLicenseNumber;
     private String address;
     private String contactNumber;
-    private String userName;
-    private String passWord;
+    private String username;
+    private String password;
 }

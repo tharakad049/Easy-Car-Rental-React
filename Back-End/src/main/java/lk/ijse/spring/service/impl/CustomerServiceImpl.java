@@ -63,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void saveCustomer(@RequestBody RegisterCustomerDTO registerCustomerDTO) {
         if (!customerRepo.existsById(registerCustomerDTO.getCusId())) {
             customerRepo.save(mapper.map(registerCustomerDTO, Customer.class));
-            if (!customerUserAccountRepo.existsById(registerCustomerDTO.getUserName())) {
+            if (!customerUserAccountRepo.existsById(registerCustomerDTO.getUsername())) {
                 customerUserAccountRepo.save(mapper.map(registerCustomerDTO, CustomerUserAccount.class));
             } else {
                 throw new RuntimeException("UserAccount Already Exist");
@@ -72,6 +72,29 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException("Customer Already Exist..!");
         }
     }
+
+
+
+
+    @Override
+    public String getNewId() {
+        String lastCustId = customerRepo.getLastCustId();
+
+        String[] split = lastCustId.split("-");
+        long index = Long.parseLong(split[1]);
+
+        long incrementId=++index;
+
+        if (incrementId<10){
+            return "C-00"+incrementId ;
+        }else if (incrementId>=10 && index<100){
+            return "C-0"+ incrementId ;
+        }else if(incrementId>=100){
+            return "C-"+ incrementId ;
+        }
+        return "C-001";
+    }
+
 
     @Override
     public void deleteCustomer(String cusId) {
@@ -106,10 +129,10 @@ public class CustomerServiceImpl implements CustomerService {
         }.getType());
     }
 
-    @Override
+/*    @Override
     public String generateCustomerId() {
         return customerRepo.generateCustomerId();
-    }
+    }*/
 
     @Override
     public int countSavedCustomers() {

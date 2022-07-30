@@ -88,7 +88,7 @@ class CustomerService {
         return await promise;
     }
 
-    uploadImageCustomerNIC= async (dataFile,cusID) => {
+/*    uploadImageCustomerNIC= async (dataFile,cusID) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/customer/uploadIdImage?cusId'+cusID,dataFile)
 
@@ -114,7 +114,66 @@ class CustomerService {
                 })
         })
         return await promise;
+    }*/
+
+
+
+
+
+/*
+    //----------------------------------------------------------------------------------------
+*/
+
+
+    uploadImageCustomerNIC= async (dataFile, cusId) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/customer/uploadIdImage?cusId='+cusId,dataFile)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
     }
+    uploadImageCustomerDrivingLicence= async (dataFile, cusID) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.post('easy/v1/customer/uploadLicenceImage?cusId='+cusID,dataFile)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+    getLastCustId= async () =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/customer/generateCusId')
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+
+
+
+
+
+
 
 
     ifExistCustomerUserAccount= async (userName) =>{

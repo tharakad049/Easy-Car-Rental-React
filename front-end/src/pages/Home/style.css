@@ -39,7 +39,7 @@
 }
 
 .header__middle {
-    padding: 20px 0px;
+    padding: 5px 0px;
 }
 
 .logo h1 a span {
@@ -241,6 +241,7 @@
 
 
 .footer {
+    font-size: 12px;
     background: #252526;
     padding-top: 50px;
     padding-bottom: 15px;
@@ -476,7 +477,6 @@ h4 {
 
 
 
-
 .car__item {
     border: 1px solid #7c8a9736;
     padding: 10px;
@@ -569,4 +569,14 @@ h4 {
     .car__item-btn {
         font-size: 0.8rem;
     }
+}
+
+.navbar {
+    margin-bottom: 0px;
+    padding: 7px;
+    border-color: rgba(34,34,34,.05);
+    background: #fff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
 }
