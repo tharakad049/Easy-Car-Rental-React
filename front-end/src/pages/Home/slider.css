@@ -5,7 +5,7 @@
 
 .slider__item-01 {
     background: linear-gradient(rgb(141, 149, 198), rgba(237, 238, 239, 0.72));
-    background: url("../../assets/DataImages/bmw_750li_xdrive_19_0 (1).jpg");
+    background: url("../../assets/images/person-holding-bmw-steering-wheel.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -130,7 +130,7 @@
 }
 
 .form__row {
-    background: #fff;
+    background: #ffffff;
     box-shadow: 5px 5px 15px -5px #7c8a97;
 }
 
@@ -191,9 +191,22 @@
         bottom: -250px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 .find__cars-left {
     background: linear-gradient(rgba(130, 196, 192, 0.7), rgba(164, 255, 156, 0.7)),
-    url("../../assets/images/d2.jpg");
+    url("../../assets/images/person-holding-bmw-steering-wheel.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

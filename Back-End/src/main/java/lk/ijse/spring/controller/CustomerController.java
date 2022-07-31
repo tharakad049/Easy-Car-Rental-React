@@ -34,15 +34,24 @@ public class CustomerController {
     SearchFileUtil searchFileUtil;
 
 
-    @GetMapping(path = "generateCusId")
-    public ResponseUtil getNewCusId(){
-        String newId = customerService.getNewId();
-        return new ResponseUtil(200,"new Customer Id Received",newId);
+    @PostMapping(path = "checkAccount", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseUtil checkUserAccount(String userName,String password){
+        customerService.checkUserAccount(userName,password);
+        return new ResponseUtil(200,"Login SuccessFull",null);
     }
 
 
 
 
+
+
+
+
+    @GetMapping(path = "generateCusId")
+    public ResponseUtil getNewCusId(){
+        String newId = customerService.getNewId();
+        return new ResponseUtil(200,"new Customer Id Received",newId);
+    }
 
     @GetMapping(path = "ifExistEmail")
     public ResponseUtil ifExistEmail(@RequestParam String email){

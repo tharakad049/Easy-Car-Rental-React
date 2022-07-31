@@ -176,6 +176,53 @@ class CustomerService {
 
 
 
+    checkCustomerUserAccount=async (userName,password) =>{
+        const promise = new Promise((resolve, reject) => {
+            var qs = require('qs');
+            var data = qs.stringify({
+                'userName': userName,
+                'password': password,
+            });
+            var config = {
+                method: 'post',
+                url: 'easy/v1/customer/checkAccount',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data : data
+            };
+            axios(config)
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ifExistCustomerUserAccount= async (userName) =>{
         const promise = new Promise((resolve, reject) => {
             axios.get('easy/v1/customer/ifExistUserAccount?userName='+userName)

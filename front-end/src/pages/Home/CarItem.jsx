@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import Col from "react-bootstrap/Col";
 import Link from "@material-ui/core/Link";
+import BasicModal from "../CarDetailsPopupTable/carTablePopup";
 
 const CarItem = (props) => {
     const { imgUrl, model, carName, automatic, speed, price } = props.item;
@@ -33,10 +34,11 @@ const CarItem = (props) => {
 
                     <button className=" w-50 car__item-btn car__btn-rent">
                         <Link to={`/cars/${carName}`}>Rent</Link>
+
                     </button>
 
                     <button className=" w-50 car__item-btn car__btn-details">
-                        <Link to={`/cars/${carName}`}>Details</Link>
+                        <Link to={`/cars/${carName}`}><BasicModal/></Link>
                     </button>
                 </div>
             </div>

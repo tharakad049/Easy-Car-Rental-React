@@ -40,6 +40,33 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CarRepo carRepo;
 
+
+
+
+
+    @Override
+    public void checkUserAccount(String userName,String password) {
+        if (customerUserAccountRepo.existsById(userName)){
+            String pass = customerUserAccountRepo.getPassWordByUserName(userName);
+            if (!pass.equals(password)){
+                throw new RuntimeException("Password Incorrect");
+            }
+        }else {
+            throw new RuntimeException("userName Incorrect");
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public void existUserCustomerAccount(String userName){
 

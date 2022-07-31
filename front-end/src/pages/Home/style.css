@@ -115,6 +115,7 @@
 .main__navbar {
     padding: 15px 0px;
     background: #000166;
+
 }
 .mobile__menu i {
     color: #fff;
@@ -219,25 +220,25 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .section__descriptions{
     color: yellow;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .footer {
@@ -350,6 +351,25 @@
     border-radius: 57%;
     margin: 20px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
      margin: 0;
      font-family: var(--bs-body-font-family);

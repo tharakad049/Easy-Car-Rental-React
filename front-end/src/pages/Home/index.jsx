@@ -11,7 +11,11 @@ import aboutImg from  "../../assets/images/d2.jpeg";
 import aboutImg1 from  "../../assets/images/7312319-volvo_xc60.jpg";
 import carData from "../../assets/CarData/carData";
 import CarItem from "./CarItem";
+
 import RegisterCustomer from "../Session/Register/register";
+import LoginCustomer from "../Session/Login/index";
+import ReactButton from "@material-ui/core/Button";
+import {IoMdLogIn} from "@react-icons/all-files/io/IoMdLogIn";
 
 const quickLinks = [
     {
@@ -71,6 +75,10 @@ class HomePage extends Component {
         const year = date.getFullYear();
         return (
             <body>
+
+
+
+
             <header className="header">
                 <div className="header__top">
                     <Container>
@@ -85,21 +93,28 @@ class HomePage extends Component {
                             </Col>
                             <Col lg="6" md="6" sm="6">
                                 <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                                    <Link to="#" className=" d-flex align-items-center gap-1">
-                                        <i className="ri-login-circle-line"></i> Login
-                                    </Link>
+                                    <ReactButton
+                                        startIcon={<IoMdLogIn/>}
+                                        style={{color: '#889988', TbPower :{color: '#898'}, flexShrink:1}}
+                                        onClick={() =>{
+                                            this.child.handleShow();}}
+                                    >Login</ReactButton>
+
+                                    <LoginCustomer  ref={instance => { this.child = instance; }} />
 
                                     <RegisterCustomer/>
-                      {/*              <Link to="#" className=" d-flex align-items-center gap-1">
-                                        <i className="ri-user-line"></i> Register
 
-                                    </Link>*/}
                                 </div>
                             </Col>
                         </Row>
                     </Container>
                 </div>
             </header>
+
+
+
+
+
                 <div className="header__middle">
                     <Container>
                         <Row>

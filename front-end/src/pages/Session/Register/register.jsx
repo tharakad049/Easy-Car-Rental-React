@@ -149,7 +149,7 @@ class RegisterCustomer extends Component{
             <>
                 <ReactButton
                     startIcon={<RiAddCircleFill/>}
-                    style={{color: '#889988', TbPower: {color: '#898'}, flexShrink: 1}}
+                    style={{color: '#ffffff', TbPower: {color: '#ffffff'}, flexShrink: 1}}
                     onClick={async () => {
                         let res = await customerService.getLastCustId();
                         if (res.code != 'ERR_BAD_REQUEST') {
@@ -280,7 +280,7 @@ class RegisterCustomer extends Component{
                             </div>
 
 
-                            {/*
+{/*
 //================================================================================================================
 */}
 
@@ -469,7 +469,8 @@ class RegisterCustomer extends Component{
                             </div>
 
 
-                            {/*
+
+ {/*
 //=========================================================================================================================================
 */}
 

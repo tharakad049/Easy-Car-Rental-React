@@ -1,4 +1,4 @@
-import img1 from "../DataImages/images.jpeg";
+import img1 from "../DataImages/BMW-745Le-2.jpg";
 import img2 from "../DataImages/344414-2020-bmw-7-series.jpg";
 import img3 from "../DataImages/1-rolls-royce-ghost-2021-road-test-review-hero-front_0.jpg";
 import img4 from "../DataImages/luxury-4x4.jpeg";
