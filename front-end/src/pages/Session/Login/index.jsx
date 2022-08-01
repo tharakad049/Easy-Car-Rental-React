@@ -77,8 +77,13 @@ class LoginCustomer extends Component{
                             <h1> EASY Car Rental System</h1></Modal.Title>
 
                     </Modal.Header>
-                    <Modal.Body>
 
+
+{/*
+///=======================================================================================================================
+*/}
+
+                    <Modal.Body>
 
                         <div className={classes.mainContainer}>
 
@@ -122,13 +127,13 @@ class LoginCustomer extends Component{
                                 </Button>
                             </div>
                             <Divider/>
-
-
-
                         </div>
-
-
                     </Modal.Body>
+
+{/*
+///===================================================================================================================================
+*/}
+
                     <Modal.Footer>
                         <Button variant="secondary"
                                 onClick={this.handleClose}>
@@ -142,3 +147,5 @@ class LoginCustomer extends Component{
 
 }
 export default withStyles(styleSheet) (LoginCustomer)
+
+
