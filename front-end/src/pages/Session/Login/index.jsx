@@ -59,7 +59,6 @@ class LoginCustomer extends Component{
             }else { this.setState({passwordError : true , passwordErrorMessage : 'invalid Password'})}
 
         }else {this.setState({userNameError : true , userNameErrorMessage : 'invalid Username'})}
-
     }
 
     render() {
@@ -70,12 +69,10 @@ class LoginCustomer extends Component{
                     show={this.state.show}
                     onHide={this.handleClose}
                     backdrop="static"
-                    keyboard={false}
-                >
+                    keyboard={false}>
                     <Modal.Header closeButton>
                         <Modal.Title>
                             <h1> EASY Car Rental System</h1></Modal.Title>
-
                     </Modal.Header>
 
 
@@ -84,12 +81,10 @@ class LoginCustomer extends Component{
 */}
 
                     <Modal.Body>
-
                         <div className={classes.mainContainer}>
-
                             <Divider/>
                             <div className={classes.loginFormContainer}>
-
+                                <b>User Name</b>
                                 <TextField
                                     onChange={(e) =>{
                                         this.state.userName = e.target.value
@@ -100,7 +95,7 @@ class LoginCustomer extends Component{
                                     label={this.state.userNameErrorMessage}
                                     style={{width : '80%'}}
                                     id="filled-search" type="search" variant="filled" />
-
+                                <b>Password</b>
                                 <TextField
                                     onChange={(e) =>{
                                         this.state.password = e.target.value
@@ -121,7 +116,7 @@ class LoginCustomer extends Component{
                                     onClick={async () =>{
                                         await this.loginCustomer();
                                     }}
-                                    style={{width : '80%' , backgroundColor : '#FF6B1F'}}
+                                    style={{width : '80%' , backgroundColor : '#e7ff6e'}}
                                     variant="outlined" color="primary">
                                     Primary
                                 </Button>

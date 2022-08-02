@@ -14,21 +14,20 @@ function CarDetailsPopUp(props) {
     return (
         <>
             <button className=" w-50 car_item-btn car_btn-details"
-                    onClick={handleShow} style={{color:'white'}}>
+                    onClick={handleShow} style={{color:'black'}}>
                 Car Details
             </button>
 
-            <Modal style={{ color : 'blue',  background: 'rgba(255, 255, 255, 0)' , boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8.8px)'}} size={"lg"} show={show} onHide={handleClose}>
+            <Modal style={{ color : 'black',  background: 'rgba(255, 255, 255, 0)' , boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8.8px)'}} size={"lg"} show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <h1>Hello </h1>
-                    <Modal.Title><div>Car Details</div></Modal.Title>
+                    <Modal.Title><div>Easy Car Rental System Car Details</div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 
                     <div className={classes.mainContainer}>
                         <div className={classes.leftContainer}>
 
-                            <ul style={{listStyleType : 'none', color:'white', fontFamily : 'Open Sans',fontSize : '12px', backgroundColor : "green"}}>
+                            <ul style={{listStyleType : 'none', color:'white', fontFamily : 'Open Sans',fontSize : '12px', backgroundColor : "black"}}>
                                 <li>
 
                                     <label style={{color : "#7bdcc2"}}>* Car Brand * </label>

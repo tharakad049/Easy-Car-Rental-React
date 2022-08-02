@@ -29,7 +29,7 @@ const CarItem = (props) => {
                           <i class="ri-timer-flash-line"></i> {state}
                         </span>
                     </div>
-                    <button className=" w-50 car_item-btn car_btn-rent" style={{color : 'white'}}
+                    <button className=" w-50 car_item-btn car_btn-rent" style={{color : 'Black'}}
                             onClick={() =>{
                                 this.child.handleShow();
                             }}>

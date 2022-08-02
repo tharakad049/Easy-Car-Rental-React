@@ -228,7 +228,7 @@ class RegisterCustomer extends Component{
             <>
                 <ReactButton
                     startIcon={<RiAddCircleFill/>}
-                    style={{color: '#889988', TbPower :{color: '#898'}, flexShrink:1}}
+                    style={{color: '#fafafa', TbPower :{color: '#ffffff'}, flexShrink:1}}
                     onClick={async () =>{
                         let res = await customerService.getLastCustId();
                         if (res.code != 'ERR_BAD_REQUEST') {
@@ -249,7 +249,7 @@ class RegisterCustomer extends Component{
                     style={{boxShadow : '10px 10px 10px 10px',}}
                 >
                     <Modal.Header >
-                        <Modal.Title>Register</Modal.Title>
+                        <Modal.Title><b>EASY</b> Car Rental Register</Modal.Title>
                     </Modal.Header>
 
 
@@ -265,7 +265,7 @@ class RegisterCustomer extends Component{
                                 </div>
                                 <div className={classes.textFieldContainer}>
                                     <div style={{ width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
-
+                                        <b>User Name</b>
                                         <TextField
                                             color="success"
                                             onChange={(e) => {
@@ -280,14 +280,12 @@ class RegisterCustomer extends Component{
                                             label={this.state.validateState.userNameMessage}
                                             variant="filled"
                                             id="validation-outlined-input"
-                                            helperText={"Minimum 8 characters,at least one letter and one number"}
+                                            helperText={"Minimum 4 characters"}
                                         />
                                     </div>
 
                                     <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
-                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                            PASSWORD
-                                        </Box>
+                                        <b>Password</b>
                                         <TextField
                                             color="success"
                                             onChange={(e) => {
@@ -302,14 +300,12 @@ class RegisterCustomer extends Component{
                                             size={'small'}
                                             variant="filled"
                                             id="validation-outlined-input"
-                                            helperText={"Minimum 8 characters,at least one letter and one number"}
+                                            helperText={"Minimum 3 characters. Including one Capital letter and one number"}
                                         />
                                     </div>
 
                                     <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
-                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                            RE ENTER PASSWORD
-                                        </Box>
+                                        <b>Re Enter Password</b>
                                         <TextField
                                             style={{
                                                 backgroundColor: this.state.textFieldColor ,
@@ -547,7 +543,7 @@ class RegisterCustomer extends Component{
                                         />
                                         <label htmlFor="contained-button-file">
                                             <ReactButton variant="contained" color="primary" component="span">
-                                                Browse
+                                                Upload Image
                                             </ReactButton>
                                         </label>
 
@@ -566,7 +562,7 @@ class RegisterCustomer extends Component{
                                         />
                                         <label htmlFor="contained-button-file1">
                                             <ReactButton variant="contained" color="primary" component="span">
-                                                Browse
+                                                Upload Image
                                             </ReactButton>
                                         </label>
                                     </div>

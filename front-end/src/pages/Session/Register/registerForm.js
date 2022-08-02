@@ -9,6 +9,7 @@ export const styleSheet={
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        boxShadow: '2px 3px 6px 2px',
         border: '3px solid blue',
         borderRadius : '10px',
         /* backgroundColor : 'blue',*/
@@ -36,10 +37,10 @@ export const styleSheet={
         flexDirection : 'row',
         alignItems : 'center',
         width : '100%',
-        height : '20%',
+        height : '15%',
         borderRadius: '10px',
-        backgroundColor : '#f3bb89',
-        marginBottom : '20px'
+        backgroundColor : '#11154c',
+        marginBottom : '30px'
     }
     ,
     textFieldContainerCustomerDetails: {

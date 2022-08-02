@@ -1,7 +1,7 @@
 export const styleSheet={
 
     mainContainer : {
-        backgroundColor : '#FFFFFF',
+        backgroundColor : '#298886',
         boxShadow : '2px 3px 6px 2px',
         height : '300px',
         width : '100%',
@@ -12,7 +12,7 @@ export const styleSheet={
     },
 
     loginFormContainer : {
-        backgroundColor : '#e5dede',
+        backgroundColor : '#a6c5f7',
         height : '80%',
         width : '100%',
         display : 'flex',

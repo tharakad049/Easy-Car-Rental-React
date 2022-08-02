@@ -35,7 +35,7 @@ function CarDetails(){
         <>
             {
                 loading ?
-                    <ClipLoader color={'blue'} loading={loading}  size={150} />
+                    <ClipLoader color={'blue'} loading={loading}  size={100}/>
                     :
                     carData.slice(0,30).map((item) => (
                         <CarItem item={item}/>
