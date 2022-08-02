@@ -1,6 +1,5 @@
 package lk.ijse.spring.entity;
 
-import lk.ijse.spring.embeded.PricesForTheRentDurations;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,12 +19,15 @@ import java.util.Set;
 public class Car {
     @Id
     private String carId;
+    private String vehicleType;
     private String brand;
     private String numOfPassenger;
     private String transmissionType;
     private String fuelType;
-    private PricesForTheRentDurations priceOfRentDuration;
-    private String freeMileageForPriceAndDuration;
+    private String dailyPrice;
+    private String monthlyPrice;
+    private String dailyFreeKm;
+    private String monthlyFreeKm;
     private String priceOfExtraKm;
     private String registerNumber;
     private String color;

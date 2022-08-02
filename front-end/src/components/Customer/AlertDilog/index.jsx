@@ -38,8 +38,7 @@ export default function AlertDialog(props) {
                 <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.
+                        Do you want to exist this site !
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

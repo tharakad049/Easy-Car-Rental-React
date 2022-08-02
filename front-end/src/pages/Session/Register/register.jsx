@@ -49,7 +49,7 @@ class RegisterCustomer extends Component{
             textFieldColor : 'white',
             textNICOrLicenceState : true,
             NICOrLicenceValue : '',
-            cmbState : 'Upload NIC Or Driving Licence front Image & back Image.',
+            cmbState : 'Upload front Image & back Image NIC Or Driving Licence',
 
             registerSnackBar : false,
 
@@ -89,18 +89,17 @@ class RegisterCustomer extends Component{
             password: this.state.password,
         }
 
-
         let res = await customerService.registerCustomer(customerDetails);
         if (res.code != 'ERR_BAD_REQUEST') {
             alert(res.data.message);
             switch (this.state.cmbState) {
-                case "Upload Driving Licence front Image & back Image ":
+                case "Upload front Image & back Image Driving Licence":
                     let licenceImages = new FormData();
                     licenceImages.append('Licence',this.state.FrontImage)
                     licenceImages.append('Licence',this.state.BackImage)
                     let res = await customerService.uploadImageCustomerDrivingLicence(licenceImages, this.state.id);
                     if (res.code !='ERR_BAD_REQUEST'){alert(res.data.message)};break;
-                case "Upload NIC front Image & back Image ":
+                case "Upload front Image & back Image NIC":
                     let nicImage = new FormData();
                     nicImage.append('ID',this.state.FrontImage)
                     nicImage.append('ID',this.state.BackImage)
@@ -151,6 +150,13 @@ class RegisterCustomer extends Component{
         this.clearAllState()
     }
 
+
+/*
+///============================================================================================================================================================
+*/
+
+
+
     validationUserAccountForm=() =>{
         var userName = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
         var password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/;
@@ -165,7 +171,7 @@ class RegisterCustomer extends Component{
             }else {
                 this.setState({validateState :{passwordError : true , passwordMessage : 'Password Invalid' , nextButtonUserAccount : true}})
             }
-        }else { this.setState({validateState :{ userNameError : true , userNameMessage : 'UserName Invalid' , nextButtonUserAccount : true}})}
+        }else { this.setState({validateState :{ userNameError : true , userNameMessage : 'UserName InValid' , nextButtonUserAccount : true}})}
     }
 
     validationCustomerDetailsForm=() =>{
@@ -193,12 +199,11 @@ class RegisterCustomer extends Component{
             }else {
                 this.setState({validateState : {licenseOrNicError : true, licenseOrNicErrorMessage : 'Invalid Licence Num Or Nic Number', nextButtonCustomerDetail : true}})
             }
-        }else {this.setState({validateState : {emailError : true, emailErrorMessage : 'Invalid Email' , nextButtonCustomerDetail : true}})}
-
+        }else {this.setState({validateState : {emailError : true, emailErrorMessage : 'Invalid Imail' , nextButtonCustomerDetail : true}})}
     }
 
     validationImageVerifyForm=() =>{
-        if (this.state.cmbState=="Upload NIC front Image & back Image " || this.state.cmbState=="Upload Driving Licence front Image & back Image "){
+        if (this.state.cmbState=="Upload front Image & back Image NIC" || this.state.cmbState=="Upload front Image & back Image Driving Licence"){
             if (this.state.FrontView!=null && this.state.BackView!=null){
                 this.setState({validateState : {register : false}})
             }else {
@@ -210,11 +215,10 @@ class RegisterCustomer extends Component{
     }
 
 
+
 /*
-///=====================================================================================================================================================
+///==================================================================================================================================================================================================
 */
-
-
 
 
 
@@ -224,7 +228,7 @@ class RegisterCustomer extends Component{
             <>
                 <ReactButton
                     startIcon={<RiAddCircleFill/>}
-                    style={{color: '#ffffff', TbPower :{color: '#ffffff'}, flexShrink:1}}
+                    style={{color: '#889988', TbPower :{color: '#898'}, flexShrink:1}}
                     onClick={async () =>{
                         let res = await customerService.getLastCustId();
                         if (res.code != 'ERR_BAD_REQUEST') {
@@ -242,16 +246,23 @@ class RegisterCustomer extends Component{
                     onHide={this.handleClose}
                     backdrop="static"
                     keyboard={false}
-                    style={{boxShadow : '10px 10px 10px 10px',}}>
-
+                    style={{boxShadow : '10px 10px 10px 10px',}}
+                >
                     <Modal.Header >
                         <Modal.Title>Register</Modal.Title>
                     </Modal.Header>
+
+
+
+{/*
+///=====================================================================================================================================================================================
+*/}
                     <Modal.Body>
 
                         <div  className={classes.registerContainer}>
                             <div style={{display : this.state.createAccDisplay}} className={classes.createUserAccountContainer}>
-                                <div className={classes.userHeaderContainer}></div>
+                                <div className={classes.userHeaderContainer}>
+                                </div>
                                 <div className={classes.textFieldContainer}>
                                     <div style={{ width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
 
@@ -269,17 +280,20 @@ class RegisterCustomer extends Component{
                                             label={this.state.validateState.userNameMessage}
                                             variant="filled"
                                             id="validation-outlined-input"
-                                            helperText={"Minimum at least one letter and one number"}
+                                            helperText={"Minimum 8 characters,at least one letter and one number"}
                                         />
                                     </div>
 
                                     <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
-                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>PASSWORD</Box>
+                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                            PASSWORD
+                                        </Box>
                                         <TextField
                                             color="success"
                                             onChange={(e) => {
                                                 this.state.password=e.target.value
                                                 this.validationUserAccountForm()
+
                                             }}
                                             error={this.state.validateState.passwordError}
                                             className={classes.margin}
@@ -288,12 +302,14 @@ class RegisterCustomer extends Component{
                                             size={'small'}
                                             variant="filled"
                                             id="validation-outlined-input"
-                                            helperText={"Minimum 4 characters,at least one letter and one number"}
+                                            helperText={"Minimum 8 characters,at least one letter and one number"}
                                         />
                                     </div>
 
                                     <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-evenly'}}>
-                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>RE ENTER PASSWORD</Box>
+                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                            RE ENTER PASSWORD
+                                        </Box>
                                         <TextField
                                             style={{
                                                 backgroundColor: this.state.textFieldColor ,
@@ -316,15 +332,16 @@ class RegisterCustomer extends Component{
 
 
 {/*
-///===================================================================================================================================================================
+///=================================================================================================================================================================================
 */}
-
 
 
                             <div style={{display : this.state.customerDetailsDisplay}} className={classes.createUserAccountContainer}>
                                 <div className={classes.textFieldContainerCustomerDetails}>
                                     <div style={{ width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
-                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>Email</Box>
+                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                            Email
+                                        </Box>
                                         <TextField
                                             onChange={(e) => {
                                                 this.state.email=e.target.value
@@ -363,7 +380,6 @@ class RegisterCustomer extends Component{
                                                             this.validationCustomerDetailsForm();break;
                                                     }
                                                 }}
-
                                                 color="success"
                                                 error={this.state.validateState.licenseOrNicError}
                                                 style={{width: '93%'}}
@@ -377,7 +393,9 @@ class RegisterCustomer extends Component{
                                         </div>
 
                                         <div style={{width : '50%' , height : '100%' , display : 'flex', flexDirection :'column',justifyContent : 'space-around'}}>
-                                            <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>SELECT ONE</Box>
+                                            <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                                SELECT ONE
+                                            </Box>
                                             <Autocomplete
                                                 size={'small'}
                                                 id="combo-box-demo"
@@ -392,16 +410,13 @@ class RegisterCustomer extends Component{
                                                                 NICOrLicenceValue : '',
                                                                 textNICOrLicenceState : false,
                                                                 DrivingLicence : '',
-                                                                TextLabel : 'ENTER NIC NUMBER',
-                                                            });break;
+                                                                TextLabel : 'ENTER NIC NUMBER',});break;
                                                         case  "Driving Licence" :
                                                             this.setState({
                                                                 NICOrLicenceValue : '',
                                                                 textNICOrLicenceState : false,
                                                                 nic : '',
-                                                                TextLabel : 'ENTER Driving Licence',
-                                                            })
-                                                            ;break
+                                                                TextLabel : 'ENTER Driving Licence',});break
                                                         default : this.setState({TextNICOrLicenceState : true})
                                                     }
                                                 }}
@@ -410,7 +425,9 @@ class RegisterCustomer extends Component{
                                     </div>
 
                                     <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
-                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>INPUT ADDRESS</Box>
+                                        <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
+                                            ENTER THE ADDRESS
+                                        </Box>
                                         <TextField
                                             onChange={(e) => {
                                                 this.state.address=e.target.value
@@ -429,7 +446,7 @@ class RegisterCustomer extends Component{
                                     </div>
                                     <div style={{width : '100%' , height : '100px' , display : 'flex', flexDirection :'column' ,justifyContent : 'space-between'}}>
                                         <Box fontFamily="Monospace" fontSize="h6.fontSize" m={1}>
-                                            INPUT CONTACT NUMBER
+                                            ENTER THE CONTACT NUMBER
                                         </Box>
                                         <TextField
                                             onChange={(e) => {
@@ -450,14 +467,18 @@ class RegisterCustomer extends Component{
                                 </div>
                             </div>
 
+
 {/*
-///=====================================================================================================================================================
+///==========================================================================================================================================================================================================
 */}
+
 
 
                             <div style={{display : this.state.imageVerifyDisplay , }}  className={classes.createUserAccountContainer}>
                                 <div className={classes.textContainer}>
-                                    <Box fontWeight="fontWeightMedium" m={1}>{this.state.cmbState}</Box>
+                                    <Box fontWeight="fontWeightMedium" m={1}>
+                                        {this.state.cmbState}
+                                    </Box>
                                 </div>
                                 <div className={classes.comboBoxContainer}>
                                     <Autocomplete
@@ -469,24 +490,23 @@ class RegisterCustomer extends Component{
                                         renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
                                         onChange={(event, value) => {
                                             switch (value.title) {
-                                                case "NIC Photo" :
-                                                    this.setState({cmbState : "Upload NIC front Image & back Image "}) ;break;
+                                                case "NIC Number" :
+                                                    this.setState({cmbState : "Upload front Image & back Image NIC"}) ;break;
 
-                                                case  "Driving Licence Photo" :
-                                                    this.setState({cmbState : "Upload Driving Licence front Image & back Image "});break;
+                                                case  "Driving Licence" :
+                                                    this.setState({cmbState : "Upload front Image & back Image Driving Licence"});break;
                                             }
                                             this.validationImageVerifyForm();
-                                        }}
-                                    />
+                                        }}/>
                                 </div>
-                                <Divider/>
-                                <div  className={classes.ImageVerifyContainer}>
 
+                                <Divider/>
+
+                                <div  className={classes.ImageVerifyContainer}>
                                     <div className={classes.imageNameContainer}>
                                         <Typography variant="h6">Front Image</Typography>
                                         <Typography variant="h6">Back Image</Typography>
                                     </div>
-
                                     <div className={classes.imageCover}>
                                         <div style={{
                                             display: 'flex',
@@ -498,7 +518,6 @@ class RegisterCustomer extends Component{
                                             backgroundImage: "url(" +this.state.FrontView + ")",
                                             backgroundSize: 'cover'
                                         }}>
-
                                         </div>
                                         <div  style={{
                                             display: 'flex',
@@ -512,7 +531,6 @@ class RegisterCustomer extends Component{
                                         }}>
                                         </div>
                                     </div>
-
                                     <div className={classes.browsButtonContainer}>
                                         <input
                                             style={{ display: 'none'}}
@@ -525,10 +543,12 @@ class RegisterCustomer extends Component{
                                                 this.state.FrontImage=e.target.files[0]
                                                 this.state.FrontView=URL.createObjectURL(e.target.files[0])
                                                 this.validationImageVerifyForm();
-                                            }}/>
-
+                                            }}
+                                        />
                                         <label htmlFor="contained-button-file">
-                                            <ReactButton variant="contained" color="primary" component="span">Browse</ReactButton>
+                                            <ReactButton variant="contained" color="primary" component="span">
+                                                Browse
+                                            </ReactButton>
                                         </label>
 
                                         <input
@@ -542,12 +562,13 @@ class RegisterCustomer extends Component{
                                                 this.state.BackImage = e.target.files[0]
                                                 this.state.BackView = URL.createObjectURL(e.target.files[0])
                                                 this.validationImageVerifyForm();
-                                            }}/>
-
+                                            }}
+                                        />
                                         <label htmlFor="contained-button-file1">
-                                            <ReactButton variant="contained" color="primary" component="span">Browse</ReactButton>
+                                            <ReactButton variant="contained" color="primary" component="span">
+                                                Browse
+                                            </ReactButton>
                                         </label>
-
                                     </div>
                                 </div>
                             </div>
@@ -555,12 +576,12 @@ class RegisterCustomer extends Component{
                     </Modal.Body>
 
 {/*
-///=========================================================================================================================================================
+///========================================================================================================================================================================================================
 */}
 
 
                     <Modal.Footer>
-                        <AlertDialog data={{setStateRegisterForm : this.handleClose.bind(), setCreateAccHide : this.handleForm.bind()}}/>
+                        <AlertDialog data={{setStateRegisterForm : this.handleClose.bind(),setCreateAccHide : this.handleForm.bind()}}/>
                         <Button style={{display : this.state.btn1Display}} variant="primary"
                                 disabled={this.state.validateState.nextButtonUserAccount}
                                 onClick={async () =>{
@@ -579,11 +600,10 @@ class RegisterCustomer extends Component{
                                             this.setState({validateState :{ userNameError : true , userNameMessage : res.response.data.message}})
                                         }
                                     }else {
-                                        alert("Text Field Empty")
+                                        alert("TextField Empty")
                                     }
                                 }}
                         >Next Step</Button>
-
 
                         <Button  style={{display : this.state.btn2Display}}  variant="primary"
                                  disabled={this.state.validateState.nextButtonCustomerDetail}
@@ -602,12 +622,11 @@ class RegisterCustomer extends Component{
                                                  validateState : {register : true}
                                              })
                                          } else {
-                                             this.setState({validateState : {emailErrorMessage : 'Email Already Exist..!' , emailError : true}})
+                                             this.setState({validateState : {emailErrorMessage : 'Email Allready Exist..!' , emailError : true}})
                                          }
                                      }
                                  }}
                         >Next Step</Button>
-
 
                         <Button style={{display : this.state.btn3Display}}  variant="primary"
                                 disabled={this.state.validateState.register}
@@ -621,19 +640,22 @@ class RegisterCustomer extends Component{
                                         btn3Display : 'none'
                                     })
                                     await this.registerCustomer()
+
                                     this.props.data.hadleLogin();
+
                                     this.setState({
                                         show : false
                                     })
                                 }}
                         >Register</Button>
-
                     </Modal.Footer>
                 </Modal>
             </>
         )
     }
-
 }
 
 export default withStyles(styleSheet)(RegisterCustomer)
+
+
+

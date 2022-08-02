@@ -9,13 +9,17 @@ import "./slider.css";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import aboutImg from  "../../assets/images/d2.jpeg";
 import aboutImg1 from  "../../assets/images/7312319-volvo_xc60.jpg";
-import carData from "../../assets/CarData/carData";
-import CarItem from "./CarItem";
 
 import RegisterCustomer from "../Session/Register/register";
 import LoginCustomer from "../Session/Login/index";
 import ReactButton from "@material-ui/core/Button";
-import {IoMdLogIn} from "@react-icons/all-files/io/IoMdLogIn";
+import {RiLoginCircleFill} from "@react-icons/all-files/ri/RiLoginCircleFill";
+import {FaHome} from "@react-icons/all-files/fa/FaHome";
+import {AiFillCar} from "@react-icons/all-files/ai/AiFillCar";
+import {TiContacts} from "@react-icons/all-files/ti/TiContacts";
+import {RiServiceLine} from "@react-icons/all-files/ri/RiServiceLine";
+import {IoPersonAddOutline} from "@react-icons/all-files/io5/IoPersonAddOutline";
+import CarDetails from "./CarData";
 
 const quickLinks = [
     {
@@ -94,8 +98,8 @@ class HomePage extends Component {
                             <Col lg="6" md="6" sm="6">
                                 <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
                                     <ReactButton
-                                        startIcon={<IoMdLogIn/>}
-                                        style={{color: '#889988', TbPower :{color: '#898'}, flexShrink:1}}
+                                        startIcon={<RiLoginCircleFill/>}
+                                        style={{color: '#ffffff', TbPower :{color: '#ffffff'}, flexShrink:1}}
                                         onClick={() =>{
                                             this.child.handleShow();}}
                                     >Login</ReactButton>
@@ -172,11 +176,11 @@ class HomePage extends Component {
                         <div className="navigation__wrapper d-flex align-items-center justify-content-between">
 
                             <div className="menu">
-                                <a to="/home" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-home-line"></i>Home </a>
-                                <a to="/customer" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-customer-service-line"></i>Customer</a>
-                                <a to="/cars" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-car-line"></i>Cars</a>
-                                <a to="/service" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-service-line"></i>Service</a>
-                                <a to="/contact" role="button" className="nav-links" tabIndex="0" href="#"><i className="ri-contacts-line"></i>Contact</a>
+                                <a to="/home" role="button" className="nav-links" tabIndex="0" href="#"><FaHome/>Home </a>
+                                <a to="/customer" role="button" className="nav-links" tabIndex="0" href="#"><IoPersonAddOutline/>Customer</a>
+                                <a to="/cars" role="button" className="nav-links" tabIndex="0" href="#"><AiFillCar/>Cars</a>
+                                <a to="/service" role="button" className="nav-links" tabIndex="0" href="#"><RiServiceLine/>Service</a>
+                                <a to="/contact" role="button" className="nav-links" tabIndex="0" href="#"><TiContacts/>Contact</a>
                             </div>
 
                             <div className="nav__right">
@@ -326,15 +330,12 @@ class HomePage extends Component {
                 <Container>
                     <Row>
                         <Col lg="12" className="text-center mb-5">
-                            <h6 className="section__subtitle">Come with</h6>
-                            <h2 className="section__title">Hot Offers</h2>
+                            <h6 className="section__subtitle">Come with Hot Offers</h6>
+                            <h2 className="section__title">General Cars Rates</h2>
                         </Col>
-
-                        {carData.slice(0,9).map((item) => (
-                            <CarItem item={item} key={item.id} />))}
+                        <CarDetails/>
                     </Row>
                 </Container>
-
             <hr/>
 
 {/*
