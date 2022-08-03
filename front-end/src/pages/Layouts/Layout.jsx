@@ -8,6 +8,7 @@ import ManageCustomer from "../Admin/ManageCustomer/ManageCustomer";
 import ManageDriver from "../Admin/ManageDriver/ManageDriver";
 import RentalRequest from "../Admin/RentalRequest/RentalRequest";
 import RegisterCustomer from "../Session/Register/register";
+import CarRequestPopUp from "../Admin/RentalRequest/RentalRequestPopupTable";
 
 
 const Layout = () => {

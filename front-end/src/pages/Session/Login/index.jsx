@@ -72,7 +72,7 @@ class LoginCustomer extends Component{
                     keyboard={false}>
                     <Modal.Header closeButton>
                         <Modal.Title>
-                            <h1> EASY Car Rental System</h1></Modal.Title>
+                            <b>EASY</b> Car Rental Login</Modal.Title>
                     </Modal.Header>
 
 

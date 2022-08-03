@@ -1,3 +1,4 @@
+/*
 import React, {Component} from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {styleSheet} from "./RentalRequestStyle";
@@ -120,7 +121,7 @@ class RentalRequest extends Component {
                         <div className={classes.uploadButtonContainer}>
                             <div><input
                                 style={{display: 'none'}}
-                                accept="image/*"
+                                accept="image/!*"
                                 className={classes.input}
                                 id="contained-button-file01"
                                 multiple
@@ -154,4 +155,4 @@ class RentalRequest extends Component {
     }
 }
 
-export default withStyles(styleSheet)(RentalRequest)
+export default withStyles(styleSheet)(RentalRequest)*/

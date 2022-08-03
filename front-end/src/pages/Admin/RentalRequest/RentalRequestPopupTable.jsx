@@ -1,0 +1,91 @@
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import {styleSheet} from "../../Home/CarDetailsPopup";
+import withStyles from "@material-ui/core/styles/withStyles";
+import TextField from "@material-ui/core/TextField";
+
+
+function CarRequestPopUp(props) {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const {classes}=props;
+    return (
+        <>
+            <button className=" w-50 car_item-btn car_btn-details"
+                    onClick={handleShow} style={{color:'black'}}>
+                Car Details
+            </button>
+
+            <Modal style={{ color : 'black',  background: 'rgba(255, 255, 255, 0)' , boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8.8px)'}} size={"lg"} show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title><div>Easy Car Rental System Rent Form</div></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <div className={classes.mainContainer}>
+                        <div className={classes.leftContainer}>
+
+                            <ul style={{listStyleType : 'none', color:'white', fontFamily : 'Open Sans',fontSize : '12px', backgroundColor : "white"}}>
+                                <li>
+
+                                    <label style={{color : "#7bdcc2"}}>* Car Brand * </label>
+                                    <p>example Car Brand</p>
+                                </li>
+
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* Vehical Type * </label><br/>
+                                    <p>example Car Type</p></li>
+
+                                <li>
+                                    <TextField htmlFor="" style={{color : "#7bdcc2"}}>* Number Of Passenger * </TextField><br/>
+                                    <p>example Car Type</p></li>
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* transmissionType * </label><br/>
+                                    <p>example Car Type</p></li>
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* daily price * </label><br/>
+                                    <p>example Car Type</p></li>
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* monthly price * </label><br/>
+                                    <p>example Car Type</p></li>
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* daily Free Km * </label><br/>
+                                    <p>example Car Type</p></li>
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* monthly Free Km * </label><br/>
+                                    <p>example Car Type</p></li>
+                                <li>
+                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* price Of Extra Km * </label><br/>
+                                    <p>example Car Type</p></li>
+
+                            </ul>
+
+                        </div>
+                        <div className={classes.rightContainer}>
+
+                            <div  className={classes.imagesGridContainer}  >
+
+                                <div className={classes.images} ></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button style={{width : '200px'}} variant="success" onClick={handleClose}>
+                        Rent Now
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
+}
+export default withStyles(styleSheet)(CarRequestPopUp)
