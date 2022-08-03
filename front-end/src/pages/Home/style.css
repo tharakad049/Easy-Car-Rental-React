@@ -165,7 +165,7 @@
     cursor: pointer;
 }
 .nav__active {
-    color: #f9a826;
+    color: #a9c700;
 }
 
 @media only screen and (max-width: 768px) {
@@ -492,7 +492,7 @@ h4 {
 }
 
 .car__item-info span i {
-    color: #5a0055;
+    color: #ff0000;
     font-size: 1.1rem;
 }
 

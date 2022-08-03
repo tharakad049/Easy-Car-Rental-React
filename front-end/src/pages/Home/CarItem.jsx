@@ -2,9 +2,10 @@ import React from "react";
 import "./style.css";
 import Col from "react-bootstrap/Col";
 import CarDetailsPopUp from "./CarDetailcPopupTable";
+import RentalRequestPopupTable from "../Admin/RentalRequest/RentalRequestPopupTable";
 
 const CarItem = (props) => {
-    const { imgUrl, carType, carName, automatic, state , price } = props.item;
+    const { imgUrl, carType, carName, automatic, state , price , carId} = props.item;
     return (
         <Col lg="4"  className="mb-5">
             <div className="car__item">
@@ -29,12 +30,13 @@ const CarItem = (props) => {
                           <i class="ri-timer-flash-line"></i> {state}
                         </span>
                     </div>
-                    <button className=" w-50 car_item-btn car_btn-rent" style={{color : 'Black'}}
+              {/*      <button className=" w-50 car_item-btn car_btn-rent"
                             onClick={() =>{
                                 this.child.handleShow();
                             }}>
                         Rent Now
-                    </button>
+                    </button>*/}
+                    <RentalRequestPopupTable   data={props.item}/>
                     <CarDetailsPopUp ref={instance => { this.child = instance;}}/>
                 </div>
             </div>

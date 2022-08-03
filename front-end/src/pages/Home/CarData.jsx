@@ -14,12 +14,14 @@ function CarDetails(){
         if (response.status == 200) {
             carData.length=0
             for (const car of response.data.data) {
-                let resPhoto = await CarService.getCarImage("Car001", "Front");
+                let resPhoto = await CarService.getCarImage(car.carId, "Front");
                 carData.push({
+                    carId : car.carId,
                     imgUrl: URL.createObjectURL(resPhoto.data),
                     carType : car.vehicleType,
                     carName : car.brand,
                     automatic: car.transmissionType,
+                    numofp: car.numOfPassenger,
                     state: car.state,
                     price: car.dailyPrice,
                 })

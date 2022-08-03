@@ -14,7 +14,7 @@ function CarDetailsPopUp(props) {
     return (
         <>
             <button className=" w-50 car_item-btn car_btn-details"
-                    onClick={handleShow} style={{color:'black'}}>
+                    onClick={handleShow} style={{color:'white' , backgroundColor : '#00113b'}}>
                 Car Details
             </button>
 

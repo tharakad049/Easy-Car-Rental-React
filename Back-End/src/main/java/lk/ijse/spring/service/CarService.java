@@ -11,4 +11,5 @@ public interface CarService {
     void deleteCar(String carId);
     CarDTO searchCar(String carId);
     List<CarDTO> getAllCars();
+    public CarDTO getCarById(String carId);
 }

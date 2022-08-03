@@ -1,6 +1,5 @@
 package lk.ijse.spring.controller;
 
-import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.DriverDTO;
 import lk.ijse.spring.dto.ImageDTO;
 import lk.ijse.spring.service.DriverService;
@@ -18,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;

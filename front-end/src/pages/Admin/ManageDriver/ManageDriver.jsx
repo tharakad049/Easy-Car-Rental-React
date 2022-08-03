@@ -5,9 +5,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import AdminNavBar from "../../../components/admin/NavBar/index";
 import Divider from "@material-ui/core/Divider";
-import Input from "@material-ui/core/Input";
 import DriverService from "../../../service/DriverService";
-import CarService from "../../../service/CarService";
 import ViewAllDriverPopUpTable from "../../../components/Driver/ViewAllDriverPopup/driverTablePopupTable";
 
 class ManageDriver extends Component {

@@ -52,7 +52,11 @@ public class CarController {
         return new ResponseUtil(200, "Car Added Successfully", null);
     }
 
-
+    @GetMapping(path = "getCar")
+    public ResponseUtil getCarById(@RequestParam String id){
+        CarDTO car = carService.getCarById(id);
+        return new ResponseUtil(200,"Get All Cars",car);
+    }
 
 
 

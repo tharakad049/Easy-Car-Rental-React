@@ -31,6 +31,20 @@ class CarService {
         return await promise;
     }
 
+    getCarById =async (carId) =>{
+        const promise = new Promise((resolve, reject) => {
+            axios.get('easy/v1/car/getCar?id='+carId)
+
+                .then((res) => {
+                    return resolve(res)
+                })
+                .catch((err) => {
+                    return resolve(err)
+                })
+        })
+        return await promise;
+    }
+
     addCarImage = async (data,carId) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/car/addCarImage?carId='+carId,data)

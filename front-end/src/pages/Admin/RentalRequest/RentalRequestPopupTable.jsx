@@ -1,91 +1,228 @@
-import React, { useState } from 'react';
+import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import {styleSheet} from "../../Home/CarDetailsPopup";
+import {styleSheet} from "./RentalRequestStyle";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
+import Radio from '@material-ui/core/Radio';
+import Box from "@material-ui/core/Box";
+
+class RentalRequest extends Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            show : false,
+            selectedValue : '',
+
+            brand : '',
+            type : '',
+            transmission : '',
+            numOfp : '',
+            carImage : null,
+
+        }
+    }
+
+    handleClose = () =>{
+        this.setState({show : false})
+    }
+    handleShow = () => {
+        this.setState({show : true})
+    }
+
+    loadData=() =>{
+        this.setState({
+            brand : this.props.data.carName,
+            type : this.props.data.carType,
+            transmission : this.props.data.automatic,
+            numOfp : this.props.data.numofp,
+            carImage : this.props.data.imgUrl,
+        })
+    }
+
+    /* getCar=async (carId) =>{
+         let res = await CarService.getCarById(carId);
+         if (res!='ERR_BAD_REQUEST'){
+              this.setState({
+                  brand : res.data.brand,
+                  type : res.data.vehicleType,
+                  transmission : res.data.transmissionType,
+                  numOfp : res.data.numOfPassenger,
+              })
+             let response = await CarService.getCarImage(carId,"Side");
+              if (response!='ERR_BAD_REQUEST'){
+                  this.setState({
+                      carImage : URL.createObjectURL(response.data)
+                  })
+              }
+             this.setState({loading : false})
+         }
+
+     }*/
+    componentDidMount() {
+        this.loadData()
+    }
+
+    render() {
+        const {classes}=this.props
+        return (
+
+                        <>
+
+                            <button className=" w-50 car_item-btn car_btn-rent" style={{color : 'white' ,  backgroundColor : '#5b0065'}}
+                                    onClick={() =>{
+                                        this.handleShow()
+                                    }}
+                            >Rent Now </button>
+
+                            <Modal
+                                size={"lg"}
+                                show={this.state.show}
+                                onHide={this.handleClose}
+                                backdrop="static"
+                                keyboard={false}
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Modal title</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <div className={classes.mainContainer}>
+                                        <div className={classes.topContainer}>
+                                            <div className={classes.contentContainer}>
+
+                                                <div style={{
+                                                    backgroundImage:"url(" +this.state.carImage+ ")",
+                                                    backgroundSize: 'cover'
+                                                }} className={classes.imageContainer}>
+
+                                                </div>
+
+                                                <div className={classes.imageDetailsContainer}>
 
 
-function CarRequestPopUp(props) {
-    const [show, setShow] = useState(false);
+                                                    <div className={classes.textContainers}>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            Car Brand :
+                                                        </Box>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            {this.state.brand}
+                                                        </Box>
+                                                    </div>
+                                                    <div className={classes.textContainers}>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            Car Category :
+                                                        </Box>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            {this.state.type}
+                                                        </Box>
+                                                    </div>
+                                                    <div className={classes.textContainers}>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            Transmission Type :
+                                                        </Box>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            {this.state.transmission}
+                                                        </Box>
+                                                    </div>
+                                                    <div className={classes.textContainers}>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            Number Of Passengers :
+                                                        </Box>
+                                                        <Box fontFamily="Monospace" style={{color : 'white'}} fontSize="15px" fontWeight={300} m={1}>
+                                                            {this.state.numOfp}
+                                                        </Box>
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const {classes}=props;
-    return (
-        <>
-            <button className=" w-50 car_item-btn car_btn-details"
-                    onClick={handleShow} style={{color:'black'}}>
-                Car Details
-            </button>
+                                                    </div>
+                                                </div>
 
-            <Modal style={{ color : 'black',  background: 'rgba(255, 255, 255, 0)' , boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8.8px)'}} size={"lg"} show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title><div>Easy Car Rental System Rent Form</div></Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                                            </div>
+                                        </div>
+                                        <div className={classes.bottomContainer}>
 
-                    <div className={classes.mainContainer}>
-                        <div className={classes.leftContainer}>
+                                            <div className={classes.pickupAndReturnDateAndTimeContainer}>
+                                                <form className={classes.container} noValidate>
+                                                    <TextField
+                                                        id="datetime-local"
+                                                        label="PickUp Date And Time"
+                                                        type="datetime-local"
+                                                        defaultValue="2017-05-24T10:30"
+                                                        /* className={classes.textField}*/
+                                                        InputLabelProps={{
+                                                            shrink: true,
+                                                        }}
+                                                    />
+                                                </form>
+                                                <form className={classes.container} noValidate>
+                                                    <TextField
+                                                        id="datetime-local"
+                                                        label="Return Date And Time"
+                                                        type="datetime-local"
+                                                        defaultValue="2017-05-24T10:30"
+                                                        /* className={classes.textField}*/
+                                                        InputLabelProps={{
+                                                            shrink: true,
+                                                        }}
+                                                    />
+                                                </form>
 
-                            <ul style={{listStyleType : 'none', color:'white', fontFamily : 'Open Sans',fontSize : '12px', backgroundColor : "white"}}>
-                                <li>
+                                            </div>
+                                            <div className={classes.containerPickUpAndReturnLocation}>
+                                                <TextField id="filled-search" label="Type Starting point"  variant="filled" />
+                                                <TextField id="filled-search" label="Type End of journey"  variant="filled" />
 
-                                    <label style={{color : "#7bdcc2"}}>* Car Brand * </label>
-                                    <p>example Car Brand</p>
-                                </li>
+                                            </div>
+                                            <div className={classes.driverContainer}>
+                                                <label htmlFor="">Do you need a driver?</label>
 
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* Vehical Type * </label><br/>
-                                    <p>example Car Type</p></li>
+                                                <div className={classes.radioContainer}>
+                                                    <div className={classes.radioButtonContainer}>
+                                                        <label htmlFor="">yes</label>
+                                                        <Radio
+                                                            value="y"
+                                                            color="primary"
+                                                            label={"Yes"}
+                                                            checked={this.state.selectedValue==='y'}
+                                                            onChange={(e) =>{
+                                                                this.setState( {selectedValue : e.target.value})
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className={classes.radioButtonContainer}>
+                                                        <label htmlFor="">No</label>
+                                                        <Radio
+                                                            value="n"
+                                                            color="secondary"
+                                                            checked={this.state.selectedValue==='n'}
+                                                            onChange={(e) =>{
+                                                                this.setState( {selectedValue : e.target.value})
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
 
-                                <li>
-                                    <TextField htmlFor="" style={{color : "#7bdcc2"}}>* Number Of Passenger * </TextField><br/>
-                                    <p>example Car Type</p></li>
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* transmissionType * </label><br/>
-                                    <p>example Car Type</p></li>
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* daily price * </label><br/>
-                                    <p>example Car Type</p></li>
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* monthly price * </label><br/>
-                                    <p>example Car Type</p></li>
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* daily Free Km * </label><br/>
-                                    <p>example Car Type</p></li>
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* monthly Free Km * </label><br/>
-                                    <p>example Car Type</p></li>
-                                <li>
-                                    <label htmlFor="" style={{color : "#7bdcc2"}}>* price Of Extra Km * </label><br/>
-                                    <p>example Car Type</p></li>
 
-                            </ul>
 
-                        </div>
-                        <div className={classes.rightContainer}>
 
-                            <div  className={classes.imagesGridContainer}  >
+                                            </div>
 
-                                <div className={classes.images} ></div>
+                                        </div>
+                                    </div>
 
-                            </div>
 
-                        </div>
-                    </div>
 
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="danger" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button style={{width : '200px'}} variant="success" onClick={handleClose}>
-                        Rent Now
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    );
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={this.handleClose}>
+                                        Close
+                                    </Button>
+                                    <Button variant="primary">Understood</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </>
+
+
+        );
+    }
+
 }
-export default withStyles(styleSheet)(CarRequestPopUp)
+export default withStyles(styleSheet)(RentalRequest)
