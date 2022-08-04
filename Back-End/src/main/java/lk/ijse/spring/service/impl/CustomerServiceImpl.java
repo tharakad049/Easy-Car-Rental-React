@@ -7,7 +7,6 @@ import lk.ijse.spring.dto.RentalRequestDTO;
 import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.entity.CustomerUserAccount;
-import lk.ijse.spring.entity.RentalRequest;
 import lk.ijse.spring.repo.CarRepo;
 import lk.ijse.spring.repo.CustomerRepo;
 import lk.ijse.spring.repo.CustomerUserAccountRepo;
@@ -29,9 +28,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepo customerRepo;
-
-    @Autowired
-    private RentalRequestRepo rentalRequestRepo;
 
     @Autowired
     private CustomerUserAccountRepo customerUserAccountRepo;
@@ -124,17 +120,20 @@ public class CustomerServiceImpl implements CustomerService {
     public String getNewId() {
         String lastCustId = customerRepo.getLastCustId();
 
-        String[] split = lastCustId.split("-");
-        long index = Long.parseLong(split[1]);
+        if (lastCustId!=null) {
+            String[] split = lastCustId.split("-");
+            long index = Long.parseLong(split[1]);
 
-        long incrementId=++index;
+            long incrementId = ++index;
 
-        if (incrementId<10){
-            return "C-00"+incrementId ;
-        }else if (incrementId>=10 && index<100){
-            return "C-0"+ incrementId ;
-        }else if(incrementId>=100){
-            return "C-"+ incrementId ;
+            if (incrementId < 10) {
+                return "C-00" + incrementId;
+            } else if (incrementId >= 10 && index < 100) {
+                return "C-0" + incrementId;
+            } else if (incrementId >= 100) {
+                return "C-" + incrementId;
+            }
+            return "C-001";
         }
         return "C-001";
     }
