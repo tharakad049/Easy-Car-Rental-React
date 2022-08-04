@@ -1,28 +1,22 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap-grid.css"
-import Layout from "../pages/Layouts/Layout";
+import HomePage from "../pages/Home";
+import ManageCar from "../pages/Admin/ManageCar/ManageCar";
+import { Route } from "react-router-dom";
+import {Routes} from "react-router";
 
 function App() {
-  return <Layout/>;
-/*
+/*  return <Layout/>;*/
+
   return (
-      <div>
-{/!*        <Router>
-          <HeaderComponent />
-          <div className="container">
-            <Switch>
-              <Route path = "/" exact component = {ListEmployeeComponent}></Route>
-              <Route path = "/employees" component = {ListEmployeeComponent}></Route>
-              <Route path = "/add-employee/:id" component = {CreateEmployeeComponent}></Route>
-              <Route path = "/view-employee/:id" component = {ViewEmployeeComponent}></Route>
-               <Route path = "/update-employee/:id" component = {UpdateEmployeeComponent}></Route>
-            </Switch>
-          </div>
-          <FooterComponent />
-        </Router>*!/}
-      </div>
-
-  );*/
+      <HomePage/>
+/*      <div className="App">
+          <h1>Welcome to React Router!</h1>
+          <Routes>
+              <Route path="/" element={<HomePage/>} />
+              <Route path="car" element={<ManageCar />} />
+          </Routes>
+      </div>*/
+  );
 }
-
 export default App;

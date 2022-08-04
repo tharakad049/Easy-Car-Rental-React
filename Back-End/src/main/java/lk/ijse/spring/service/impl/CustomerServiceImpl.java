@@ -1,5 +1,6 @@
 package lk.ijse.spring.service.impl;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.RegisterCustomerDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,6 +43,21 @@ public class CustomerServiceImpl implements CustomerService {
     private CarRepo carRepo;
 
 
+    @Override
+    public void existCustomerLicence(String custId) {
+        if (customerRepo.existsById(custId)){
+
+            String licence = customerRepo.existsCustomerLicence(custId);
+            System.out.println("license :" +licence);
+            if (licence==null){
+                System.out.println("if check");
+                throw new RuntimeException("Customer licence not found");
+            }
+        }else {
+            throw new RuntimeException("Customer Not Found");
+        }
+
+    }
 
 
 
@@ -167,11 +184,16 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Car> viewAllCars() {
-        return carRepo.findAll();
+    public List<CarDTO> viewAllCars() {
+        List<Car> all = carRepo.findAll();
+        List<CarDTO> vehicleDTOS = new ArrayList();
+        for (Car v: all) {
+            vehicleDTOS.add(mapper.map(v,CarDTO.class));
+        }
+        return vehicleDTOS;
     }
 
-    @Override
+/*    @Override
     public List<Car> rentalRequest(RentalRequestDTO rentalRequestDTO) {
         if (!rentalRequestRepo.existsById(rentalRequestDTO.getRequestId())) {
 
@@ -190,7 +212,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException("Rental request Fail");
         }
         return null;
-    }
+    }*/
 }
 
 

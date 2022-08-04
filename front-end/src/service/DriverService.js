@@ -62,7 +62,7 @@ class DriverService {
 
 
 
-
+/*
     addDriverIdImage = async (data,driverId) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/addDriverIdImage?driverId='+driverId,data)
@@ -75,8 +75,8 @@ class DriverService {
                 })
         })
         return await promise;
-    }
-/*    addDriverLicenseImage = async (data,driverId) => {
+    }*/
+    addDriverLicenseImage = async (data,driverId) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/addDriverLicenseImage?driverId='+driverId,data)
 
@@ -88,7 +88,7 @@ class DriverService {
                 })
         })
         return await promise;
-    }*/
+    }
 
 
 
@@ -97,7 +97,7 @@ class DriverService {
 
 
 
-    updateDriverIdImage = async (idImage,driverId, view) => {
+/*    updateDriverIdImage = async (idImage,driverId, view) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/updateDriverIdImage?driverId='+driverId+'&view='+view,idImage)
                 .then((res) => {
@@ -108,8 +108,10 @@ class DriverService {
                 })
         })
         return await promise;
-    }
-/*    updateDriverLicenseImage = async (image,driverId, view) => {
+    }*/
+
+
+    updateDriverLicenseImage = async (image,driverId, view) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('easy/v1/driver/updateDriverLicenseImage?driverId='+driverId+'&view='+view,image)
                 .then((res) => {
@@ -120,7 +122,7 @@ class DriverService {
                 })
         })
         return await promise;
-    }*/
+    }
 
 
 
@@ -131,7 +133,7 @@ class DriverService {
 
 
 
-    deleteDriverIdImage =async (driverId) =>{
+/*    deleteDriverIdImage =async (driverId) =>{
         const promise = new Promise((resolve, reject) => {
             axios.delete('easy/v1/driver/deleteIdImage?driverId='+driverId)
 
@@ -143,9 +145,11 @@ class DriverService {
                 })
         })
         return await promise;
-    }
+    }*/
 
-/*    deleteDriverLicenseImage =async (driverId) =>{
+
+
+    deleteDriverLicenseImage =async (driverId) =>{
         const promise = new Promise((resolve, reject) => {
             axios.delete('easy/v1/driver/deleteLicenseImage?driverId='+driverId)
 
@@ -157,7 +161,7 @@ class DriverService {
                 })
         })
         return await promise;
-    }*/
+    }
 
 
     //---------------------------------------------------------------------------------------------------------
@@ -165,7 +169,7 @@ class DriverService {
 
 
 
-    getDriverIdImage = async (driverId,view) =>{
+/*    getDriverIdImage = async (driverId,view) =>{
         const promise = new Promise((resolve, reject) => {
             axios.get('easy/v1/driver/getIdImage?driverId='+driverId+'&view='+view, {
                 responseType: 'blob',
@@ -179,8 +183,10 @@ class DriverService {
                 })
         })
         return await promise;
-    }
-/*
+    }*/
+
+
+
     getDriverLicenseImage = async (driverId,view) =>{
         const promise = new Promise((resolve, reject) => {
             axios.get('easy/v1/driver/getLicenseImage?driverId='+driverId+'&view='+view, {
@@ -195,7 +201,7 @@ class DriverService {
                 })
         })
         return await promise;
-    }*/
+    }
 
 
 

@@ -76,7 +76,7 @@ public class DriverController {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+/*
     @SneakyThrows
     @PostMapping(path = "addDriverIdImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil uploadDriverIDImage(@RequestParam(value = "param") MultipartFile[] multipartFile , @RequestParam("driverId") String driverId) {
@@ -94,15 +94,15 @@ public class DriverController {
                     }
                 }
             return new ResponseUtil(200, "Driver ID_CARD image added success..", null);
-        }
+        }*/
 
 
 
-/*    @SneakyThrows
+    @SneakyThrows
     @PostMapping(path = "addDriverLicenseImage",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadDriverLicenseImage(@RequestParam(value = "driverLicenseImage") MultipartFile[] multipartFile , @RequestParam("driverId") String driverId) {
+    public ResponseUtil uploadDriverLicenseImage(@RequestParam(value = "param")  MultipartFile[] multipartFile , @RequestParam("driverId") String driverId) {
 
-        String pathDirectory = "E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\LicenseImage\\";
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\driverLicenseImage\\";
         String [] driverLicenseImageView={"LicenseFront","LicenseBack"};
         for (int i = 0; i < multipartFile.length; i++) {
             String[] split=multipartFile[i].getContentType().split("/");
@@ -115,7 +115,7 @@ public class DriverController {
             }
         }
         return new ResponseUtil(200, "Driver License Card image added success..", null);
-    }*/
+    }
 
 
 
@@ -124,7 +124,7 @@ public class DriverController {
 
 
 
-    @GetMapping(path = "getIdImage" , produces = MediaType.IMAGE_JPEG_VALUE)
+ /*   @GetMapping(path = "getIdImage" , produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<?> getIdImage(@RequestParam String driverId, String view){
         ImageDTO imageDTO = new ImageDTO(driverId, "idCard", view);
         Resource fileAsResource = fileDownloadUtil.getFileAsResource(imageDTO);
@@ -133,14 +133,13 @@ public class DriverController {
             return ResponseEntity.badRequest().contentType(MediaType.APPLICATION_JSON).body("Driver Image not found");
         }
     return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource);
-    }
+    }*/
 
 
 
-/*
     @GetMapping(path = "getLicenseImage" , produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<?> getLicenseImage(@RequestParam String driverId, String view){
-        ImageDTO imageDTO = new ImageDTO(driverId, "driver", view);
+        ImageDTO imageDTO = new ImageDTO(driverId, "licence", view);
         Resource fileAsResource = fileDownloadUtil.getFileAsResource(imageDTO);
 
         if (fileAsResource==null){
@@ -148,7 +147,6 @@ public class DriverController {
         }
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource);
     }
-*/
 
 
 
@@ -158,7 +156,7 @@ public class DriverController {
 
 
 
-
+/*
     @SneakyThrows
     @PostMapping(path = "updateDriverIdImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriverIdImage(@RequestParam(value = "idImage") MultipartFile multipartFile , @RequestParam("driverId") String driverId ,@RequestParam("view") String view){
@@ -169,27 +167,28 @@ public class DriverController {
             return new ResponseUtil(200,"Driver Id Image Updated",null);
         }
         return new ResponseUtil(200,"Driver IdImage Fail",null);
-    }
+    }*/
 
 
-/*    @SneakyThrows
+
+    @SneakyThrows
     @PostMapping(path = "updateDriverLicenseImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriverLicenseImage(@RequestParam(value = "licenseImage") MultipartFile multipartFile , @RequestParam("driverId") String driverId ,@RequestParam("view") String view){
 
-        String pathDirectory = "E:\\CarRental System Assignment\\Car-Rental-System-New\\src\\main\\resources\\static\\LicenseImage\\";
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\driverLicenseImage\\";
         if (searchFileUtil.searchFile(pathDirectory,driverId+view+".jpeg")){
             Files.copy(multipartFile.getInputStream(),Paths.get(pathDirectory+File.separator+driverId+view+".jpeg"),StandardCopyOption.REPLACE_EXISTING);
             return new ResponseUtil(200,"Driver LicenseImage Updated",null);
         }
         return new ResponseUtil(200,"Driver License Image Fail",null);
-    }*/
+    }
 
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+/*
     @SneakyThrows
     @DeleteMapping(path = "deleteIdImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteIdImage(@RequestParam String driverId){
@@ -201,12 +200,14 @@ public class DriverController {
         }
 
         return new ResponseUtil(200,"Id Images Delete success",null);
-    }
+    }*/
 
-/*    @SneakyThrows
+
+
+    @SneakyThrows
     @DeleteMapping(path = "deleteLicenseImage",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteLicenseImage(@RequestParam String driverId){
-        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\LicenseImage\\";
+        String pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\driverLicenseImage\\";
         String [] licenseImageView={"Front","Back"};
 
         for (int i=0; i<licenseImageView.length; i++){
@@ -214,7 +215,7 @@ public class DriverController {
         }
 
         return new ResponseUtil(200,"Id Images Delete success",null);
-    }*/
+    }
 
 }
 

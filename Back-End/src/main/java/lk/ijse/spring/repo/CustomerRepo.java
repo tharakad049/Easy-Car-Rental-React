@@ -24,4 +24,7 @@ public interface CustomerRepo extends JpaRepository<Customer,  String>{
     @Query("select c.email from Customer c where c.email=?1")
     public String existsByEmail(String email);
 
+    @Query(value = "select drivingLicence from Customer where cusId=?", nativeQuery = true)
+    public String existsCustomerLicence(String custId);
+
 }

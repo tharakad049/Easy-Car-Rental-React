@@ -20,14 +20,13 @@ const columns = [
     {id: 'driverId', label: "Id", minWidth: 170},
     {id: 'driverEmail', label: "Email", minWidth: 100},
     {id: 'contactNumber', label: 'Contact Number', minWidth: 170, align: 'right'},
-    {id: 'nicNumber', label: "Nic Number", minWidth: 170, align: 'right'},
     {id: 'licenseNumber', label: 'License Number', minWidth: 170, align: 'right'},
     {id: 'address', label: 'Address', minWidth: 170, align: 'right'},
 ];
 
-function createData(driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address) {
+function createData(driverId, driverEmail, contactNumber, licenseNumber, address) {
     return {
-        driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address
+        driverId, driverEmail, contactNumber, licenseNumber, address
     };
 }
 
@@ -44,30 +43,21 @@ const rows = [];
 
 
 function DriverPopUpTable(props) {
-    const loadDriverDetails=async (driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address) =>{
+    const loadDriverDetails=async (driverId, driverEmail, contactNumber, licenseNumber, address) =>{
         let frontImage;
         let backImage;
-        let sideImage;
-        let interiorImage;
 
-        let res1 = await driverService.getDriverIdImage(driverId,"Front");
+        let res1 = await driverService.getDriverLicenseImage(driverId,"Front");
         if (res1.status===200) {
             frontImage=URL.createObjectURL(res1.data)
         }
-        let res2 =  await driverService.getDriverIdImage(driverId,"Back");
+        let res2 =  await driverService.getDriverLicenseImage(driverId,"Back");
         if (res1.status===200) {
             backImage=URL.createObjectURL(res2.data)
         }
-        let res3 = await driverService.getDriverIdImage(driverId,"Side");
-        if (res1.status===200) {
-            sideImage=URL.createObjectURL(res3.data)
-        }
-        let res4 =  await driverService.getDriverIdImage(driverId,"Interior");
-        if (res1.status===200) {
-            interiorImage=URL.createObjectURL(res4.data)
-        }
-        props.data.changeStateDriverDetails( driverId, driverEmail, contactNumber, nicNumber, licenseNumber, address,
-            frontImage, backImage, sideImage, interiorImage);
+
+        props.data.changeStateDriverDetails( driverId, driverEmail, contactNumber, licenseNumber, address,
+            frontImage, backImage);
 
     }
 
@@ -80,7 +70,7 @@ function DriverPopUpTable(props) {
             var i = 0;
             for (let dataKey of res.data.data) {
                 rows[i] = createData(dataKey.driverId, dataKey.email, dataKey.contactNumber,
-                    dataKey.nicNumberAndPhoto, dataKey.drivingLicenseNumberAndPhoto, dataKey.address)
+                     dataKey.drivingLicenseNumber, dataKey.address)
                 i++;
             }
             setShow(true);
@@ -103,7 +93,6 @@ function DriverPopUpTable(props) {
 
     return (
         <div>
-            {/* <div>{props.data.unit}</div>*/}
 
             <Button variant="primary" onClick={() => {
                 getAllDrivers();
@@ -124,7 +113,7 @@ function DriverPopUpTable(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/*{/table/}*/}
+
                     <Paper className={classes.root}>
                         <TableContainer className={classes.container}>
                             < Table stickyHeader aria-label="sticky table">
@@ -150,7 +139,7 @@ function DriverPopUpTable(props) {
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}
 
                                                       onClick={async () =>{
-                                                          await loadDriverDetails(row.driverId, row.driverEmail, row.contactNumber, row.nicNumber,
+                                                          await loadDriverDetails(row.driverId, row.driverEmail, row.contactNumber,
                                                           row.licenseNumber, row.address)
 
                                                           setShow(false)

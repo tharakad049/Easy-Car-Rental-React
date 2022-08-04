@@ -15,40 +15,32 @@ class ManageDriver extends Component {
         this.state = {
             frontImage: null,
             backImage: null,
-            sideImage: null,
-            interiorImage: null,
 
             frontView:null,
             backView:null,
-            sideView:null,
-            interiorView:null,
 
             driverDetails : {
                 driverId : "",
                 driverEmail : "",
                 driverContactNumber : "",
-                driverNicNumber :"",
                 driverLicenseNumber :"",
                 driverAddress : "",
             }
         }
     }
 
-    changeStateDriverDetails(Id, driverEmail, driverContactNumber,driverNicNumber, driverLicenseNumber, driverAddress, frontImage,backImage, sideImage,interiorImage){
+    changeStateDriverDetails(Id, driverEmail, driverContactNumber,driverLicenseNumber, driverAddress, frontImage,backImage){
         this.setState({
             carDetails : {
                 driverId : Id,
                 driverEmail : driverEmail,
                 driverContactNumber : driverContactNumber,
-                driverNicNumber :driverNicNumber,
                 driverLicenseNumber :driverLicenseNumber,
                 driverAddress : driverAddress,
             },
 
             frontView : frontImage,
             backView : backImage,
-            sideView : sideImage,
-            interiorView : interiorImage,
 
         })
     }
@@ -56,29 +48,27 @@ class ManageDriver extends Component {
     //-----------------------------------------------------------------------------------------------------------------------
 
 
-    addDriverIdImage = async (driverId) => {
+/*    addDriverIdImage = async (driverId) => {
         var bodyFormData = new FormData();
         bodyFormData.append('param' , this.state.frontImage);
         bodyFormData.append('param' , this.state.backImage)
-        bodyFormData.append('param' , this.state.sideImage);
-        bodyFormData.append('param' , this.state.interiorImage);
 
         let res = await DriverService.addDriverIdImage(bodyFormData,driverId);
         if (res.data.code===200){alert(res.data.message)}else {
             alert(res.data.message);
         }
-    }
+    }*/
 
-/*    addDriverLicenseImage = async (driverId) => {
+    addDriverLicenseImage = async (driverId) => {
         var bodyFormData = new FormData();
-        bodyFormData.append('param' , this.state.licenseFrontImage);
-        bodyFormData.append('param' , this.state.licenseBackImage)
+        bodyFormData.append('param' , this.state.frontImage);
+        bodyFormData.append('param' , this.state.backImage)
 
         let res = await DriverService.addDriverLicenseImage(bodyFormData,driverId);
         if (res.data.code===200){alert(res.data.message)}else {
             alert(res.data.message);
         }
-    }*/
+    }
 
 
     //--------------------------------------------------------------------------------------------------------------------------------
@@ -90,8 +80,7 @@ class ManageDriver extends Component {
             driverId : this.state.driverDetails.driverId,
             email  : this.state.driverDetails.driverEmail,
             contactNumber : this.state.driverDetails.driverContactNumber,
-            nicNumberAndPhoto : this.state.driverDetails.driverNicNumber,
-            drivingLicenseNumberAndPhoto : this.state.driverDetails.driverLicenseNumber,
+            drivingLicenseNumber : this.state.driverDetails.driverLicenseNumber,
             address : this.state.driverDetails.driverAddress ,
             state : 'Pending'
         }
@@ -100,10 +89,9 @@ class ManageDriver extends Component {
         if (res.data.code==200){
             alert(res.data.message);
 
-            this.addDriverIdImage(driverDetails.driverId);
-/*
+           /* this.addDriverIdImage(driverDetails.driverId);*/
+
             this.addDriverLicenseImage(driverDetails.driverId);
-*/
 
         }else {
             alert(res.data.message);
@@ -118,8 +106,7 @@ class ManageDriver extends Component {
             driverId : this.state.driverDetails.driverId,
             email  : this.state.driverDetails.driverEmail,
             contactNumber : this.state.driverDetails.driverContactNumber,
-            nicNumberAndPhoto : this.state.driverDetails.driverNicNumber,
-            drivingLicenseNumberAndPhoto : this.state.driverDetails.driverLicenseNumber,
+            drivingLicenseNumber : this.state.driverDetails.driverLicenseNumber,
             address : this.state.driverDetails.driverAddress ,
             state : 'Pending'
         }
@@ -128,17 +115,15 @@ class ManageDriver extends Component {
         if (res.status===200){
             let front=this.state.frontImage;
             let back=this.state.backImage;
-            let side=this.state.sideImage;
-            let interior=this.state.interiorImage;
-            let list=[front,back, side,interior]
-            let viewList=["Front","Back","Side","Interior"]
+            let list=[front,back]
+            let viewList=["Front","Back"]
 
             for (var i=0; i<list.length; i++){
                 if (list[i] != null){
                     let formData = new FormData();
-                    formData.append('idImage'/*,'driverLicenseImage'*/, list[i]);
-                    await this.updateDriverIdImage(formData, driverUpdateDetails.driverId, viewList[i]);
-                /*    await this.updateDriverLicenseImage(formData, driverUpdateDetails.driverId, viewList[i]);*/
+                     formData.append(/*'idImage',*/'driverLicenseImage', list[i]);
+                    /*await this.updateDriverIdImage(formData, driverUpdateDetails.driverId, viewList[i]);*/
+                    await this.updateDriverLicenseImage(formData, driverUpdateDetails.driverId, viewList[i]);
                 }
             }
 
@@ -152,8 +137,8 @@ class ManageDriver extends Component {
         let res =await DriverService.deleteDriver(this.state.driverDetails.driverId);
         if (res.status==200){
 
-            let res =await DriverService.deleteDriverIdImage(this.state.driverDetails.driverId);
-           // let res1 =await DriverService.deleteDriverLicenseImage(this.state.driverDetails.driverId);
+            //let res =await DriverService.deleteDriverIdImage(this.state.driverDetails.driverId);
+            let res1 =await DriverService.deleteDriverLicenseImage(this.state.driverDetails.driverId);
             if ((res.data.code==200) /*|| (res1.data.code==200)*/ ){
                 alert("CDriver Deleted Success")
                 this.clearAllState()
@@ -164,36 +149,32 @@ class ManageDriver extends Component {
 
     }
 
-    updateDriverIdImage=async (data,driverId,view) =>{
+/*    updateDriverIdImage=async (data,driverId,view) =>{
         let response =await DriverService.updateDriverIdImage(data,driverId,view);
         if (response.status!=200){
             alert("Driver Id Image Update Fail")
         }
-    }
-/*    updateDriverLicenseImage=async (data,driverId,view) =>{
-        let response =await CarService.updateDriverLicenseImage(data,driverId,view);
+    }*/
+
+    updateDriverLicenseImage=async (data,driverId,view) =>{
+        let response =await DriverService.updateDriverLicenseImage(data,driverId,view);
         if (response.status!=200){
             alert("Driver License Image Update Fail")
         }
-    }*/
+    }
 
     clearAllState=() =>{
         this.setState({
             frontImage: null,
             backImage: null,
-            sideImage: null,
-            interiorImage: null,
 
             frontView:null,
             backView:null,
-            sideView:null,
-            interiorView:null,
 
             driverDetails : {
                 driverId : "",
                 driverEmail : "",
                 driverContactNumber : "",
-                driverNicNumber :"",
                 driverLicenseNumber :"",
                 driverAddress : "",
                 }
@@ -238,11 +219,6 @@ class ManageDriver extends Component {
                                            formData.driverContactNumber = e.target.value
                                            this.setState({ formData })
                                        }}/>
-                            <TextField size={"small"} id="outlined-required" label="Id Card Number" variant="outlined" value={this.state.driverDetails.driverNicNumber}
-                                       onChange={(e) => {let formData = this.state.driverDetails
-                                           formData.driverNicNumber = e.target.value
-                                           this.setState({ formData })
-                                       }}/>
                             <TextField size={"small"} id="outlined-required" label="Driving License Number" variant="outlined" value={this.state.driverDetails.driverLicenseNumber}
                                        onChange={(e) => {let formData = this.state.driverDetails
                                            formData.driverLicenseNumber = e.target.value
@@ -258,9 +234,7 @@ class ManageDriver extends Component {
                         
                         <Divider/>
                         <div className={classes.formDividerText2Container}>
-                            <h5 style={{color: 'black'}}>ID Front View</h5>
                             <h5 style={{color: 'black'}}>License Front View</h5>
-                            <h5 style={{color: 'black'}}>ID Back View</h5>
                             <h5 style={{color: 'black'}}>License Back View</h5>
                         </div>
                         <Divider/>
@@ -286,7 +260,7 @@ class ManageDriver extends Component {
                                      backgroundSize: 'cover'
                                  }}>
                             </div>
-                            <div className={classes.imageDiv}
+        {/*                    <div className={classes.imageDiv}
                                  style={{
                                      display: 'flex',
                                      alignItems: 'center',
@@ -305,7 +279,7 @@ class ManageDriver extends Component {
                                      backgroundImage: "url(" + this.state.interiorView + ")",
                                      backgroundSize: 'cover'
                                  }}>
-                            </div>
+                            </div>*/}
                         </div>
 
 
@@ -352,7 +326,7 @@ class ManageDriver extends Component {
                                     </Button>
                                 </label>
                             </div>
-                            <div><input
+  {/*                          <div><input
                                 style={{display: 'none'}}
                                 accept="image/*"
                                 className={classes.input}
@@ -392,7 +366,7 @@ class ManageDriver extends Component {
                                         Upload Image
                                     </Button>
                                 </label>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
 

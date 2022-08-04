@@ -3,6 +3,7 @@ package lk.ijse.spring.util;
 import lk.ijse.spring.dto.ImageDTO;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,24 +35,25 @@ public class FileDownloadUtil {
 
         String pathDirectory = null;
         Path path = null;
-
+        String imageName = imageDTO.getImageId() + imageDTO.getImageView() + ".jpeg";
         switch (imageDTO.getImageType()) {
 
             case "car":
                 pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\CarImage";
                 path = Paths.get(pathDirectory);
-                String imageName = imageDTO.getImageId() + imageDTO.getImageView() + ".jpeg";
                 searchFile(path, imageName);
                 break;
 
             case "licence":
                 pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\LicenseImage";
-                path = Paths.get(pathDirectory + "/" + imageDTO.getImageId() + imageDTO.getImageType() + ".jpeg");
+                path = Paths.get(pathDirectory);
+                searchFile(path, imageName);
                 break;
 
             case "idCard":
                 pathDirectory = "E:\\Dilan-Spring-Car-Rental\\Easy-Car-Rental-React\\Back-End\\src\\main\\resources\\static\\IdCardImage";
-                path = Paths.get(pathDirectory + "/" + imageDTO.getImageId() + imageDTO.getImageType() + ".jpeg");
+                path = Paths.get(pathDirectory);
+                searchFile(path, imageName);
                 break;
         }
 

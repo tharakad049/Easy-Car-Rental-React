@@ -1,5 +1,6 @@
 package lk.ijse.spring.service;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.RegisterCustomerDTO;
 import lk.ijse.spring.dto.RentalRequestDTO;
@@ -14,8 +15,7 @@ public interface CustomerService {
     CustomerDTO searchCustomer(String cusId);
     List<CustomerDTO> getAllCustomers();
     int countSavedCustomers();
-    List<Car> viewAllCars();
-    List<Car> rentalRequest(RentalRequestDTO rentalRequestDTO);
+    List<CarDTO> viewAllCars();
 
     void existUserCustomerAccount(String userName);
     void existEmail(String email);
@@ -23,4 +23,5 @@ public interface CustomerService {
     String getNewId();
 
     void checkUserAccount(String userName,String password);
+    void existCustomerLicence(String custId);
 }
